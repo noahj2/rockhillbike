@@ -1,0 +1,7 @@
+[12-Feb-2016 19:01:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'cyclepath'@'localhost' (using password: YES)' in /home/ubuntu/workspace/connectrockhill/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/ubuntu/workspace/connectrockhill/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=127....', 'cyclepath', 'capstone', Array)
+#1 /home/ubuntu/workspace/connectrockhill/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'cyclepath', 'capstone', Array)
+#2 /home/ubuntu/workspace/connectrockhill/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'cyclepath', 'capstone', Array)
+#3 /home/ubuntu/workspace/connectrockhill/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/ubuntu/workspace/connectrockhi in /home/ubuntu/workspace/connectrockhill/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
