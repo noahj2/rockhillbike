@@ -46,7 +46,11 @@ class Event
      * @var string
      *
      * @ORM\Column(name="location", type="string", length=255)
+     * 
+     * @ManyToOne(targetEntity="Trail", inversedBy("id")
+     * @JoinColumn()
      */
+     
     private $location;
 
     /**
