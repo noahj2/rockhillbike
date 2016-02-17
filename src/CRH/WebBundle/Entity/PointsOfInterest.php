@@ -31,7 +31,7 @@ class PointsOfInterest
     /**
      * @var float
      *
-     * @ORM\Column(name="longitude", type="float")
+     * @ORM\Column(name="longitude", type="decimal", precision="6", scale="3")
      */
     private $longitude;
 
@@ -49,6 +49,9 @@ class PointsOfInterest
      * @var int
      *
      * @ORM\Column(name="type", type="integer")
+     * 
+     * @ManyToOne(targetEntity="POI_TYPE")
+     * @JoinColumn(name="type", referencedColumnName="id")
      */
     private $type;
 
