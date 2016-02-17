@@ -24,28 +24,31 @@ class PointsOfInterest
     /**
      * @var float
      *
-     * @ORM\Column(name="Latitude", type="float")
+     * @ORM\Column(name="latitude", type="float")
      */
     private $latitude;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="Longitude", type="float")
+     * @ORM\Column(name="longitude", type="float")
      */
     private $longitude;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="Trail", type="integer")
+     * @ORM\Column(name="trail", type="integer")
+     * 
+     * @ManyToOne(targetEntity="Trail", inversedBy("id")
+     * @JoinColumn(name="trail", referencedColumnName="id")
      */
     private $trail;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="Type", type="integer")
+     * @ORM\Column(name="type", type="integer")
      */
     private $type;
 

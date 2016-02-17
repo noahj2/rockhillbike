@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * POI_TYPE
  *
- * @ORM\Table(name="p_o_i__t_y_p_e")
+ * @ORM\Table(name="poi_type")
  * @ORM\Entity(repositoryClass="CRH\WebBundle\Repository\POI_TYPERepository")
  */
 class POI_TYPE

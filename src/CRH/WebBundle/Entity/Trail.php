@@ -21,6 +21,7 @@ class Trail
      * 
      * @OneToMany(targetEntity="Event", mappedBy("location")
      * @OneToMany(targetEntity="Testimony", mappedBy("trail")
+     * @OneToMany(targetEntity="PointsOfInterest", mappedBy("trail")
      */
     private $id;
 
