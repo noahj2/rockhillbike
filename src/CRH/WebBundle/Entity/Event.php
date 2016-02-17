@@ -43,12 +43,12 @@ class Event
     private $eventDate;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="location", type="string", length=255)
+     * @ORM\Column(name="location", type="integer")
      * 
      * @ManyToOne(targetEntity="Trail", inversedBy("id")
-     * @JoinColumn()
+     * @JoinColumn(name="location", referencedColumnName="id")
      */
      
     private $location;

@@ -35,7 +35,17 @@ class Testimony
      */
     private $message;
 
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="trail", type="integer")
+     * 
+     * @ManyToOne(targetEntity="Trail", inversedBy("id")
+     * @JoinColumn(name="trail", referencedColumnName="id")
+     */
+     
+    private $trail;
+    
     /**
      * Get id
      *

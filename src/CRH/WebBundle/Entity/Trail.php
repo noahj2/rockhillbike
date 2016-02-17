@@ -18,6 +18,9 @@ class Trail
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * 
+     * @OneToMany(targetEntity="Event", mappedBy("location")
+     * @OneToMany(targetEntity="Testimony", mappedBy("trail")
      */
     private $id;
 
