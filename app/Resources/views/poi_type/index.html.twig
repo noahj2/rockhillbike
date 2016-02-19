@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>POI_TYPE list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pOI_TYPE in pOI_TYPEs %}
+            <tr>
+                <td><a href="{{ path('poi_type_show', { 'id': pOI_TYPE.id }) }}">{{ pOI_TYPE.id }}</a></td>
+                <td>{{ pOI_TYPE.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('poi_type_show', { 'id': pOI_TYPE.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('poi_type_edit', { 'id': pOI_TYPE.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('poi_type_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

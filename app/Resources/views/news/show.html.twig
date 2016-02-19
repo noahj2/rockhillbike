@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>News</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ news.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ news.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ news.description }}</td>
+            </tr>
+            <tr>
+                <th>Datetime</th>
+                <td>{% if news.dateTime %}{{ news.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ news.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('news_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

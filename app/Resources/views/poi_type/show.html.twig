@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>POI_TYPE</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pOI_TYPE.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ pOI_TYPE.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('poi_type_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('poi_type_edit', { 'id': pOI_TYPE.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
