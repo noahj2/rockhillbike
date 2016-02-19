@@ -40,6 +40,13 @@ class Trail
     private $length;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=25)
+     */
+    private $type;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="caloriesBurnedMale", type="float", nullable=true)
@@ -67,7 +74,21 @@ class Trail
      */
     private $description;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo1", type="string", length=255, nullable=true)
+     */
+    private $photo1;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo2", type="string", length=255, nullable=true)
+     */
+    private $photo2;
+    
+    
     /**
      * Get id
      *

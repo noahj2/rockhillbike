@@ -34,6 +34,13 @@ class PointsOfInterest
      * @ORM\Column(name="longitude", type="decimal", precision="6", scale="3")
      */
     private $longitude;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     */
+    private $photo;    
 
     /**
      * @var int
