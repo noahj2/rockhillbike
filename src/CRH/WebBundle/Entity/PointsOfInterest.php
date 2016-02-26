@@ -24,7 +24,7 @@ class PointsOfInterest
     /**
      * @var float
      *
-     * @ORM\Column(name="longitude", type="decimal", precision=18, scale=16)
+     * @ORM\Column(name="latitude", type="decimal", precision=18, scale=16)
      */
     private $latitude;
 
@@ -47,7 +47,7 @@ class PointsOfInterest
      *
      * @ORM\Column(name="trail", type="integer")
      * 
-     * @ORM\ManyToOne(targetEntity="Trail", inversedBy("pointsOfInterest")
+     * @ORM\ManyToOne(targetEntity="Trail", inversedBy="pointsOfInterest")
      */
     private $trail;
 
@@ -161,5 +161,28 @@ class PointsOfInterest
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return PointsOfInterest
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }

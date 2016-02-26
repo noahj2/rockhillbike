@@ -100,4 +100,27 @@ class Comment
     {
         return $this->message;
     }
+
+    /**
+     * Set trail
+     *
+     * @param integer $trail
+     * @return Comment
+     */
+    public function setTrail($trail)
+    {
+        $this->trail = $trail;
+
+        return $this;
+    }
+
+    /**
+     * Get trail
+     *
+     * @return integer 
+     */
+    public function getTrail()
+    {
+        return $this->trail;
+    }
 }
