@@ -18,6 +18,10 @@
                 <td>{{ trail.length }}</td>
             </tr>
             <tr>
+                <th>Type</th>
+                <td>{{ trail.type }}</td>
+            </tr>
+            <tr>
                 <th>Caloriesburnedmale</th>
                 <td>{{ trail.caloriesBurnedMale }}</td>
             </tr>
@@ -33,15 +37,23 @@
                 <th>Description</th>
                 <td>{{ trail.description }}</td>
             </tr>
+            <tr>
+                <th>Photo1</th>
+                <td>{{ trail.photo1 }}</td>
+            </tr>
+            <tr>
+                <th>Photo2</th>
+                <td>{{ trail.photo2 }}</td>
+            </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('trail_index') }}">Back to the list</a>
+            <a href="{{ path('admin_trail_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('trail_edit', { 'id': trail.id }) }}">Edit</a>
+            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

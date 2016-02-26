@@ -1,27 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>POI_TYPE</h1>
+    <h1>Comment</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ pOI_TYPE.id }}</td>
+                <td>{{ comment.id }}</td>
             </tr>
             <tr>
-                <th>Type</th>
-                <td>{{ pOI_TYPE.type }}</td>
+                <th>Image</th>
+                <td>{{ comment.image }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ comment.message }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('admin_poi_type_index') }}">Back to the list</a>
+            <a href="{{ path('admin_comment_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">Edit</a>
+            <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

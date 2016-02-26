@@ -12,7 +12,7 @@ use CRH\WebBundle\Form\NewsType;
 /**
  * News controller.
  *
- * @Route("/news")
+ * @Route("/admin/news")
  */
 class NewsController extends Controller
 {

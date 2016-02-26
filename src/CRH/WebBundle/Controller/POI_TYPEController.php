@@ -12,14 +12,14 @@ use CRH\WebBundle\Form\POI_TYPEType;
 /**
  * POI_TYPE controller.
  *
- * @Route("/poi_type")
+ * @Route("/admin/poi_type")
  */
 class POI_TYPEController extends Controller
 {
     /**
      * Lists all POI_TYPE entities.
      *
-     * @Route("/", name="poi_type_index")
+     * @Route("/", name="admin_poi_type_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class POI_TYPEController extends Controller
     /**
      * Creates a new POI_TYPE entity.
      *
-     * @Route("/new", name="poi_type_new")
+     * @Route("/new", name="admin_poi_type_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -50,7 +50,7 @@ class POI_TYPEController extends Controller
             $em->persist($pOI_TYPE);
             $em->flush();
 
-            return $this->redirectToRoute('poi_type_show', array('id' => $poi_type->getId()));
+            return $this->redirectToRoute('admin_poi_type_show', array('id' => $poi_type->getId()));
         }
 
         return $this->render('poi_type/new.html.twig', array(
@@ -62,7 +62,7 @@ class POI_TYPEController extends Controller
     /**
      * Finds and displays a POI_TYPE entity.
      *
-     * @Route("/{id}", name="poi_type_show")
+     * @Route("/{id}", name="admin_poi_type_show")
      * @Method("GET")
      */
     public function showAction(POI_TYPE $pOI_TYPE)
@@ -78,7 +78,7 @@ class POI_TYPEController extends Controller
     /**
      * Displays a form to edit an existing POI_TYPE entity.
      *
-     * @Route("/{id}/edit", name="poi_type_edit")
+     * @Route("/{id}/edit", name="admin_poi_type_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, POI_TYPE $pOI_TYPE)
@@ -92,7 +92,7 @@ class POI_TYPEController extends Controller
             $em->persist($pOI_TYPE);
             $em->flush();
 
-            return $this->redirectToRoute('poi_type_edit', array('id' => $pOI_TYPE->getId()));
+            return $this->redirectToRoute('admin_poi_type_edit', array('id' => $pOI_TYPE->getId()));
         }
 
         return $this->render('poi_type/edit.html.twig', array(
@@ -105,7 +105,7 @@ class POI_TYPEController extends Controller
     /**
      * Deletes a POI_TYPE entity.
      *
-     * @Route("/{id}", name="poi_type_delete")
+     * @Route("/{id}", name="admin_poi_type_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, POI_TYPE $pOI_TYPE)
@@ -119,7 +119,7 @@ class POI_TYPEController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('poi_type_index');
+        return $this->redirectToRoute('admin_poi_type_index');
     }
 
     /**
@@ -132,7 +132,7 @@ class POI_TYPEController extends Controller
     private function createDeleteForm(POI_TYPE $pOI_TYPE)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('poi_type_delete', array('id' => $pOI_TYPE->getId())))
+            ->setAction($this->generateUrl('admin_poi_type_delete', array('id' => $pOI_TYPE->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

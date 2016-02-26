@@ -37,7 +37,7 @@ class Trail
     private $length;
     
     /**
-     * @OneToOne(targetEntity="Location")
+     * @ORM\OneToOne(targetEntity="Location")
      */
      private $location;
 
@@ -91,17 +91,17 @@ class Trail
     private $photo2;
     
     /**
-     * @OneToMany(targetEntity="Comment", mappedBy="trail")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail")
      */
     private $comments;
     
     /**
-     * @OneToMany(targetEntity="Event", mappedBy="location")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="location")
      */ 
     private $events;
     
     /**
-     * @OneToMany(targetEntity="PointsOfInterest", mappedBy="trail")
+     * @ORM\OneToMany(targetEntity="PointsOfInterest", mappedBy="trail")
      */
      private $pointsOfInterest;
     

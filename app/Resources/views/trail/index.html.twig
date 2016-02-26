@@ -9,30 +9,36 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Length</th>
+                <th>Type</th>
                 <th>Caloriesburnedmale</th>
                 <th>Caloriesburnedfemale</th>
                 <th>Surfacetype</th>
                 <th>Description</th>
+                <th>Photo1</th>
+                <th>Photo2</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for trail in trails %}
             <tr>
-                <td><a href="{{ path('trail_show', { 'id': trail.id }) }}">{{ trail.id }}</a></td>
+                <td><a href="{{ path('admin_trail_show', { 'id': trail.id }) }}">{{ trail.id }}</a></td>
                 <td>{{ trail.name }}</td>
                 <td>{{ trail.length }}</td>
+                <td>{{ trail.type }}</td>
                 <td>{{ trail.caloriesBurnedMale }}</td>
                 <td>{{ trail.caloriesBurnedFemale }}</td>
                 <td>{{ trail.surfaceType }}</td>
                 <td>{{ trail.description }}</td>
+                <td>{{ trail.photo1 }}</td>
+                <td>{{ trail.photo2 }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('trail_show', { 'id': trail.id }) }}">show</a>
+                            <a href="{{ path('admin_trail_show', { 'id': trail.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('trail_edit', { 'id': trail.id }) }}">edit</a>
+                            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +49,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('trail_new') }}">Create a new entry</a>
+            <a href="{{ path('admin_trail_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

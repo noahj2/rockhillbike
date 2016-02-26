@@ -47,7 +47,7 @@ class Event
      *
      * @ORM\Column(name="location", type="integer")
      * 
-     * @ManyToOne(targetEntity="Trail", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Trail", inversedBy="events")
      */
      
     private $location;

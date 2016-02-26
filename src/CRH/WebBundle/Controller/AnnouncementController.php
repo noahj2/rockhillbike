@@ -12,7 +12,7 @@ use CRH\WebBundle\Form\AnnouncementType;
 /**
  * Announcement controller.
  *
- * @Route("/announcement")
+ * @Route("/admin/announcement")
  */
 class AnnouncementController extends Controller
 {

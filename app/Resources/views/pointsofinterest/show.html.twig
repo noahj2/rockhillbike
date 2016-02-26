@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PointsOfInterest</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pointsOfInterest.id }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ pointsOfInterest.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ pointsOfInterest.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ pointsOfInterest.photo }}</td>
+            </tr>
+            <tr>
+                <th>Trail</th>
+                <td>{{ pointsOfInterest.trail }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ pointsOfInterest.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_pointsofinterest_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_pointsofinterest_edit', { 'id': pointsOfInterest.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

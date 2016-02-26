@@ -12,14 +12,14 @@ use CRH\WebBundle\Form\TrailType;
 /**
  * Trail controller.
  *
- * @Route("/trail")
+ * @Route("/admin/trail")
  */
 class TrailController extends Controller
 {
     /**
      * Lists all Trail entities.
      *
-     * @Route("/", name="trail_index")
+     * @Route("/", name="admin_trail_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class TrailController extends Controller
     /**
      * Creates a new Trail entity.
      *
-     * @Route("/new", name="trail_new")
+     * @Route("/new", name="admin_trail_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -50,7 +50,7 @@ class TrailController extends Controller
             $em->persist($trail);
             $em->flush();
 
-            return $this->redirectToRoute('trail_show', array('id' => $trail->getId()));
+            return $this->redirectToRoute('admin_trail_show', array('id' => $trail->getId()));
         }
 
         return $this->render('trail/new.html.twig', array(
@@ -62,7 +62,7 @@ class TrailController extends Controller
     /**
      * Finds and displays a Trail entity.
      *
-     * @Route("/{id}", name="trail_show")
+     * @Route("/{id}", name="admin_trail_show")
      * @Method("GET")
      */
     public function showAction(Trail $trail)
@@ -78,7 +78,7 @@ class TrailController extends Controller
     /**
      * Displays a form to edit an existing Trail entity.
      *
-     * @Route("/{id}/edit", name="trail_edit")
+     * @Route("/{id}/edit", name="admin_trail_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Trail $trail)
@@ -92,7 +92,7 @@ class TrailController extends Controller
             $em->persist($trail);
             $em->flush();
 
-            return $this->redirectToRoute('trail_edit', array('id' => $trail->getId()));
+            return $this->redirectToRoute('admin_trail_edit', array('id' => $trail->getId()));
         }
 
         return $this->render('trail/edit.html.twig', array(
@@ -105,7 +105,7 @@ class TrailController extends Controller
     /**
      * Deletes a Trail entity.
      *
-     * @Route("/{id}", name="trail_delete")
+     * @Route("/{id}", name="admin_trail_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Trail $trail)
@@ -119,7 +119,7 @@ class TrailController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('trail_index');
+        return $this->redirectToRoute('admin_trail_index');
     }
 
     /**
@@ -132,7 +132,7 @@ class TrailController extends Controller
     private function createDeleteForm(Trail $trail)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('trail_delete', array('id' => $trail->getId())))
+            ->setAction($this->generateUrl('admin_trail_delete', array('id' => $trail->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

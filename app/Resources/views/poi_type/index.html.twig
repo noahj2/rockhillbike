@@ -14,15 +14,15 @@
         <tbody>
         {% for pOI_TYPE in pOI_TYPEs %}
             <tr>
-                <td><a href="{{ path('poi_type_show', { 'id': pOI_TYPE.id }) }}">{{ pOI_TYPE.id }}</a></td>
+                <td><a href="{{ path('admin_poi_type_show', { 'id': pOI_TYPE.id }) }}">{{ pOI_TYPE.id }}</a></td>
                 <td>{{ pOI_TYPE.type }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('poi_type_show', { 'id': pOI_TYPE.id }) }}">show</a>
+                            <a href="{{ path('admin_poi_type_show', { 'id': pOI_TYPE.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('poi_type_edit', { 'id': pOI_TYPE.id }) }}">edit</a>
+                            <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('poi_type_new') }}">Create a new entry</a>
+            <a href="{{ path('admin_poi_type_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PointsOfInterest list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Photo</th>
+                <th>Trail</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pointsOfInterest in pointsOfInterests %}
+            <tr>
+                <td><a href="{{ path('admin_pointsofinterest_show', { 'id': pointsOfInterest.id }) }}">{{ pointsOfInterest.id }}</a></td>
+                <td>{{ pointsOfInterest.latitude }}</td>
+                <td>{{ pointsOfInterest.longitude }}</td>
+                <td>{{ pointsOfInterest.photo }}</td>
+                <td>{{ pointsOfInterest.trail }}</td>
+                <td>{{ pointsOfInterest.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_pointsofinterest_show', { 'id': pointsOfInterest.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_pointsofinterest_edit', { 'id': pointsOfInterest.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_pointsofinterest_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

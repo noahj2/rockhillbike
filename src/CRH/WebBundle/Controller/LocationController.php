@@ -12,7 +12,7 @@ use CRH\WebBundle\Form\LocationType;
 /**
  * Location controller.
  *
- * @Route("/location")
+ * @Route("/admin/location")
  */
 class LocationController extends Controller
 {

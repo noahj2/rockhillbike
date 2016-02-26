@@ -40,7 +40,7 @@ class Comment
      *
      * @ORM\Column(name="trail", type="integer")
      * 
-     * @ManyToOne(targetEntity="Trail", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Trail", inversedBy="comments")
      */
      
     private $trail;

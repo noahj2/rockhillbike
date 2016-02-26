@@ -4,7 +4,7 @@ namespace CRH\WebBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class POI_TYPEControllerTest extends WebTestCase
+class EventControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class POI_TYPEControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/admin/poi_type/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/poi_type/");
+        $crawler = $client->request('GET', '/admin/event/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/event/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'crh_webbundle_poi_type[field_name]'  => 'Test',
+            'crh_webbundle_event[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class POI_TYPEControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'crh_webbundle_poi_type[field_name]'  => 'Foo',
+            'crh_webbundle_event[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

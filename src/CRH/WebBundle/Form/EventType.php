@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TrailType extends AbstractType
+class EventType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,15 +16,10 @@ class TrailType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('length')
-            ->add('type')
-            ->add('caloriesBurnedMale')
-            ->add('caloriesBurnedFemale')
-            ->add('surfaceType')
             ->add('description')
-            ->add('photo1')
-            ->add('photo2')
-
+            ->add('eventDate', 'datetime')
+            ->add('bannerPhoto')
+            ->add('photo')
         ;
     }
     
@@ -34,7 +29,7 @@ class TrailType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CRH\WebBundle\Entity\Trail'
+            'data_class' => 'CRH\WebBundle\Entity\Event'
         ));
     }
 }
