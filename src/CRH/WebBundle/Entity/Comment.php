@@ -40,8 +40,7 @@ class Comment
      *
      * @ORM\Column(name="trail", type="integer")
      * 
-     * @ManyToOne(targetEntity="Trail", inversedBy("id")
-     * @JoinColumn(name="trail", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Trail", inversedBy="comments")
      */
      
     private $trail;

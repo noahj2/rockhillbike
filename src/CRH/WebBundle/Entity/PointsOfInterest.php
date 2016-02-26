@@ -31,7 +31,7 @@ class PointsOfInterest
     /**
      * @var float
      *
-     * @ORM\Column(name="longitude", type="decimal", precision="6", scale="3")
+     * @ORM\Column(name="longitude", type="decimal", precision="18", scale="16")
      */
     private $longitude;
     
@@ -47,8 +47,7 @@ class PointsOfInterest
      *
      * @ORM\Column(name="trail", type="integer")
      * 
-     * @ManyToOne(targetEntity="Trail", inversedBy("id")
-     * @JoinColumn(name="trail", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Trail", inversedBy("pointsOfInterest")
      */
     private $trail;
 
@@ -58,7 +57,6 @@ class PointsOfInterest
      * @ORM\Column(name="type", type="integer")
      * 
      * @ManyToOne(targetEntity="POI_TYPE")
-     * @JoinColumn(name="type", referencedColumnName="id")
      */
     private $type;
 

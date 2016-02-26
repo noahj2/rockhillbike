@@ -3,6 +3,7 @@
 namespace CRH\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Trail
@@ -19,9 +20,6 @@ class Trail
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
-     * @OneToMany(targetEntity="Event", mappedBy("location")
-     * @OneToMany(targetEntity="Comment", mappedBy("trail")
-     * @OneToMany(targetEntity="PointsOfInterest", mappedBy("trail")
      */
     private $id;
 
@@ -38,6 +36,11 @@ class Trail
      * @ORM\Column(name="length", type="float")
      */
     private $length;
+    
+    /**
+     * @OneToOne(targetEntity="Location")
+     */
+     private $location;
 
     /**
      * @var string
@@ -88,6 +91,28 @@ class Trail
      */
     private $photo2;
     
+    /**
+     * @OneToMany(targetEntity="Comment", mappedBy="trail")
+     */
+    private $comments;
+    
+    /**
+     * @OneToMany(targetEntity="Event", mappedBy="location")
+     */ 
+    private $events;
+    
+    /**
+     * @OneToMany(targetEntity="PointsOfInterest", mappedBy="trail")
+     */
+     private $pointsOfInterest;
+    
+    //Constructor
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->events = new ArrayCollection();
+        $this->pointsOfInterest = new ArrayCollection();
+    }
     
     /**
      * Get id
