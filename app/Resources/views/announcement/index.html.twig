@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Announcement list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th>Iscurrent</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for announcement in announcements %}
+            <tr>
+                <td><a href="{{ path('announcement_show', { 'id': announcement.id }) }}">{{ announcement.id }}</a></td>
+                <td>{{ announcement.message }}</td>
+                <td>{% if announcement.isCurrent %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('announcement_show', { 'id': announcement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('announcement_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
