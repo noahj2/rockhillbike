@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>FitnessTip list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tip</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fitnessTip in fitnessTips %}
+            <tr>
+                <td><a href="{{ path('admin_fitnesstip_show', { 'id': fitnessTip.id }) }}">{{ fitnessTip.id }}</a></td>
+                <td>{{ fitnessTip.tip }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_fitnesstip_show', { 'id': fitnessTip.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_fitnesstip_edit', { 'id': fitnessTip.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_fitnesstip_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

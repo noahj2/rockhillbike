@@ -10,12 +10,32 @@
                 <td>{{ comment.id }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ comment.image }}</td>
+                <th>Name</th>
+                <td>{{ comment.name }}</td>
             </tr>
             <tr>
                 <th>Message</th>
                 <td>{{ comment.message }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ comment.image }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if comment.date %}{{ comment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Trail</th>
+                <td>{{ comment.trail }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ comment.email }}</td>
+            </tr>
+            <tr>
+                <th>Isapproved</th>
+                <td>{% if comment.isApproved %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

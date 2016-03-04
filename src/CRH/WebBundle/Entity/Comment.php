@@ -24,9 +24,9 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
      */
-    private $image;
+    private $name;
 
     /**
      * @var string
@@ -36,15 +36,40 @@ class Comment
     private $message;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="trail", type="integer")
-     * 
      * @ORM\ManyToOne(targetEntity="Trail", inversedBy="comments")
      */
-     
     private $trail;
-    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="isapproved", type="boolean", nullable=true)
+     * 
+     */
+    private $isApproved;
+
     /**
      * Get id
      *
@@ -56,26 +81,26 @@ class Comment
     }
 
     /**
-     * Set image
+     * Set name
      *
-     * @param string $image
+     * @param string $name
      * @return Comment
      */
-    public function setImage($image)
+    public function setName($name)
     {
-        $this->image = $image;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get name
      *
      * @return string 
      */
-    public function getImage()
+    public function getName()
     {
-        return $this->image;
+        return $this->name;
     }
 
     /**
@@ -102,6 +127,52 @@ class Comment
     }
 
     /**
+     * Set image
+     *
+     * @param string $image
+     * @return Comment
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Comment
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
      * Set trail
      *
      * @param integer $trail
@@ -122,5 +193,28 @@ class Comment
     public function getTrail()
     {
         return $this->trail;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Comment
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

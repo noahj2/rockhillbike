@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CommentType extends AbstractType
+class FitnessTipType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,13 +15,7 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('message')
-            ->add('image')
-            ->add('date', 'datetime')
-            ->add('trail')
-            ->add('email')
-            ->add('isApproved')
+            ->add('tip')
         ;
     }
     
@@ -31,7 +25,7 @@ class CommentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CRH\WebBundle\Entity\Comment'
+            'data_class' => 'CRH\WebBundle\Entity\FitnessTip'
         ));
     }
 }

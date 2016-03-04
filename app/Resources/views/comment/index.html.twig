@@ -7,8 +7,13 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Image</th>
+                <th>Name</th>
                 <th>Message</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>Trail</th>
+                <th>Email</th>
+                <th>Isapproved</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,8 +21,13 @@
         {% for comment in comments %}
             <tr>
                 <td><a href="{{ path('admin_comment_show', { 'id': comment.id }) }}">{{ comment.id }}</a></td>
-                <td>{{ comment.image }}</td>
+                <td>{{ comment.name }}</td>
                 <td>{{ comment.message }}</td>
+                <td>{{ comment.image }}</td>
+                <td>{% if comment.date %}{{ comment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ comment.trail }}</td>
+                <td>{{ comment.email }}</td>
+                <td>{% if comment.isApproved %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>
