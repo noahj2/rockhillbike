@@ -91,7 +91,14 @@ class Trail
      * @ORM\Column(name="photo1", type="string", length=255, nullable=true)
      */
     private $photo1;
-
+    
+    /**
+    *@var \DateTime
+    *
+    *@ORM\Column(type="datetime")
+    */
+    private $updatedOn;
+    
     /**
      * @var string
      *
@@ -293,6 +300,35 @@ class Trail
         return $this->type;
     }
 
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Trail
+     */ 
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile1 = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile1()
+     {
+         return $this->imageFile1;
+     }
+     
+     /**
+      * 
+      */
+      
+     
     /**
      * Set photo1
      *
