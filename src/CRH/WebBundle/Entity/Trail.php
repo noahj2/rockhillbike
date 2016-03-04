@@ -4,12 +4,14 @@ namespace CRH\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Trail
  *
  * @ORM\Table(name="trail")
  * @ORM\Entity(repositoryClass="CRH\WebBundle\Repository\TrailRepository")
+ * @Vich\Uploadable
  */
 class Trail
 {
@@ -75,7 +77,14 @@ class Trail
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-
+    
+    /**
+    *
+    *@Vich\UploadableField(mapping="trail_image", fileNameProperty="photo1")
+    *
+    */
+    
+    private $imageFile1;
     /**
      * @var string
      *

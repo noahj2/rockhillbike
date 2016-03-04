@@ -66,3 +66,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
+# VichUploader Configuration
+vich_uploader:
+    db_driver: orm
+    
+    mappings:
+        trail_image:
+            uri_prefix: /images/trails
+            upload_destination: %kernel.root_dir%/../web/images/trails
