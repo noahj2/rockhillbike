@@ -7,6 +7,7 @@ namespace CRH\WebBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+
 class AdminController extends Controller
 {
     /**
@@ -16,5 +17,4 @@ class AdminController extends Controller
     {
         return new Response('<html><body>Admin page!</body></html>');
     }
-}
 }
