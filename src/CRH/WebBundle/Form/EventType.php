@@ -18,8 +18,7 @@ class EventType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('eventDate', 'datetime')
-            ->add('bannerPhoto')
-            ->add('photo')
+            
         ;
     }
     

@@ -52,19 +52,6 @@ class Event
      
     private $location;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="bannerPhoto", type="string", length=255, nullable=true)
-     */
-    private $bannerPhoto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     */
-    private $photo;
 
 
     /**
@@ -167,51 +154,5 @@ class Event
     public function getLocation()
     {
         return $this->location;
-    }
-
-    /**
-     * Set bannerPhoto
-     *
-     * @param string $bannerPhoto
-     * @return Event
-     */
-    public function setBannerPhoto($bannerPhoto)
-    {
-        $this->bannerPhoto = $bannerPhoto;
-
-        return $this;
-    }
-
-    /**
-     * Get bannerPhoto
-     *
-     * @return string 
-     */
-    public function getBannerPhoto()
-    {
-        return $this->bannerPhoto;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     * @return Event
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string 
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
     }
 }

@@ -18,7 +18,6 @@ class NewsType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('dateTime', 'datetime')
-            ->add('photo')
         ;
     }
     
