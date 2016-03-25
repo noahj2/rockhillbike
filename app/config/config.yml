@@ -36,6 +36,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -75,3 +78,9 @@ vich_uploader:
         trail_image:
             uri_prefix: /images/trails
             upload_destination: %kernel.root_dir%/../web/images/trails
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+            
+            

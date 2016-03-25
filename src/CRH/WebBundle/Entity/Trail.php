@@ -4,6 +4,8 @@ namespace CRH\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -83,8 +85,8 @@ class Trail
     *@Vich\UploadableField(mapping="trail_image", fileNameProperty="photo1")
     *
     */
-    
     private $imageFile1;
+    
     /**
      * @var string
      *
@@ -305,7 +307,7 @@ class Trail
      * 
      * @return Trail
      */ 
-    public function setImageFile(File $image = null)
+    public function setImageFile1(File $image = null)
     {
         $this->imageFile1 = $image;
         
@@ -325,10 +327,13 @@ class Trail
      }
      
      /**
-      * 
+      * @return updatedOn 
       */
+      public function getUpdatedOn()
+      {
+          return $this->updatedOn;
+      }
       
-     
     /**
      * Set photo1
      *

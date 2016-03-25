@@ -22,6 +22,9 @@ class TrailType extends AbstractType
             ->add('caloriesBurnedFemale')
             ->add('surfaceType')
             ->add('description')
+            ->add('imageFile1', 'vich_image', array(
+                'required'  => false,
+            ))
             ->add('photo1')
             ->add('photo2')
 
