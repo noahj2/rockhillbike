@@ -38,7 +38,7 @@ use CRH\WebBundle\Entity\Comment;
       * Creates a new unapproved comment entity
       * 
       * @Route("/new", name="comment_new")
-      * @Method({"GET, POST")
+      * @Method({"GET, POST"})
       */ 
       
       public function newAction(Request $request)
