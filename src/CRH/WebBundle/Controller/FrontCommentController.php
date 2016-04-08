@@ -33,4 +33,32 @@ use CRH\WebBundle\Entity\Comment;
             'comments' => $approvedComments,  
         ));
      }
+     
+     /**
+      * Creates a new unapproved comment entity
+      * 
+      * @Route("/new", name="comment_new")
+      * @Method({"GET, POST")
+      */ 
+      
+      public function newAction(Request $request)
+      {
+          $pendingComment = new Comment();
+          $form = $this->createForm('CRH\WebBundle\Form\FrontCommentType', $pendingComment);
+          $form->handleRequest($request);
+          
+          if($form->isSubmitted() & $form->isValid())
+          {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($pendingComment);
+            $em->flush();              
+            
+            return $this->redirectToRoute('comment_index');
+          }
+          
+        return $this->render('comment/new.html.twig', array(
+            'comment' => $pendingComment,
+            'form' => $form->createView(),
+        ));          
+      }
  }
