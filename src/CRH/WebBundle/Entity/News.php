@@ -120,5 +120,4 @@ class News
     {
         return $this->dateTime;
     }
-
 }

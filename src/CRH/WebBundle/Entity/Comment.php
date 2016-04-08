@@ -50,8 +50,6 @@ class Comment
     private $date;
 
     /**
-     * @var int
-     *
      * @ORM\Column(name="trail", type="integer")
      * @ORM\ManyToOne(targetEntity="Trail", inversedBy="comments")
      */
@@ -194,7 +192,29 @@ class Comment
     {
         return $this->trail;
     }
-
+    
+    /**
+     * Set isApproved
+     * 
+     * @param boolean $isApproved
+     * @return Comment
+     */ 
+    public function setisApproved($isApproved)
+    {
+        $this->isApproved = $isApproved;
+        return $this;
+    }
+    
+    /**
+     * Get isApproved
+     * 
+     * @return boolean
+     */ 
+    public function getisApproved()
+    {
+        return $this->isApproved;
+    }
+    
     /**
      * Set email
      *

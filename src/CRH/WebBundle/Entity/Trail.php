@@ -110,6 +110,7 @@ class Trail
     
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail")
+     * 
      */
     private $comments;
     

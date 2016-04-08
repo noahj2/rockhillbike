@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comment list</h1>
+        {% for comment in comments %}
+            <div>
+                <p>{{ comment.message }}</p>
+                <p>{{ comment.image }}</p>
+                <p>{{ comment.trail }}</p>
+            </div>
+        {% endfor %}
+    <ul>
+        <li>
+        </li>
+    </ul>
+{% endblock %}
