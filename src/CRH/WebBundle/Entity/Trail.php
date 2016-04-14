@@ -40,6 +40,14 @@ class Trail
      */
     private $length;
     
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="isTrailOfMonth", type="boolean")
+     */
+    private $isTrailOfMonth = false;
+    
     /**
      * @ORM\OneToOne(targetEntity="Location")
      */
@@ -109,13 +117,13 @@ class Trail
     private $photo2;
     
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail", cascade="ALL")
      * 
      */
     private $comments;
     
     /**
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="location")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="location", cascade="ALL")
      */ 
     private $events;
     
@@ -127,6 +135,7 @@ class Trail
     //Constructor
     public function __construct()
     {
+        $this->updatedOn = new \DateTime();
         $this->comments = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->pointsOfInterest = new ArrayCollection();
@@ -219,7 +228,7 @@ class Trail
      */
     public function setCaloriesBurnedFemale($caloriesBurnedFemale)
     {
-        $this->caloriesBurnedFemale = $caloriesBurnedFemale;
+        $this->caloriesBurnedFemale = $caloriesBurnedFemale;	
 
         return $this;
     }
@@ -260,7 +269,7 @@ class Trail
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description	F
      * @return Trail
      */
     public function setDescription($description)
@@ -502,4 +511,20 @@ class Trail
     {
         return $this->pointsOfInterest;
     }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
+    public function getIsTrailOfMonth()
+    {
+        return $this->isTrailOfMonth;
+    }
+    
+    public function setIsTrailOfMonth($isTrailOfMonth)
+    {
+        $this->isTrailOfMonth = $isTrailOfMonth;
+    }
+    
 }

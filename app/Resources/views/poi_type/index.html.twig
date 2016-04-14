@@ -1,12 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>POI_TYPE list</h1>
+    <a href="{{ path('announcement_index') }}">Announcement</a> | 
+    <a href="{{ path('admin_comment_index') }}">Comments</a> | 
+    <a href="{{ path('admin_event_index') }}">Events</a> | 
+    <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
+    <a href="{{ path('location_index') }}">Locations</a> | 
+    <a href="{{ path('news_index') }}">News</a> | 
+    <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
+    <a href="{{ path('admin_trail_index') }}">Trails</a> | 
+    <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
+    
+    <h1>Points of Interest Types List</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Type</th>
                 <th>Actions</th>
             </tr>
@@ -14,26 +23,18 @@
         <tbody>
         {% for pOI_TYPE in pOI_TYPEs %}
             <tr>
-                <td><a href="{{ path('admin_poi_type_show', { 'id': pOI_TYPE.id }) }}">{{ pOI_TYPE.id }}</a></td>
                 <td>{{ pOI_TYPE.type }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_poi_type_show', { 'id': pOI_TYPE.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">Edit</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_poi_type_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+     <div><br><br>
+        <a href="{{ path('admin_poi_type_new') }}">Create New Entry</a>
+    </div>
 {% endblock %}

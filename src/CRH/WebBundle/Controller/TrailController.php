@@ -47,6 +47,16 @@ class TrailController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            if($trail->getIsTrailOfMonth() == true)
+            {            
+                $activeTrailsOfMonth = $em->getRepository('CRHWebBundle:Trail')->findBy(array("isTrailOfMonth" => true));
+                foreach($activeTrailsOfMonth as $activeTrailOfMonth)
+                {
+                    $activeTrailOfMonth->setIsTrailOfMonth(false);
+                }
+            }
+            
             $em->persist($trail);
             $em->flush();
 
@@ -89,6 +99,16 @@ class TrailController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+           
+            if($trail->getIsTrailOfMonth() == true)
+            {            
+                $activeTrailsOfMonth = $em->getRepository('CRHWebBundle:Trail')->findBy(array("isTrailOfMonth" => true));
+                foreach($activeTrailsOfMonth as $activeTrailOfMonth)
+                {
+                    $activeTrailOfMonth->setIsTrailOfMonth(false);
+                }
+            }
+           
             $em->persist($trail);
             $em->flush();
 

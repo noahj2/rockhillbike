@@ -62,4 +62,10 @@ class POI_TYPE
     {
         return $this->type;
     }
+    
+    public function __toString()
+    {
+        return $this->type;
+    }
+    
 }

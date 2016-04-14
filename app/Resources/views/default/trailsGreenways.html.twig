@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trails & Greenways</title>
+    </head>
+    <body>
+        Trails & Greenways
+        
+        {% for trail in trails %}
+            {{ trail.name }}
+            <img src="{{ asset(vich_uploader_asset(trail, 'imageFile1', 'CRH\\WebBundle\\Entity\\Trail')) }}">
+        {% endfor %}
+        
+    </body>
+</html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +5,7 @@
     </head>
     <body>
 
-Home page!
+Events page!
 
 {% if announcements  %}
     <h1>Announcements</h1>
@@ -46,28 +45,5 @@ Home page!
 {% else %}
     Drink lots of water and check back soon!
 {% endif %}
-
-<h1>Public Comment</h1>
-{% if randomComment %}
-    {% if randomComment[0].image is not null %}
-        {{ randomComment[0].image }}
-    {% endif %}
-    
-    {% if randomComment[0].trail is not null %}
-        {{ randomComment[0].trail }}
-    {% endif %}
-    
-    {{ randomComment[0].date|date('m-d-Y g:ia') }}
-    
-    {% if randomComment[0].name is not null %}
-        {{ randomComment[0].name }}
-    {% endif %}
-    
-    {{ randomComment[0].message }}
-{% else %}
-    These are not the comments you're looking for!
-{% endif %}
-
-
 </body>
 </html>

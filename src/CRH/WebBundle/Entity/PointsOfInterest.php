@@ -45,7 +45,6 @@ class PointsOfInterest
     /**
      * @var int
      *
-     * @ORM\Column(name="trail", type="integer")
      * 
      * @ORM\ManyToOne(targetEntity="Trail", inversedBy="pointsOfInterest")
      */
@@ -54,7 +53,6 @@ class PointsOfInterest
     /**
      * @var int
      *
-     * @ORM\Column(name="type", type="integer")
      * 
      * @ORM\ManyToOne(targetEntity="POI_TYPE")
      */

@@ -21,14 +21,6 @@
                 <th>Eventdate</th>
                 <td>{% if event.eventDate %}{{ event.eventDate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
-            <tr>
-                <th>Bannerphoto</th>
-                <td>{{ event.bannerPhoto }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ event.photo }}</td>
-            </tr>
         </tbody>
     </table>
 

@@ -4,6 +4,8 @@ namespace CRH\WebBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
+
 /**
  * CommentRepository
  *
@@ -12,4 +14,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+    public function getRandomComment($limit = 1)
+    {
+        
+        //dump($this);
+        $em = $this->_em;
+        
+        
+        $sql = "SELECT * FROM comment c ORDER BY RAND() LIMIT " . $limit;
+
+        $rsm = new ResultSetMappingBuilder($em);
+        $rsm->addRootEntityFromClassMetadata('CRHWebBundle:Comment', 'c');
+        
+        $results = $this->_em->createNativeQuery($sql, $rsm)->getResult();
+        return $results;
+        
+        
+        
+    }
 }

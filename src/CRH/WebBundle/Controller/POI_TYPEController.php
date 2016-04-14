@@ -50,7 +50,7 @@ class POI_TYPEController extends Controller
             $em->persist($pOI_TYPE);
             $em->flush();
 
-            return $this->redirectToRoute('admin_poi_type_show', array('id' => $poi_type->getId()));
+            return $this->redirectToRoute('admin_poi_type_show', array('id' => $pOI_TYPE->getId()));
         }
 
         return $this->render('poi_type/new.html.twig', array(

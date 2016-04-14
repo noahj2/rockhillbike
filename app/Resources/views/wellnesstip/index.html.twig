@@ -12,32 +12,30 @@
     <a href="{{ path('admin_trail_index') }}">Trails</a> | 
     <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
     
-    <h1>Locations List</h1>
+    <h1>Wellness Tips list</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Latitude</th>
-                <th>Longitude</th>
+                <th>Tip</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for location in locations %}
+        {% for wellnessTip in wellnessTips %}
             <tr>
-                <td>{{ location.latitude }}</td>
-                <td>{{ location.longitude }}</td>
+                <td>{{ wellnessTip.tip }}</td>
                 <td>
                     <div>
-                        <a href="{{ path('location_edit', { 'id': location.id }) }}">Edit</a>
+                        <a href="{{ path('admin_wellnesstip_edit', { 'id': wellnessTip.id }) }}">Edit</a>
                     </div>
+                    
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-     <div><br><br>
-        <a href="{{ path('location_new') }}">Create New Entry</a>
+    <div><br><br>
+        <a href="{{ path('admin_wellnesstip_new') }}">Create New Entry</a>
     </div>
 {% endblock %}

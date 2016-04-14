@@ -44,8 +44,6 @@ class Event
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="location", type="integer")
      * 
      * @ORM\ManyToOne(targetEntity="Trail", inversedBy="events")
      */
@@ -57,7 +55,7 @@ class Event
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {

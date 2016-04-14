@@ -1,12 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Trail list</h1>
+    
+    <a href="{{ path('announcement_index') }}">Announcement</a> | 
+    <a href="{{ path('admin_comment_index') }}">Comments</a> | 
+    <a href="{{ path('admin_event_index') }}">Events</a> | 
+    <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
+    <a href="{{ path('location_index') }}">Locations</a> | 
+    <a href="{{ path('news_index') }}">News</a> | 
+    <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
+    <a href="{{ path('admin_trail_index') }}">Trails</a> | 
+    <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
+    
+    <h1>Trails List</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Length</th>
                 <th>Type</th>
@@ -22,7 +32,6 @@
         <tbody>
         {% for trail in trails %}
             <tr>
-                <td><a href="{{ path('admin_trail_show', { 'id': trail.id }) }}">{{ trail.id }}</a></td>
                 <td>{{ trail.name }}</td>
                 <td>{{ trail.length }}</td>
                 <td>{{ trail.type }}</td>
@@ -33,23 +42,16 @@
                 <td>{{ trail.photo1 }}</td>
                 <td>{{ trail.photo2 }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_trail_show', { 'id': trail.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_trail_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+     <div><br><br>
+        <a href="{{ path('admin_trail_new') }}">Create New Entry</a>
+    </div>
 {% endblock %}

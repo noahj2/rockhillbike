@@ -1,12 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Announcement list</h1>
+    <a href="{{ path('announcement_index') }}">Announcement</a> | 
+    <a href="{{ path('admin_comment_index') }}">Comments</a> | 
+    <a href="{{ path('admin_event_index') }}">Events</a> | 
+    <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
+    <a href="{{ path('location_index') }}">Locations</a> | 
+    <a href="{{ path('news_index') }}">News</a> | 
+    <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
+    <a href="{{ path('admin_trail_index') }}">Trails</a> | 
+    <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
+    
+    <h1>Announcements List</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Message</th>
                 <th>Iscurrent</th>
                 <th>Actions</th>
@@ -15,27 +24,18 @@
         <tbody>
         {% for announcement in announcements %}
             <tr>
-                <td><a href="{{ path('announcement_show', { 'id': announcement.id }) }}">{{ announcement.id }}</a></td>
                 <td>{{ announcement.message }}</td>
                 <td>{% if announcement.isCurrent %}Yes{% else %}No{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('announcement_show', { 'id': announcement.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">Edit</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('announcement_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div><br><br>
+        <a href="{{ path('announcement_new') }}">Create New Entry</a>
+    </div>
 {% endblock %}

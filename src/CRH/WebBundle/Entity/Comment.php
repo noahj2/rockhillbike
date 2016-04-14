@@ -50,7 +50,6 @@ class Comment
     private $date;
 
     /**
-     * @ORM\Column(name="trail", type="integer")
      * @ORM\ManyToOne(targetEntity="Trail", inversedBy="comments")
      */
     private $trail;
@@ -63,10 +62,10 @@ class Comment
     private $email;
 
     /**
-     * @ORM\Column(name="isapproved", type="boolean", nullable=true)
+     * @ORM\Column(name="isapproved", type="boolean")
      * 
      */
-    private $isApproved;
+    private $isApproved = false;
 
     /**
      * Get id
