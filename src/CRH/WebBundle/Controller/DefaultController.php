@@ -2,37 +2,50 @@
 
 namespace CRH\WebBundle\Controller;
 
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use CRH\WebBundle\Entity\Comment;
+use CRH\WebBundle\Form\CommentType;
+
 
 class DefaultController extends Controller
 {
+    
+    
+    
     /**
-     * @Route("/")
+     * @Route("/", name="index")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         
         $em = $this->getDoctrine()->getManager();
 
         $announcements = $em->getRepository('CRHWebBundle:Announcement')->findBy(array("isCurrent" => true), array("id" => "DESC"));
         $trailOfMonth = $em->getRepository('CRHWebBundle:Trail')->findOneBy(array("isTrailOfMonth" => true));
-        $upcomingEvents = $em->getRepository('CRHWebBundle:Event')->getUpcomingEvents();
+        $upcomingEvents = $em->getRepository('CRHWebBundle:Event')->getUpcomingEvents(1);
         $wellnessTipOfMonth = $em->getRepository('CRHWebBundle:WellnessTip')->findOneBy(array("isTipOfMonth" => true));
         $randomComment = $em->getRepository('CRHWebBundle:Comment')->getRandomComment();
-        dump($randomComment);
+
+        
+        $commentForm = $this->commentForm($request);
+        
     
         return $this->render(':default:index.html.twig', 
             array("announcements" => $announcements, 
                 "trailOfMonth" => $trailOfMonth,
                 'upcomingEvents' => $upcomingEvents,
                 'wellnessTipOfMonth' => $wellnessTipOfMonth,
-                'randomComment' => $randomComment
+                'randomComment' => $randomComment,
+                'commentForm' => $commentForm->createView()
                 ));
     }
     
      /**
-     * @Route("/events")
+     * @Route("/events", name="events")
      */
     public function eventsAction()
     {
@@ -42,7 +55,6 @@ class DefaultController extends Controller
         $announcements = $em->getRepository('CRHWebBundle:Announcement')->findBy(array("isCurrent" => true), array("id" => "DESC"));
         $trailOfMonth = $em->getRepository('CRHWebBundle:Trail')->findOneBy(array("isTrailOfMonth" => true));
         $wellnessTipOfMonth = $em->getRepository('CRHWebBundle:WellnessTip')->findOneBy(array("isTipOfMonth" => true));
-        
     
         return $this->render(':default:events.html.twig', 
             array("announcements" => $announcements, 
@@ -51,15 +63,13 @@ class DefaultController extends Controller
                 'wellnessTipOfMonth' => $wellnessTipOfMonth
                 ));
     }
-    
         
      /**
-     * @Route("/trails")
+     * @Route("/trails", name="trails")
      */
     public function trailsAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         
         $trails = $em->getRepository('CRHWebBundle:Trail')->findAll();
         $upcomingEvents = $em->getRepository('CRHWebBundle:Event')->getUpcomingEvents(10);
@@ -67,8 +77,6 @@ class DefaultController extends Controller
         $trailOfMonth = $em->getRepository('CRHWebBundle:Trail')->findOneBy(array("isTrailOfMonth" => true));
         $wellnessTipOfMonth = $em->getRepository('CRHWebBundle:WellnessTip')->findOneBy(array("isTipOfMonth" => true));
         $last10Comments = $em->getRepository('CRHWebBundle:Comment')->findBy(array(), array("id" => "DESC"), 10);
-        
-        
     
         return $this->render(':default:trailsGreenways.html.twig', 
             array("announcements" => $announcements, 
@@ -77,11 +85,101 @@ class DefaultController extends Controller
                 'upcomingEvents' => $upcomingEvents,
                 'wellnessTipOfMonth' => $wellnessTipOfMonth,
                 'last10comments' => $last10Comments
-                
                 ));
     }
     
-}
+    /**
+     * @Route("/about", name="about")
+     */
+    public function aboutAction()
+    {
+        //$em = $this->getDoctrine()->getManager();
+        
+        return $this->render(':default:about.html.twig');
+    }
+    
+    /**
+     * @Route("/involved", name="involved")
+     */
+    public function involvedAction()
+    {
+     //  $em = $this->getDoctrine()->getManager();
+        
+        return $this->render(':default:involved.html.twig');
+    }
+    
+    
+    
+    
+         /**
+      * List all approved comments 
+      * 
+      * @Route("/comment", name="comment_index")
+      * @Method("GET")
+      */ 
+     
+     public function commentIndexAction()
+     {
+         $em = $this->getDoctrine()->getManager();
+         
+         $approvedComments = $em->getRepository('CRHWebBundle:Comment')->findByisApproved(true);
+         
+         return $this->render('frontcomment/index.html.twig', array(
+            'comments' => $approvedComments,  
+        ));
+     }
+     
 
+      
+      
+      
+          
+     /**
+     * @Route("/comment/pending", name="comment_pending")
+     */
+    public function commentPendingAction()
+    {
+     //  $em = $this->getDoctrine()->getManager();
+        
+        return $this->render(':default:commentPending.html.twig');
+    }
+    
+    
+    /**
+     * Creates a new Comment entity.
+     *
+     * @Route("/comment/new", name="comment_new")
+     * @Method({"GET", "POST"})
+     */
+    public function commentNewAction(Request $request)
+    {
 
-//Create the show more
+        $commentForm = $this->commentForm($request);
+        
+
+        return $this->render('default/commentNew.html.twig', array(
+            'comment' => $comment,
+            'form' => $form->createView(),
+        ));
+    }
+    
+    
+    public function commentForm(Request $request)
+    {
+        $comment = new Comment();
+        $form = $this->createForm('CRH\WebBundle\Form\CommentType', $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('comment_pending');
+        }
+        
+        
+        $args['form'] = $form->createView();
+        
+        return $args;
+    }

@@ -17,7 +17,7 @@
         <thead>
             <tr>
                 <th>Message</th>
-                <th>Iscurrent</th>
+                <th>Current?</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -35,7 +35,11 @@
         {% endfor %}
         </tbody>
     </table>
-    <div><br><br>
-        <a href="{{ path('announcement_new') }}">Create New Entry</a>
+    <div><br>
+        <ul>
+            <li>
+                <a href="{{ path('announcement_new') }}">Create New Entry</a>
+            </li>
+        </ul>
     </div>
 {% endblock %}

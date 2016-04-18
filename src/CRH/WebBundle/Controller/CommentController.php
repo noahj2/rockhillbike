@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CRH\WebBundle\Entity\Comment;
 use CRH\WebBundle\Form\CommentType;
 
+
 /**
  * Comment controller.
  *
@@ -42,7 +43,7 @@ class CommentController extends Controller
     public function newAction(Request $request)
     {
         $comment = new Comment();
-        $form = $this->createForm('CRH\WebBundle\Form\CommentType', $comment);
+        $form = $this->createForm('CRH\WebBundle\Form\CommentType', $comment, array("attr"=> array("admin"=>true)));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +85,7 @@ class CommentController extends Controller
     public function editAction(Request $request, Comment $comment)
     {
         $deleteForm = $this->createDeleteForm($comment);
-        $editForm = $this->createForm('CRH\WebBundle\Form\CommentType', $comment);
+        $editForm = $this->createForm('CRH\WebBundle\Form\CommentType', $comment, array("attr"=> array("admin"=>true)));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

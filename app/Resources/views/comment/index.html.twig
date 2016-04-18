@@ -22,7 +22,7 @@
                 <th>Date</th>
                 <th>Trail</th>
                 <th>Email</th>
-                <th>Isapproved</th>
+                <th>Approved?</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -45,7 +45,12 @@
         {% endfor %}
         </tbody>
     </table>
-    <div><br><br>
-        <a href="{{ path('admin_comment_new') }}">Create New Entry</a>
+    <div><br>
+        <ul>
+            <li>
+                <a href="{{ path('admin_comment_new') }}">Create New Entry</a>
+            </li>
+        </ul>
+        
     </div>
 {% endblock %}

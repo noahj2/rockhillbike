@@ -17,9 +17,12 @@ class PointsOfInterestType extends AbstractType
         $builder
             ->add('latitude')
             ->add('longitude')
-            ->add('photo')
             ->add('trail')
             ->add('type')
+            ->add('imageFile', 'vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))
         ;
     }
     

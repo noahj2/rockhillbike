@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MAP</title>
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/generic.css') }}" />
+        {% endblock %}
+        
+        {% block javascripts %}
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        {% endblock %}
+        
+        
+    </head>
+    <body>
+
+        <a href="{{ path('announcement_index') }}">Announcement</a> | 
+        <a href="{{ path('admin_comment_index') }}">Comments</a> | 
+        <a href="{{ path('admin_event_index') }}">Events</a> | 
+        <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
+        <a href="{{ path('location_index') }}">Locations</a> | 
+        <a href="{{ path('news_index') }}">News</a> | 
+        <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
+        <a href="{{ path('admin_trail_index') }}">Trails</a> |
+        <a href="{{ path('admin_routepoint_index') }}">Route Points</a> |
+        <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
+        
+        <div id="map">
+        <script type="text/javascript">
+            var map;
+            var green = "#006837";
+            var blue = "#0F84EC";
+            var forestGreen = "#797003";
+            var lineColor = "#000";
+            var markers = [];
+            var polyLines = [];
+            var mode = null; //false = a new line segment | true = continuing line segment  
+            var poiMode = null; //false = already have poi and need to submit | true = new poi
+			
+            function initMap() {
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: 34.9413067035216,
+                        lng: -81.0260256352684
+                    },
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.TERRAIN
+                });
+
+                map.setOptions({
+                    minZoom: 13,
+                    maxZoom: 0
+                });
+				
+				//map boundaries
+                var allowedBounds = new google.maps.LatLngBounds(
+                    new google.maps.LatLng(34.8, -81.2),
+                    new google.maps.LatLng(35.1, -80.8)
+                );
+
+                var lastValidCenter = map.getCenter();
+
+                google.maps.event.addListener(map, 'dragend', function() {
+                    if (allowedBounds.contains(map.getCenter())) return;
+
+                    // Out of bounds - Move the map back within the bounds
+
+                    var c = map.getCenter(),
+                        x = c.lng(),
+                        y = c.lat(),
+                        maxX = allowedBounds.getNorthEast().lng(),
+                        maxY = allowedBounds.getNorthEast().lat(),
+                        minX = allowedBounds.getSouthWest().lng(),
+                        minY = allowedBounds.getSouthWest().lat();
+
+                    if (x < minX) x = minX;
+                    if (x > maxX) x = maxX;
+                    if (y < minY) y = minY;
+                    if (y > maxY) y = maxY;
+
+                    map.setCenter(new google.maps.LatLng(y, x));
+                });
+
+                map.addListener('click', modeCheck);
+                map.addListener('click', addLatLng);
+            }
+			
+			//function that checks if modes are null
+			function modeCheck(){
+                if (mode == null && poiMode == null){
+
+                    console.log("Please select if you would like to 'Create Route' or a 'Create Point of Interest'.");
+
+                } else {
+
+                    return;
+                    
+                }
+            }
+			
+			//function to add polylines and markers
+            function addLatLng(event){
+
+                var coords = event.latLng;
+
+                if (mode == null && poiMode == null){
+
+                    return;
+
+                } else if (mode == false && poiMode == null) {
+
+                    //create new polyline and marker
+                    var poly = new google.maps.Polyline({
+                        strokeColor: lineColor,
+                        strokeOpacity: 1.0,
+                        strokeWeight: 5
+                    });
+
+                    //change mode
+                    mode = true;
+
+                    //push new latLng to polyline 
+                    poly.getPath().push(coords);
+
+                    //put in array
+                    polyLines.push(poly);
+
+                    //link to map
+                    poly.setMap(map);
+
+                } else if (mode == true && poiMode == null) {
+
+                    var lastEntry = polyLines.length - 1;
+                    polyLines[lastEntry].getPath().push(coords);
+
+                    var poly = new google.maps.Polyline({
+                        strokeColor: lineColor,
+                        strokeOpacity: 1.0,
+                        strokeWeight: 5
+                    });
+
+                    poly.setMap(map);
+                    poly.getPath().push(coords);
+                    polyLines.push(poly);
+                } else {
+            		//create new marker
+                    //link to map
+                    marker = new google.maps.Marker({
+                        position: coords,
+                        title: coords.lat() + ' , ' + coords.lng(),
+                        map: map
+                    });
+                    //put in array
+                markers.push(marker);  
+            		
+                } 
+                
+               	if(mode == null){
+               		return;
+               	} else {
+               		poly.addListener('click', addLatLng);
+               	}                
+            }
+            
+            function clearAll(){
+            	console.log("You are starting over.");
+
+                //removes the markers from the map, but keeps them in the array.
+                for(i = 0; i < polyLines.length; i++) {
+                    polyLines[i].setMap(null);
+                }
+                
+                for(i = 0; i < markers.length; i++) {
+                    markers[i].setMap(null);
+                }
+
+                //deletes all markers & coords in the array by removing references to them.
+                markers = [];
+                polyLines = [];
+                mode = null;
+                poiMode = null;
+            }
+
+            $(document).ready(function(){
+
+                $("#branch").on("click", function(){
+                    //change mode to false
+                    mode = false;
+
+                    console.log("You're making a new start point.");
+                    //remove last polyline
+                    polyLines[polyLines.length - 1].setMap(null)
+                    polyLines.pop();
+                });
+
+                $("#polyline").on("click", function(){
+                	console.log("You're making a new polyline.");
+                    mode = false;
+                    poiMode = null;
+                });
+
+                $("#pOI").on("click", function(){
+                	console.log("You're making a new point of interest.");
+                    poiMode = true;
+                    mode = null;
+                });
+
+                /*$("#previousSegment").on("click", function() {
+                    //remove last polyline
+                    lastPoint = polyLines.length - 1;
+                    nextToLast = lastPoint - 1;
+
+                    if (polyLines.length == 0) {
+                        console.log("You haven't started.");
+                        return;
+                    } else if (polyLines.length == 1) {
+                        mode = false;
+                        polyLines.pop();
+                        polyLines[lastPoint].setMap(null);
+                        console.log("Making new starting point.");
+                    } else if (polyLines.length % 2 == 1) { //(polyLines.length == 3){
+                        polyLines[lastPoint].setMap(null);
+                        polyLines[nextToLast].setMap(null);
+                        polyLines.pop();
+                        polyLines.pop();
+                        console.log("Removing previous segment.");
+                    } else {
+                        polyLines[lastPoint].setMap(null);
+                        polyLines[nextToLast].setMap(null);
+                        polyLines.pop();
+                        polyLines.pop();
+                        console.log("Removing previous segment.");
+                    }
+
+                    console.log(polyLines.length % 2);
+
+                    console.log(mode);
+
+                    console.log(polyLines);
+                });*/
+
+                $("#clearAll").on("click", function(){
+                	clearAll();
+                });
+
+                    
+
+                $("#submit").on("click", function(){
+                	
+                	//removes last polyline start point from map and array
+                	polyLines[polyLines.length - 1].setMap(null);
+                	polyLines.pop();
+                	console.log("You're submitting your information.");
+                	console.log(polyLines);
+                	//Object to hold polyline data.
+                	var routePoints = {};
+                    //loops polyline array to get polyline coords to send to database
+                    
+                    for(i = 0; i < polyLines.length; i++){
+                        
+	                	var startLat = polyLines[i].getPath().getArray()[0].lat();
+	                    var startLng = polyLines[i].getPath().getArray()[0].lng();
+	                    var endLat = polyLines[i].getPath().getArray()[1].lat();
+	                    var endLng = polyLines[i].getPath().getArray()[1].lng();
+	                    
+	                    routePoints[i] = {
+	                        startLat: startLat,
+	                        startLng: startLng,
+	                        endLat: endLat,
+	                        endLng: endLng
+	                    };
+	                        
+                    	//console.log("lat: " + startLat + " , lng: " + startLng);
+                    	//console.log("lat: " + endLat + " , lng: " + endLng);
+                    	
+                    }
+                    console.log(routePoints);
+                                        	/*
+                    	//Send AJAX request to server...
+                    	$.ajax({
+                    	    type : "POST", 
+                    	    url : , //Send to RoutePoint (newAction)
+                    	    data : routePoints, //Object of objects
+                    	    success: function(data){
+                    	        display a conf message
+                    	    }
+                    	})
+                    	*/
+                    
+                    //gets marker coords to send to database
+                    for(i = 0; i < markers.length; i++){
+                    	console.log(markers[i].position.lat() , markers[i].position.lng());
+                    }
+                    
+                    clearAll();
+                });
+            });
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFxHSMuCUFqDo41r4SCbWGAKHdpNKq4Ds&callback=initMap">
+        </script>
+    </div>
+    <div id="text">
+        <button id="polyline">Create Route</button>
+        <button id="pOI">Create Point of Interest</button>
+        <button id="branch">Split Path</button>
+        <!--<button id="previousSegment">Clear Last</button>-->
+        <button id="clearAll">Clear All</button>
+        <button id="submit">Submit</button> 
+    </div>
+        
+    </body>
+</html>

@@ -1,0 +1,45 @@
+
+    {{ form_start(commentForm) }}
+
+
+        {{ form_widget(commentForm.form.name) }}
+        {{ form_errors(commentForm.form.name) }}
+        
+        {{ form_widget(commentForm.form.message) }}
+        {{ form_errors(commentForm.form.message) }}
+        
+        {{ form_widget(commentForm.form.image) }}
+        {{ form_errors(commentForm.form.image) }}
+        
+        {{ form_widget(commentForm.form.trail) }}
+        {{ form_errors(commentForm.form.trail) }}
+        
+        {{ form_widget(commentForm.form.email) }}
+        {{ form_errors(contactForm.form.email) }}
+        
+        
+        
+        
+        <input type="submit" value="Submit Comment" />
+        
+    {{ form_end(commentForm) }}
+    
+    
+                                    
+                                
+                                
+                                
+                                
+    <form method='post'>
+        <input style="width:50%;height:25px;" type="text" name="name" placeholder="Enter Your Name"><br><br>
+        <input style="width:50%;height:25px;" type="text" name="email" placeholder="Enter Email"><br><br> Comments:
+        <br><textarea style="width:50%; height:100px;" name='usercomments' class='usercomments'></textarea><br><br> Images: <input type="file" name="image" size="chars" placeholder="image" value="image"><br>
+        <input type="submit" value="Submit Comment">
+    </form>
+                                
+                                
+                                
+                                
+                                
+                                
+

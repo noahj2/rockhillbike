@@ -3,12 +3,16 @@
 namespace CRH\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * PointsOfInterest
  *
  * @ORM\Table(name="points_of_interest")
  * @ORM\Entity(repositoryClass="CRH\WebBundle\Repository\PointsOfInterestRepository")
+ * @Vich\Uploadable
  */
 class PointsOfInterest
 {
@@ -24,23 +28,37 @@ class PointsOfInterest
     /**
      * @var float
      *
-     * @ORM\Column(name="latitude", type="decimal", precision=18, scale=16)
+     * @ORM\Column(name="latitude", type="decimal", precision=22, scale=20)
      */
     private $latitude;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="longitude", type="decimal", precision=18, scale=16)
+     * @ORM\Column(name="longitude", type="decimal", precision=22, scale=20)
      */
     private $longitude;
+    
+    /**
+    *
+    *@Vich\UploadableField(mapping="poi_image", fileNameProperty="photo")
+    *
+    */
+    private $imageFile;
     
     /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
-    private $photo;    
+    private $photo;
+    
+    /**
+    *@var \DateTime
+    *
+    *@ORM\Column(type="datetime")
+    */
+    private $updatedOn;
 
     /**
      * @var int
@@ -58,6 +76,11 @@ class PointsOfInterest
      */
     private $type;
 
+    //Constructor
+    public function __construct()
+    {
+        $this->updatedOn = new \DateTime();
+    }
 
     /**
      * Get id
@@ -161,6 +184,38 @@ class PointsOfInterest
         return $this->type;
     }
 
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return PointsOfInterest
+     */ 
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile()
+     {
+         return $this->imageFile;
+     }
+     
+     /**
+      * @return updatedOn 
+      */
+      public function getUpdatedOn()
+      {
+          return $this->updatedOn;
+      }
+      
     /**
      * Set photo
      *

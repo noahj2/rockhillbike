@@ -26,7 +26,6 @@ class TrailType extends AbstractType
                 'required'  => false,
                 'download_link' => false
             ))
-
             ->add('isTrailOfMonth')
 
         ;

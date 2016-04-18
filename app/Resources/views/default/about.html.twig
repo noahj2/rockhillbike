@@ -1,9 +1,152 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>About Us</title>
-    </head>
-    <body>
-        About Us
-    </body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock Hill Trails!{% endblock %}
+{% block body %}
+
+
+<header>
+    <div class="top">
+      <div class="logo_area">
+        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
+        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
+      </div>
+      <div class="media">
+        <div class="detail_sum"></div> 
+        <div class="temp1"><h4 class="temp_num"></h4></div>
+        <div class="temp2"><h5 class="detail_word"></h5></div>
+        <div class="rhsc"><h4>Rock Hill, South Carolina</h4></div>
+      </div>
+    </div>
+
+    <nav>
+      <div href="#" class="hamburger">
+        <div class="ham-lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <div class="ham-menu"><h4>MENU</h4></div>
+      </div>
+      <ul class="clearfix menu">
+        <li><a href="{{ path('index') }}">Home</a></li>
+        <li><a href="{{ path('trails') }}">Trails & Greenways</a></li>
+        <li><a href="{{ path('events') }}">Events</a></li>
+        <li><a class="current" href="{{ path('about') }}">About</a></li>
+        <li><a href="{{ path('involved') }}">Get Involved</a></li>
+      </ul>
+    </nav>
+  </header>
+
+     <!-- Slideshow -->
+    <div class="callbacks_container">
+      <ul class="rslides slider">
+        <li>
+          <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Cherry Park</p>
+        </li>
+        <li>
+          <img src="{{ asset('images/trail2-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail2-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail2-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Emmett Scott Park</p>
+        </li>
+        <li>
+          <img src="{{ asset('images/trail3-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail3-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail3-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Emmett Scott Park</p>
+        </li>
+        <li>
+          <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Eagle Park</p>
+        </li>
+      </ul>
+    </div>
+
+
+      <div class="window about_page">
+          <div class="container">
+            <section>
+              <div id="about_tg">
+                <div id="about_tg_header">
+                  <h2 >About Trails & Greenways</h2>
+                </div>
+              </div>
+              <div class="about_main">
+                <div id="about_content1">
+                    <p id="about_content_intro"> The Trails and Greenways Advisory Committee is a volunteer group devoted to building a more comprehensive network of trails. Since our founding in 2003, the city’s trail network has grown from 11 miles to over 46. In 2006, we incorporated Rock Hill’s Open Space Plan, which consisted of county and regional walkability and connectivity initiatives.</p>
+                    <!--video interviews-->
+                    <div class="interviews">
+                      <video width="100%" height="auto" controls>
+                        <source src="{{ asset('images/video.mp4') }}"></source>
+                      </video>  
+                    </div>
+                 </div><!--end of content1-->   
+
+                  <div id="about_content2">
+                    <h3>Why we need a trail system</h3>
+                    <p>Imagine miles and miles of green.  Trees, wildflowers, sparkling streams and rivers, animals, fresh air and sunshine.  Walk, jog, or bike to hiking trails and walking paths, past protected natural areas, historic landmarks, learning and shopping centers, and recreational amenities.  Picture Rock Hill residents of all ages and abilities staying fit, enjoying the outdoors, walking, biking, and jogging their way to work or school, learning about the natural environment and all of these activities taking place right here in Rock Hill.</p>
+                  </div>  
+
+                <ul class="nav nav-tabs about_tabs">
+                  <li class="active"><a data-toggle="tab" href="#menu0">Benefits</a></li>
+                  <li><a data-toggle="tab" href="#menu1">Health</a></li>
+                  <li><a data-toggle="tab" href="#menu2">Recreation</a></li>
+                  <li><a data-toggle="tab" href="#menu3">Transportation</a></li>
+                  <li><a data-toggle="tab" href="#menu4">Economy</a></li>
+                  <li><a data-toggle="tab" href="#menu5">Environment</a></li>
+                </ul>
+
+
+              <div class="about_tab_content tab-content">
+                  <div id="menu0" class="tab-pane fade in active">
+                    <h3>Benefits of Trails and Greenways</h3>
+                      <p>There are five major ways that a trail system benefits the community: health, recreation, transportation, economy, and environment. Each of these categories relates in some way to one another. For example, someone using the trail system to commute to work will gain exercise, which promotes health, and will not be spending as much money on automobile-related expenses.</p>
+                  </div>
+                  <div id="menu1" class="tab-pane fade">
+                   <h3>Health</h3>
+                      <p>A 1999 study by The Prevention Research Center at the University of South Carolina School of Public Health found that the lack of physical activity causes nearly 2,000 deaths annually and costs the state $157 million or more annually in hospital charges. The most popular outdoor activity in South Carolina is walking due to its time-efficiency. The more trails are built, accessibility and time spent on the trails increase. This is important because recent studies by the Center for Disease Control support that the most effective activity programs are those that are modest in intensity and therefore sustainable, individualized, and incorporated into a person’s daily life.</p>
+                  </div>
+                  <div id="menu2" class="tab-pane fade">
+                    <h3>Recreation</h3>
+                      <p>Trails and greenways enhance opportunities for optimal use of our free time. Well-designed greenways and trails connect both natural and cultural features in a community, as well as neighborhoods to parks and schools. In addition to providing a safe route to walk, run, and bike, a trail system provides a scenic path to outdoor laboratories, gardens, playgrounds, sports fields, restaurants, and theaters.</p>
+                  </div>
+                  <div id="menu3" class="tab-pane fade">
+                    <h3>Transportation</h3>
+                      <p>The trail system has the potential to reduce the number of trips taken by car, reducing road and vehicle maintenance. The ability to ride bikes or walk to work also reduce the need for gasoline, which are currently about $1.30 per gallon.</p>
+                  </div>
+                  <div id="menu4" class="tab-pane fade">
+                    <h3>Economy</h3>
+                      <p>Three out of four homebuyers rated natural open spaces and trails as either essential or very important when deciding on homes. As a result of trails and greenways, more than 60 percent of property owners have seen an increase in property values. Trail systems also generate tourism and promote the city’s economy.</p>
+                  </div>
+                  <div id="menu5" class="tab-pane fade">
+                    <h3>Environment</h3>
+                      <p>In addition to the reduction in air pollution from a decrease in automobile use, Greenways serve as stream buffers that help preserve water quality. It would also promote a sense of place in nature. Children are growing up in eco-phobic environments, living virtual lives instead of real ones. A trail system connects families with nature and the community.</p>
+                  </div>
+                </div>
+
+              </div>
+             </section> 
+          </div>
+
+          <footer>
+            <div class="contact1">
+                <h3>City of Rock Hill</h3>
+                <h4>cityofrockhill.com</h4>
+                <h4>803-325-2500</h4>
+                <h4>City Hall • 155 Johnston Street • Rock Hill, SC  29730</h4>
+            </div>
+            <div class="contact2">
+                <h3>Trails & Greenways</h3>
+                <h4>RockHillSCTrails.org</h4>
+                <h4>admin@tg.org</h4>
+                <h4>The content on this site belongs to the Trails and Greenways Advisory Committee of Rock Hill.</h4>
+            </div>
+          </footer>
+      </div>  
+  <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a><!--BACK TO TOP-->
+{% endblock %}    

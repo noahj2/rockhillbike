@@ -18,11 +18,15 @@ class CommentType extends AbstractType
             ->add('name')
             ->add('message')
             ->add('image')
-            ->add('date', 'datetime')
+//            ->add('date', 'datetime')
             ->add('trail')
-            ->add('email')
-            ->add('isApproved')
-        ;
+            ->add('email');
+            
+            if(isset($options["attr"]["admin"]))
+            {
+                $builder->add('isApproved');
+            }
+        
     }
     
     /**

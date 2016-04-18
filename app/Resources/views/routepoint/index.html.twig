@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>RoutePoint list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Startlat</th>
+                <th>Startlng</th>
+                <th>Endlat</th>
+                <th>Endlng</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for routePoint in routePoints %}
+            <tr>
+                <td><a href="{{ path('admin_routepoint_show', { 'id': routePoint.id }) }}">{{ routePoint.id }}</a></td>
+                <td>{{ routePoint.startLat }}</td>
+                <td>{{ routePoint.startLng }}</td>
+                <td>{{ routePoint.endLat }}</td>
+                <td>{{ routePoint.endLng }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_routepoint_show', { 'id': routePoint.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_routepoint_edit', { 'id': routePoint.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_routepoint_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

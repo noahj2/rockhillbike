@@ -9,8 +9,7 @@
     <a href="{{ path('news_index') }}">News</a> | 
     <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
     <a href="{{ path('admin_trail_index') }}">Trails</a> | 
-    <a href="{{ path('admin_pointsofinterest_index') }}">Points of Interest</a>
-    
+    <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
     <h1>Points Of Interest List</h1>
 
     <table>
@@ -41,7 +40,11 @@
         {% endfor %}
         </tbody>
     </table>
-     <div><br><br>
-        <a href="{{ path('admin_pointsofinterest_new') }}">Create New Entry</a>
+     <div><br>
+        <ul>
+            <li>
+                <a href="{{ path('admin_pointsofinterest_new') }}">Create New Entry</a>
+             </li>
+        </ul> 
     </div>
 {% endblock %}

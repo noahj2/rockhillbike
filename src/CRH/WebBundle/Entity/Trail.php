@@ -109,12 +109,7 @@ class Trail
     */
     private $updatedOn;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo2", type="string", length=255, nullable=true)
-     */
-    private $photo2;
+
     
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail", cascade="ALL")
@@ -131,6 +126,12 @@ class Trail
      * @ORM\OneToMany(targetEntity="PointsOfInterest", mappedBy="trail")
      */
      private $pointsOfInterest;
+     
+    /**
+     * @ORM\OneToMany(targetEntity="RoutePoint", mappedBy="trail", cascade="ALL")
+     * 
+     */
+    private $routePoints;     
     
     //Constructor
     public function __construct()
@@ -139,6 +140,7 @@ class Trail
         $this->comments = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->pointsOfInterest = new ArrayCollection();
+        $this->routePoints = new ArrayCollection();
     }
     
     /**
@@ -367,28 +369,7 @@ class Trail
         return $this->photo1;
     }
 
-    /**
-     * Set photo2
-     *
-     * @param string $photo2
-     * @return Trail
-     */
-    public function setPhoto2($photo2)
-    {
-        $this->photo2 = $photo2;
-
-        return $this;
-    }
-
-    /**
-     * Get photo2
-     *
-     * @return string 
-     */
-    public function getPhoto2()
-    {
-        return $this->photo2;
-    }
+    
 
     /**
      * Set location
@@ -511,6 +492,39 @@ class Trail
     {
         return $this->pointsOfInterest;
     }
+    
+    /**
+     * Add RoutePoint
+     *
+     * @param \CRH\WebBundle\Entity\RoutePoint $routePoints
+     * @return Trail
+     */
+    public function addRoutePoint(\CRH\WebBundle\Entity\RoutePoint $routePoints)
+    {
+        $this->routePoints[] = $routePoints;
+
+        return $this;
+    }
+
+    /**
+     * Remove RoutePoints
+     *
+     * @param \CRH\WebBundle\Entity\RoutePoint $routePoints
+     */
+    public function removeRoutePoints(\CRH\WebBundle\Entity\RoutePoint $routePoints)
+    {
+        $this->routePoints->removeElement($routePoints);
+    }
+
+    /**
+     * Get RoutePoints
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRoutePoints()
+    {
+        return $this->routePoints;
+    }    
     
     public function __toString()
     {

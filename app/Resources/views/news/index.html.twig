@@ -30,7 +30,6 @@
                 <td>{{ news.name }}</td>
                 <td>{{ news.description }}</td>
                 <td>{% if news.dateTime %}{{ news.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ news.photo }}</td>
                 <td>
                     <div>
                         <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>
@@ -40,7 +39,11 @@
         {% endfor %}
         </tbody>
     </table>
-        <div><br><br>
-            <a href="{{ path('news_new') }}">Create New Entry</a>
+        <div><br>
+            <ul>
+            <li>
+                <a href="{{ path('news_new') }}">Create New Entry</a>
+            </li>
+        </ul>
         </div>
 {% endblock %}

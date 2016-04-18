@@ -1,73 +1,348 @@
+{% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Index</title>
-    </head>
-    <body>
+{% block title %}Rock Hill Trails!{% endblock %}
 
-Home page!
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
+  <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyDFxHSMuCUFqDo41r4SCbWGAKHdpNKq4Ds&callback=initMap"></script>
+{% endblock%}
 
-{% if announcements  %}
-    <h1>Announcements</h1>
-    {% for announcement in announcements %}
-        {{ announcement.message }}
-    {% endfor %}
-{% endif%}
+{% block body %}
 
-<h1>Events</h1>
-{% if upcomingEvents %}
+<header>
+    <div class="top">
+        <div class="logo_area">
+            <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
+            <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
+        </div>
+        <div class="media">
+            <div class="detail_sum"></div>
+            <div class="temp1">
+                <h4 class="temp_num"></h4></div>
+            <div class="temp2">
+                <h5 class="detail_word"></h5></div>
+            <div class="rhsc">
+                <h4>Rock Hill, South Carolina</h4></div>
+        </div>
+    </div>
+
+        <nav>
+            <div href="#" class="hamburger">
+                <div class="ham-lines">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="ham-menu">
+                    <h4>MENU</h4></div>
+            </div>
+            <ul class="clearfix menu">
+                <li><a class="current" href="{{ path('index') }}">Home</a></li>
+                <li><a href="{{ path('trails') }}">Trails & Greenways</a></li>
+                <li><a href="{{ path('events') }}">Events</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('involved') }}">Get Involved</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Slideshow -->
+    <div class="callbacks_container">
+        <ul class="rslides slider">
+            <li>
+                <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
+                <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
+                <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
+                <p class="caption">Cherry Park</p>
+            </li>
+            <li>
+                <img src="{{ asset('images/trail2-1.png') }}" alt="" class="large-slide">
+                <img src="{{ asset('images/trail2-2.png') }}" alt="" class="small-slide">
+                <img src="{{ asset('images/trail2-2.png') }}" alt="" class="medium-slide">
+                <p class="caption">Emmett Scott Park</p>
+            </li>
+            <li>
+                <img src="{{ asset('images/trail3-1.png') }}" alt="" class="large-slide">
+                <img src="{{ asset('images/trail3-2.png') }}" alt="" class="small-slide">
+                <img src="{{ asset('images/trail3-2.png') }}" alt="" class="medium-slide">
+                <p class="caption">Emmett Scott Park</p>
+            </li>
+            <li>
+                <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
+                <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
+                <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
+                <p class="caption">Eagle Park</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="window">
+        <div class="container">
+
+
+            <section>
+                <!--FIRST SECTION-->
+
+                <!--Map-->
+                <div id="home_top1">
+
+                    <div id="home_tg">
+                        <div id="home_tg_header">
+                            <h2>Trails & Greenways Map</h2>
+                        </div>
+                    </div>
+
+                    <div id="map"></div>
+                </div>
+
+
+                <!--Announcements-->
+
+                <div id="home_top2">
+
+                    <div id="home_tg2">
+                        <div id="home_tg2_header">
+                            <h2>Announcements</h2>
+                        </div>
+                    </div>
+
+                    <div id="home_tg2_announcements">
+                        <div class="announcements">
+                            {% if announcements %}
+                            {% for announcement in announcements %}
+                                <p class="annoucements1">{{ announcement.message }}</p>
+                            <hr>
+                            {% endfor %}
+                            {% else %} 
+                                <p class="annoucements1">There are no new announcements. Check back later</p>            
+                            {% endif%}
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!--END SECTION 1-->
+
+            <section>
+                <!--SECOND SECTION-->
+                <div class="divide">
+                    <!--Trail Over Views-->
+                    <a href="{{ path('trails') }}">
+                        <div id="home_mid1">
+
+                            <div id="home_tg_mid1">
+                                <div id="home_tg_mid1_header">
+                                    <h2>Trail Overviews</h2>
+                                </div>
+                            </div>
+
+                            <div id="home_to">
+                                <div id="more_mid1">
+                                    <h6>See More</h6></div>
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <!--Trail of the Month-->
+
+                    <a href="{{ path('trails') }}">
+                        <div id="home_mid2">
+
+                            <div id="home_tg_mid2">
+                                <div id="home_tg_mid2_header">
+                                    <h2>Trail of the Month</h2>
+                                </div>
+                            </div>
+
+                            <div id="home_totm">
+                                <div id="more_mid2">
+                                    <h6>See More</h6></div>
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <!--Upcoming Events & Information-->
+                    <div id="home_mid3">
+
+                        <a href="{{ path('events') }}">
+                            <div id="home_tg_mid3">
+                                <div id="home_tg_mid3_header">
+                                    <h2>Upcoming Events<br>& Information.</h2>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div id="home_events">
+                            {% if upcomingEvents %}
    
-    {% for event in upcomingEvents %}
-        {{ event.name }}
-        {{ event.description }}
-        {% if event.eventDate %}{{ event.eventDate|date('m-d-Y g:ia') }}{% endif %}
-        {% if event.location is not null %}
-            {{ event.location.name }}
-        {% endif %}
-    {% endfor %}
-{% else %}
-    There are no upcoming events.
-{% endif %}
+                        {% for event in upcomingEvents %}
+                            <h5><b>{{ event.name }}</b></h5>
+                            <p>{{ event.description }}
+                                {% if event.location is not null %}
+                                    <br>{{ event.location.name }}
+                                {% endif %}
+                                {% if event.eventDate %}
+                                  <br>{{ event.eventDate|date('m-d-Y g:ia') }}
+                                {% endif %}
+                            </p>
+                        {% endfor %}
+                        {% else %}
+                            There are no upcoming events.
+                        {% endif %}
+                            <a href="{{ path('events') }}">
+                                <div id="more_mid3">
+                                    <h6>See More</h6></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--END SECTION 2-->
 
 
-<h1>Trail of the Month</h1>
-{% if trailOfMonth is not null %}
+            <!--Upcoming about, fitness, involve-->
+            <section>
+                <div class="divide">
+                    <div id="home_mid4">
+
+                        <a href="{{ path('about') }}">
+                            <div id="home_tg4">
+                                <div id="home_tg4_header">
+                                    <h2>About Trails & Greenways</h2>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div id="home_about">
+                            <p class="home_about1">The Trails and Greenways Advisory Committee is a volunteer group devoted to building a more comprehensive network of trails. Since our founding in 2003, the city’s trail network has grown from 11 miles to over 46. In 2006, we incorporated Rock Hill’s Open Space Plan, which consisted of county and regional walkability and connectivity initiatives.</p>
+                            
+                            <p class="home_about2">Picture Rock Hill residents of all ages and abilities staying fit, enjoying the outdoors, walking, biking, and jogging their way to work or school, learning about the natural environment and all of these activities taking place right here in Rock Hill.</p>
+                            <a href="{{ path('about') }}">
+                                <div id="more_mid4">
+                                    <h6>See More</h6></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="home_mid5">
+
+                        <a href="{{ path('events') }}">
+                            <div id="home_wellness">
+                                <div id="home_tg5_header">
+                                    <h2>Wellness Tip of the Month</h2>
+                                </div>
+                                <div id="home_wellness_pic"></div>
+                            </div>
+                        </a>
+
+
+
+                        <a href="{{ path('involved') }}">
+                            <div id="home_involve">
+                                <div id="home_tg6_header">
+                                    <h2>Get Involved</h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!--Divide Ends-->
+            </section>
+
+            <section>
+                <div id="home_mid6">
+
+                    <div id="home_connect">
+
+
+                        <div id="home_comments">
+                            <div id="home_comments_header">
+                                <h2 id="home_trail_comments">Trail Comments</h2>
+                                <img src="{{ asset('images/plus.png') }}" id="home_trail_comments_plus" title="Add a Comment" class="add_comment" data-toggle="modal" data-target="#comment1">
+                            </div>
+                            {% if randomComment %}
+                        <div id="home_trail_topic">
+                          
+                          {% if randomComment[0].trail is not null %}
+                            <h2>{{ randomComment[0].trail }}</h2>
+                          {% endif %}
+                        </div>
+                        <div id="home_user_comments">
+                          {% if randomComment[0].name is not null %}
+                            <h3>{{ randomComment[0].name }}</h3>
+                          {% endif %}
+                          <p>{{ randomComment[0].message }}</p>
+                          <p>{{ randomComment[0].date|date('m-d-Y g:ia') }}</p>
+                            {% else %}
+                            <p>These are not the comments you're looking for!</p>
+                          {% endif %}
+                        </div>
+                        <!--END HOME_COMMMENTS-->
+                    </div>
+                    <!--END OF CONNECT ROCK HILL-->
+
+                </div>
+                <!--END OF HOME_MID6-->
+            </section>
+
+
+
+            <!-- Trigger the modal with a button -->
+            <!-- Modal -->
+            <div class="modal fade" id="comment1" role="dialog">
+                <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Submit a Comment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal_material">
+                                
+                                
+                                {% include ':default:commentNew.html.twig' %}
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--END MODAL-->
+
+
+        </div>
+        <!--CONTAINER-->
+
+        <!--CONTACTS FULL WIDTH-->
+        <footer>
+            <div class="contact1">
+                <h3>City of Rock Hill</h3>
+                <h4>cityofrockhill.com</h4>
+                <h4>803-325-2500</h4>
+                <h4>City Hall • 155 Johnston Street • Rock Hill, SC 29730</h4>
+            </div>
+            <div class="contact2">
+                <h3>Trails & Greenways</h3>
+                <h4>RockHillSCTrails.org</h4>
+                <h4>admin@tg.org</h4>
+                <h4>The content on this site belongs to the Trails and Greenways Advisory Committee of Rock Hill.</h4>
+            </div>
+        </footer>
+    </div>
     
-    {{ trailOfMonth.name }}
-{% else %}
-    No trails of month.  Check back soon!
-{% endif %}
+    <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a>
+    <!--BACK TO TOP-->
 
+{% endblock %}
 
- <h1>Wellness Tip of the Month</h1>
-{% if wellnessTipOfMonth is not null %}
-    {{ wellnessTipOfMonth.tip }}
-{% else %}
-    Drink lots of water and check back soon!
-{% endif %}
-
-<h1>Public Comment</h1>
-{% if randomComment %}
-    {% if randomComment[0].image is not null %}
-        {{ randomComment[0].image }}
-    {% endif %}
-    
-    {% if randomComment[0].trail is not null %}
-        {{ randomComment[0].trail }}
-    {% endif %}
-    
-    {{ randomComment[0].date|date('m-d-Y g:ia') }}
-    
-    {% if randomComment[0].name is not null %}
-        {{ randomComment[0].name }}
-    {% endif %}
-    
-    {{ randomComment[0].message }}
-{% else %}
-    These are not the comments you're looking for!
-{% endif %}
-
-
-</body>
-</html>

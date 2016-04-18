@@ -16,9 +16,11 @@ class EventRepository extends EntityRepository
     public function getUpcomingEvents($limit = 3)
     {
         $qb = $this->createQueryBuilder('e');
-        $dql = $qb->where('e.eventDate > CURRENT_DATE()')->orderBy('e.eventDate', 'ASC')->setMaxResults($limit)->getDQL();
-
-        return $this->_em->createQuery($dql)->getResult();
+        
+        
+        return $qb->where('e.eventDate > CURRENT_DATE()')->orderBy('e.eventDate', 'ASC')->setMaxResults($limit)->getQuery()->getResult();
+        
+        
     }
     
 }

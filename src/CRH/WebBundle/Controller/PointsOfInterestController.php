@@ -26,10 +26,10 @@ class PointsOfInterestController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $pointsOfInterests = $em->getRepository('CRHWebBundle:PointsOfInterest')->findAll();
+        $pointsOfInterest = $em->getRepository('CRHWebBundle:PointsOfInterest')->findAll();
 
         return $this->render('pointsofinterest/index.html.twig', array(
-            'pointsOfInterests' => $pointsOfInterests,
+            'pointsOfInterests' => $pointsOfInterest,
         ));
     }
 
@@ -50,7 +50,7 @@ class PointsOfInterestController extends Controller
             $em->persist($pointsOfInterest);
             $em->flush();
 
-            return $this->redirectToRoute('admin_pointsofinterest_show', array('id' => $pointsofinterest->getId()));
+            return $this->redirectToRoute('admin_pointsofinterest_show', array('id' => $pointsOfInterest->getId()));
         }
 
         return $this->render('pointsofinterest/new.html.twig', array(

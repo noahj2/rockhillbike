@@ -66,6 +66,12 @@ class Comment
      * 
      */
     private $isApproved = false;
+    
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+    
 
     /**
      * Get id
