@@ -10,81 +10,13 @@
 
 {% block body %}
 
-<header>
-    <div class="top">
-      <div class="logo_area">
-        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
-        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
-      </div>
-      <div class="media">
-        <div class="detail_sum"></div> 
-        <div class="temp1"><h4 class="temp_num"></h4></div>
-        <div class="temp2"><h5 class="detail_word"></h5></div>
-        <div class="rhsc"><h4>Rock Hill, South Carolina</h4></div>
-      </div>
-    </div>
-
-    <nav>
-      <div href="#" class="hamburger">
-        <div class="ham-lines">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="ham-menu"><h4>MENU</h4></div>
-      </div>
-      <ul class="clearfix menu">
-        <li><a href="{{ path('index') }}">Home</a></li>
-        <li><a class="current" href="{{ path('trails') }}">Trails & Greenways</a></li>
-        <li><a href="{{ path('events') }}">Events</a></li>
-        <li><a href="{{ path('about') }}">About</a></li>
-        <li><a href="{{ path('involved') }}">Get Involved</a></li>
-      </ul>
-    </nav>
-  </header>
-
-     <!-- Slideshow -->
-    <div class="callbacks_container">
-      <ul class="rslides slider">
-        <li>
-          <img src="{{ asset('images/trail2-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail2-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail2-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Emmett Scott Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Cherry Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail3-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail3-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail3-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Emmett Scott Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Eagle Park</p>
-        </li>
-      </ul>
-    </div>
-
-
-      <div class="window trails_page">
-          <div class="container">
-            
-
             <section><!--SECTION 1-->
                
               <!--Main Map-->
                 <div id="trail_main_map">
                 
                   <div id="trail_tg">
-                    <div id="trail_tg_header" >
+                    <div id="trail_tg_header">
                       <h2>Trails & Greenways Map</h2>
                     </div>
                   </div>
@@ -93,7 +25,7 @@
                 </div> <!--Trail Main Map Ends-->
             </section><!--END SECTION 1-->
 
-
+        {% if announcements  %}
             <section><!--SECTION 2-->
                 <!--Trail Announcements-->
 
@@ -106,17 +38,16 @@
                     </div>
                    
                     <div id="trail_tg2_announcements">
-                        {% if announcements  %}
+
                         {% for announcement in announcements %}
                             <p class="announcement1">{{ announcement.message }}</p>
+                            <hr>
                         {% endfor %}
-                        {% else %} 
-                          <p class="announcement1">There are no new announcements. Check back later.</p>
-                        {% endif%}
+
                     </div>
                 </div><!--Trail Announcement-->
             </section><!--SECOND SECTION-->
-
+      {% endif%}
 
 
             <section><!--THIRD SECTION-->
@@ -135,7 +66,7 @@
                         <li><a data-toggle="tab" href="#sidewalks">Sidewalks</a></li>
                         <li><a data-toggle="tab" href="#specialways">Special Ways</a></li>
                         <li><a data-toggle="tab" href="#blueways">Blue Ways</a></li>
-                         <li><a data-toggle="tab" href="#trail_etiquette">Trail Etiquette</a></li>
+                        <li><a data-toggle="tab" href="#trail_etiquette">Trail Etiquette</a></li>
                       </ul>
 
 
@@ -144,24 +75,13 @@
                             
                             <div class="trail_list1">
                                <ul>
-                                <li><h3 class="trail">Airport Loop</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal1">Details</button></li>
-                               <li><h3 class="trail">Armory Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal2">Details</button></li>
-                              <li><h3 class="trail">Cherry Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal3">Details</button></li>
-                              <li><h3 class="trail">Confederate Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal4">Details</button></li>
-                              <li><h3 class="trail">Eagle Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal5">Details</button></li>
-                              <li><h3 class="trail">Emmett Scott</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal6">Details</button></li>
-                              <li><h3 class="trail">Fewell Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal7">Details</button></li>
-                              <li><h3 class="trail">Friedheim Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal8">Details</button></li>
-                              <li><h3 class="trail">Hood Center Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal9">Details</button></li>
-                              <li><h3 class="trail">Manchester Meadows</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal10">Details</button></li>
-                              <li><h3 class="trail">Morgan Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal11">Details</button></li>
-                              <li><h3 class="trail">Northside Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal12">Details</button></li>
-                              <li><h3 class="trail">River Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal13">Details</button></li>
-                              <li><h3 class="trail">South Pointe Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal14">Details</button></li>
-                              <li><h3 class="trail">Southland Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal15">Details</button></li>
-                              <li><h3 class="trail">St. Anne's Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal16">Details</button></li>
-                              <li><h3 class="trail">Tech Park Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal17">Details</button></li>
-                              <li><h3 class="trail">Waterford Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal18">Details</button></li>
+
+                                 {% for trail in trails %}
+                                   {% if trail.type == 'Trails' %}
+                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                                   {% endif %}
+                                 {% endfor %}
+                                
                                </ul> 
                             </div>
                               
@@ -169,28 +89,48 @@
                           <div id="sidewalks" class="tab-pane fade">
                              <div class="trail_list3">
                                <ul>
-                                 <li><h3 class="trail">Anderson Road</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal20">Details</button></li>
-                                <li><h3 class="trail">Cherry Road</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal21">Details</button></li>
-                                <li><h3 class="trail">Heckle Blvd</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal22">Details</button></li>
-                                <li><h3 class="trail">Herlong- India Hook</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal23">Details</button></li>
-                                <li><h3 class="trail">Main Street(west) </h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal24">Details</button></li>
-                                <li><h3 class="trail">Nations Ford</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal25">Details</button></li>
-                                <li><h3 class="trail">Oakland Avenue</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal26">Details</button></li>
-                                <li><h3 class="trail">Saluda Street</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal27">Details</button></li>
+
+
+
+                                 {% for trail in trails %}
+                                   {% if trail.type == 'Sidewalks' %}
+                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                                   {% endif %}
+                                 {% endfor %}
+                                
+
+
                                </ul> 
                             </div>
                           </div>
                           <div id="specialways" class="tab-pane fade">
                              <div class="trail_list4">
                                <ul>
-                                <li><h3 class="trail">Saluda Bike Route</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal29">Details</button></li>
+                                
+                                
+                                
+                                 {% for trail in trails %}
+                                   {% if trail.type == 'Special Ways' %}
+                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                                   {% endif %}
+                                 {% endfor %}
+                                
+                                
                                </ul> 
                             </div>
                           </div>
                           <div id="blueways" class="tab-pane fade">
                             <div class="trail_list5">
                                <ul>
-                                <li><h3 class="trail">Canoe Trail</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#myModal30">Details</button></li>
+
+
+                                 {% for trail in trails %}
+                                   {% if trail.type == 'Blue Ways' %}
+                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                                   {% endif %}
+                                 {% endfor %}
+                                
+
                                </ul> 
                             </div>
                           </div>
@@ -217,7 +157,7 @@
                 
                       <div id="trail_tg_connect">
                         <div id="trail_tg_connect_header">
-                          <h2>Connect Rock Hill: Comments </h2><div id="trail_plus"><img src="{{ asset('images/plus.png') }}" id="trail_comments_plus" title="Add a Comment" class="add_comment" data-toggle="modal" data-target="#myModal28"></div>
+                          <h2>Connect Rock Hill: Last 10 Comments </h2><div id="trail_plus"><img src="{{ asset('images/plus.png') }}" id="trail_comments_plus" title="Add a Comment" class="add_comment" data-toggle="modal" data-target="#comment1"></div>
 
                         </div>
                       </div>
@@ -230,16 +170,16 @@
                             
                             {% for comment in last10comments %}
                               {%if comment.name is not null %}
-                                <h3>{{ comment.name }}</h3>
+                                <p><b>{{ comment.name }}</b><br>
                               {% endif%}
                               {%if comment.trail is not null %}
-                                <p>{{ comment.trail }}<br>
+                                <b>{{ comment.trail }}</b><br>
                               {% endif%}
                               {{ comment.message }}</p>
                               <hr>
                             {% endfor %}
                             {% else %} 
-                              <p>These are not the comments you're looking for.</p>
+                              <p>These are currently no comments, consider leaving one!</p>
                             {% endif%}
                           </div>
                         </div>
@@ -261,22 +201,32 @@
                   
                   <div id="trail_monthly_content">
                     {% if trailOfMonth is not null %}
-                    {{ trailOfMonth.name }}
-                    {{ trailOfMonth.length }}
-                    {{ trailOfMonth.type }}
-                    {{ trailOfMonth.caloriesBurnedMale }}
-                    {{ trailOfMonth.caloriesBurnedFemale }}
-                    {{ trailOfMonth.surfaceType }}
-                    {{ trailOfMonth.description }}
+                    <h3>{{ trailOfMonth.name }}</h3>
+                    <p>Length: {{ trailOfMonth.length }} miles</p>
+                    <p>Type: {{ trailOfMonth.type }}</p>
+                    <p>Male and female calories burned: {{ trailOfMonth.caloriesBurnedMale }} and 
+                    {{ trailOfMonth.caloriesBurnedFemale }}</p>
+                    <p>Surface Type: {{ trailOfMonth.surfaceType }}</p>
+                    <p>Description: {{ trailOfMonth.description }}</p>
                     {% else %}
-                        No trail of month.  Check back soon!
+                        <h2>There is no current trail of the month.  Check back soon!</h2>
                     {% endif %}
                   </div>
                   <div id="trail_monthly_image"></div>
 
                  </div><!--End Monthly Trail-->
-               </section><!--END OF FIFTH SECTION -->
+           </section><!--END OF FIFTH SECTION -->
 
+
+
+
+
+
+
+
+
+
+         {% if wellnessTipOfMonth is not null %}
 
               <section><!--SIXTH SECTION-->
               <!--Wellness Tip Monthly-->
@@ -288,49 +238,52 @@
                     </div>
                   </div>
 
-                  <div id="trail_wellness_image"></div>
+                  <div id="trail_wellness_image">??????????????????????????????????????????????????????????????????????????????????????????????????????</div>
                   <div id="trail_wellness_content">
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    <p>{{ wellnessTipOfMonth.tip }}</p>
                   </div>
 
                  </div><!--END Wellness Tip Monthly--> 
                </section><!--END OF Six SECTION -->
 
+        {% endif %}
+
+
+
+
+
+                 
+                 
                   
             <!-- Trigger the modal with a button -->         
-              <!-- Modal -->
-                  <div class="modal fade" id="myModal1" role="dialog">
+              <!-- Modals -->
+              
+              {% for trail in trails %}
+                  <div class="modal fade" id="trailModal{{ trail.id }}" role="dialog">
                     <div class="modal-dialog modal-lg">
                     
                       <!-- Modal content-->
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Airport Loop</h4>
+                          <h4 class="modal-title">{{ trail.name }}</h4>
                         </div>
                         <div class="modal-body">
                           <div class="modal_material">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                   <!-- Wrapper for slides -->
                                   <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
+                                    
+                                    {% if trail.photo1 %}
+                                      <div class="item active">
+                                       <img src="{{ vich_uploader_asset(trail, 'imageFile1') }}" alt="{{ trail.name }}" />
+                                        <div class="carousel-caption">
+                                          {{ trail.name }}
+                                        </div>
+                                      </div>                                    
+                                    {% endif %}
+                                    
+
                                   </div>
 
                                   <!-- Controls -->
@@ -340,139 +293,16 @@
                                   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
                                     <span class="glyphicon glyphicon-chevron-right"></span>
                                   </a>
+                                  
                               </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 4.2 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
                               
-                              <p>Starts: Celanese Road</p>
-                              <p>Ends: Celanese Road</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                  <!-- Modal2 -->
-                  <div class="modal fade" id="myModal2" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Armory Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail4-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
                               <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.25 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Amory Park</p>
-                              <p>Ends: Amory Park</p>
-                              <p>Features: Picnic Shelter, Basketball Court, Playground, Ball field</p>
-                              <p>Hours of Operation: Dawn - Dusk</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal3 -->
-                  <div class="modal fade" id="myModal3" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Cherry Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                           <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.5 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
+                              <p>Accessible: ????????????????????????????????????????????????????? </p>
+                              <p>Distance: {{ trail.length }} miles</p>
+                              <p>Material: ??????????????????????????????????????????????????????</p>
                               
-                              <p>Starts: Cherry Park</p>
-                              <p>Ends: Cherry Park</p>
-                              <p>Features: 5 Ball Fields, Playground, 2 Picnic Shelters, 5 Sports Fields</p>
-                              <p>Hours of Operation: 7 am - 11 pm</p>
+                              <p>Hours of Operation: {{ trail.hoursOfOperation | raw }}</p>
+                              <p>Features: ??????????????????????????????????????????????</p>
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -482,1669 +312,26 @@
                       
                     </div>
                   </div>
+          {% endfor %}
 
 
-                   <!-- Modal4 -->
-                  <div class="modal fade" id="myModal4" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Confederate Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                           <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
 
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.25 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Confederate Park</p>
-                              <p>Ends: Confederate Park</p>
-                              <p>Features: Playground, Amphitheater, 2 Tennis Courts, Basketball Courts, Picnic Tables, Ball Field</p>
-                              <p>7 am - 11 pm</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
+
+
+
+
+
+
+
+
+                      <!-- COMMENT FUNCTIONALITY -->          
+                                
+                                {% include ':default:commentNew.html.twig' %}
                       
-                    </div>
-                  </div>
+                      <!-- END COMMENT FUNCTIONALITY -->          
+                                
+            <!--END MODAL-->
 
 
-                   <!-- Modal5 -->
-                  <div class="modal fade" id="myModal5" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Eagle Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                           <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
 
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 2.4 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Charlotte Avenue</p>
-                              <p>Ends: Nations Ford Sidewalk</p>
-                              <p>Features: Ball Field, Playground</p>
-                              <p>Hours of Operation: 7 am - 11 pm</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal6 -->
-                  <div class="modal fade" id="myModal6" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Emmett Scott Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                           <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.33 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Emmett Scott Park</p>
-                              <p>Ends: Emmett Scott Park</p>
-                              <p>Features: Gym</p>
-                              <p>Hours of Operation: 2 pm - 8 pm</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                  <!-- Modal7 -->
-                  <div class="modal fade" id="myModal7" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Fewell Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.7 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Fewell Park</p>
-                              <p>Ends: Fewell Park</p>
-                              <p>Features: 3 Disc Golf Course, 2 Tennis Courts, 1 Horseshoe Court, Picnic SHelter, Multipurpose Field, Playground</p>
-                              <p>Hours of Operation:8:30 am - 5 pm</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal8 -->
-                  <div class="modal fade" id="myModal8" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Friedheim Park</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.25 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              
-                              <p>Starts: Friedheim Park</p>
-                              <p>Ends: Friedheim Park</p>
-                              <p>Features: Basketball Court, Picnic Shelter, Play Field, Playground, Ball Field, Sand Volleyball</p>
-                              <p>Hours of Operation: Dawn - Dusk</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal9 -->
-                  <div class="modal fade" id="myModal9" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Hood Center Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.8 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Manchester Meadows park</p>
-                              <p>Ends: Anderson Park</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal10 -->
-                  <div class="modal fade" id="myModal10" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Manchester Meadows Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.5 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Manchester Meadows Park</p>
-                              <p>Ends: Manchester Meadows Park</p>
-                              <p>Features: 8 Soccer Fields, Playground, Picnic Shelter</p>
-                              <p>Hours of Operation: 8:30 am - 5 pm</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                  <!--Modal11-->
-                  <div class="modal fade" id="myModal11" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Morgan Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.6 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Morgan Park</p>
-                              <p>Ends: Morgan Park</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                  <!-- Modal12 -->
-                  <div class="modal fade" id="myModal12" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Northside Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.6 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}" title="Asphalt"></p>
-                              <p>Starts: Church St.</p>
-                              <p>Ends: Northside Extension</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal13 -->
-                  <div class="modal fade" id="myModal13" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">River Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"></p>
-                              <p>Distance: 3.5 miles</p>
-                              <p>Material: <img src="{{ asset('images/nature.png') }}"title="Natural Elements"></p>
-                              <p>Starts: River Park</p>
-                              <p>Ends: River Park</p>
-                              <p>Features: Kayak, Canoe Launch, Picnic Tables, Outdoor Classroom, Outdoor Shelter</p>
-                              <p>Hours of Operation: 8 am - 5 pm</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal14 -->
-                  <div class="modal fade" id="myModal14" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">South Pointe Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.6 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Saluda Street</p>
-                              <p>Ends: Crawford Road</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal15 -->
-                  <div class="modal fade" id="myModal15" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Southland Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.25 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Southland Park</p>
-                              <p>Ends: Southland Park</p>
-                              <p>Features: Basketball Court, Picnic area, Playground, Picnic Shelter</p>
-                              <p>Hours of Operation: Dawn - Dusk</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal16 -->
-                  <div class="modal fade" id="myModal16" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">St. Anne's Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.41 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: E Main Street</p>
-                              <p>Ends: Anderson Road</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                  <!-- Modal17 -->
-                  <div class="modal fade" id="myModal17" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Tech Park Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.9 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Northside Trail</p>
-                              <p>Ends: Northside Trail</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal18 -->
-                  <div class="modal fade" id="myModal18" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Waterford Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}">
-                              <p>Distance: 1.2 miles</p>
-                              <p>Material: <img src="{{ asset('images/nature.png') }}"title="Natural Elements"></p>
-                              <p>Starts: River Park</p>
-                              <p>Ends: Waterford Park Drive</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal19 -->
-                  <div class="modal fade" id="myModal19" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">EMPTY</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.8 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}"title="Asphalt"></p>
-                              <p>Starts: Manchester Meadows park</p>
-                              <p>Ends: Anderson Park</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal20-->
-                  <div class="modal fade" id="myModal20" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Anderson Road Sidewalk</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.8 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}"title="Concrete"></p>
-                              <p>Starts: Anderson Road</p>
-                              <p>Ends: Anderson Road</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal21-->
-                  <div class="modal fade" id="myModal21" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Cherry Road Sidewalk/h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 5.5 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}"title="Concrete"></p>
-                              <p>Starts: Cherry Road</p>
-                              <p>Ends: Cherry Road</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal22-->
-                  <div class="modal fade" id="myModal22" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Heckle Blvd Sidewalk</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.6 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}"title="Concrete"></p>
-                              <p>Starts: Heckle Boulevard</p>
-                              <p>Ends: Heckle Boulevard</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal23-->
-                  <div class="modal fade" id="myModal23" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Herlong-India Hook Sidewalk</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 2 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}"title="Concrete"></p>
-                              <p>Starts: Herlong Road</p>
-                              <p>Ends: Herlong Road</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal24-->
-                  <div class="modal fade" id="myModal24" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title"></h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 8.3 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}"title="Concrete"></p>
-                              <p>Starts: Main Street (west)</p>
-                              <p>Ends: Main Street (west)</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal25 -->
-                  <div class="modal fade" id="myModal25" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Nations Ford Sidewalk</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 0.1 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}"title="Concrete"></p>
-                              <p>Starts: Nations Ford</p>
-                              <p>Ends: Nations Ford</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal26-->
-                  <div class="modal fade" id="myModal26" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Oakland Avenue Sidewalk</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.4 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}" title="Concrete"></p>
-                              <p>Starts: Oakland Avenue</p>
-                              <p>Ends: Oakland Avenue</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal27 -->
-                  <div class="modal fade" id="myModal27" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Saluda Street Sidewalk</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 1.5 miles</p>
-                              <p>Material: <img src="{{ asset('images/pavement.png') }}" title="Concrete"></p>
-                              <p>Starts: Saluda Street</p>
-                              <p>Ends: Saluda Street</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                    <!-- Modal28-->
-                  <div class="modal fade" id="myModal28" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Submit Comments</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <form method='post'>
-                                <input style="width:80%;height:40px;" type="text" name="name" placeholder="Enter Your Name"><br><br>
-                                <input style="width:80%;height:40px;" type="text" name="email" placeholder="Enter Email"><br><br>
-                                Comments:<br><textarea style="width:80%; height:100px;" name='usercomments' class='usercomments'></textarea><br><br>
-                                Images: <input type="file" name="image" size="chars" placeholder="image" value="image"><br> 
-                                <input type="submit" value="Submit Comment">
-                              </form>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal29-->
-                  <div class="modal fade" id="myModal29" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Saluda Bike Route</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/walk.png') }}"><img src="{{ asset('images/bike.png') }}"><img src="{{ asset('images/handicap.png') }}"></p>
-                              <p>Distance: 3.6 miles</p>
-                              <p>Material: <img src="{{ asset('images/gravel.png') }}" title="Asphalt"></p>
-                              <p>Starts: Saluda Corridor Area 3</p>
-                              <p>Ends: Johnston Street</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-
-
-                   <!-- Modal30-->
-                  <div class="modal fade" id="myModal30" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Canoe Trail</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                     <img class="img-responsive" src="{{ asset('images/trail1-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        One Image
-                                      </div>
-                                    </div>
-                                    <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail2-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                     <div class="item">
-                                      <img class="img-responsive" src="{{ asset('images/trail3-1.png') }}" alt="...">
-                                      <div class="carousel-caption">
-                                        Another Image
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                              </div>
-                              <br>
-                              <p>Accessible: <img src="{{ asset('images/water.png') }}" title="canoe & kayak">
-                              <p>Distance: 16 miles</p>
-                              <p>Material: <img src="{{ asset('images/water.png') }}" title="water"></p>
-                              <p>Starts: Lake Wylie Dam</p>
-                              <p>Ends: Lansford Canal State Park</p>
-                              <p>Features: N/A</p>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-                   
-                   <!-- Modal -->
-                  <div class="modal fade" id="commentstrail" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Submit a Comment</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                              
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div><!--END MODAL-->
-
-          </div><!--CONTAINER-->
-
-           <!--CONTACTS FULL WIDTH-->
-          <footer>
-            <div class="contact1">
-                <h3>City of Rock Hill</h3>
-                <h4>cityofrockhill.com</h4>
-                <h4>803-325-2500</h4>
-                <h4>City Hall • 155 Johnston Street • Rock Hill, SC  29730</h4>
-            </div>
-            <div class="contact2">
-                <h3>Trails & Greenways</h3>
-                <h4>RockHillSCTrails.org</h4>
-                <h4>admin@tg.org</h4>
-                <h4>The content on this site belongs to the Trails and Greenways Advisory Committee of Rock Hill.</h4>
-            </div>
-          </footer>
-      </div> <!--WINDOW--> 
-
-  <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a><!--BACK TO TOP-->
 {% endblock %}

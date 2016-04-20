@@ -1,45 +1,84 @@
 
-    {{ form_start(commentForm) }}
+
+            <!-- Trigger the modal with a button -->
+            <!-- Modal -->
+            <div class="modal fade" id="comment1" role="dialog">
+                <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Submit a Comment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal_material">
+                                
+                                
+    {{ form_start(commentForm.form) }}
 
 
-        {{ form_widget(commentForm.form.name) }}
-        {{ form_errors(commentForm.form.name) }}
-        
-        {{ form_widget(commentForm.form.message) }}
-        {{ form_errors(commentForm.form.message) }}
-        
-        {{ form_widget(commentForm.form.image) }}
-        {{ form_errors(commentForm.form.image) }}
-        
-        {{ form_widget(commentForm.form.trail) }}
+        Trail: {{ form_widget(commentForm.form.trail) }}
+        <div class='error'>
         {{ form_errors(commentForm.form.trail) }}
-        
-        {{ form_widget(commentForm.form.email) }}
-        {{ form_errors(contactForm.form.email) }}
+        </div>
         
         
+        <br><br>
         
+        Name: {{ form_widget(commentForm.form.name, {'attr': {'placeholder':'Enter Your Name'} }) }}
+        
+        <div class='error'>
+        {{ form_errors(commentForm.form.name) }}
+        </div>
+        <br><br>
+        
+        Email: {{ form_widget(commentForm.form.email, {'attr': {'placeholder':'Enter Your Email'} }) }}
+        
+        <div class='error'>
+            {{ form_errors(commentForm.form.email) }}
+        </div>
+        <br><br>
+
+        Message: {{ form_widget(commentForm.form.message) }}
+        
+        <div class='error'>
+        {{ form_errors(commentForm.form.message) }}
+        </div>
+        <br><br>
+        
+        Optional Image: {{ form_widget(commentForm.form.image) }}
+        
+        <div class='error'>
+        {{ form_errors(commentForm.form.image) }}
+        </div>
+        <br><br>
         
         <input type="submit" value="Submit Comment" />
         
-    {{ form_end(commentForm) }}
+    {{ form_end(commentForm.form) }}
     
     
-                                    
-                                
-                                
-                                
-                                
-    <form method='post'>
-        <input style="width:50%;height:25px;" type="text" name="name" placeholder="Enter Your Name"><br><br>
-        <input style="width:50%;height:25px;" type="text" name="email" placeholder="Enter Email"><br><br> Comments:
-        <br><textarea style="width:50%; height:100px;" name='usercomments' class='usercomments'></textarea><br><br> Images: <input type="file" name="image" size="chars" placeholder="image" value="image"><br>
-        <input type="submit" value="Submit Comment">
-    </form>
-                                
-                                
-                                
-                                
-                                
-                                
+    {# Handle Showing Errors #}
+    
+    {% if commentForm.status == 'error' %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#comment1').modal();
+            });
+        </script>
+    {% endif %}
+    
+    
+    
+    
+    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+            <!--END MODAL-->

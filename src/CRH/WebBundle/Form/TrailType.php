@@ -16,17 +16,23 @@ class TrailType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('length')
-            ->add('type')
+            ->add('length',null,array('label' => 'Length in miles'))
+            ->add('type', 'choice', array('choices' => array(
+                    'Trails' => 'Trails',
+                    'Sidewalks' => 'Sidewalks',
+                    'Special Ways' => 'Special Ways',
+                    'Blue Ways' => 'Blue Ways'
+                )))
             ->add('caloriesBurnedMale')
             ->add('caloriesBurnedFemale')
             ->add('surfaceType')
+            ->add('hoursOfOperation', null, array('attr' => array('class' => 'tinymce')))
             ->add('description')
             ->add('imageFile1', 'vich_image', array(
                 'required'  => false,
                 'download_link' => false
             ))
-            ->add('isTrailOfMonth')
+            ->add('isTrailOfMonth',null,array('label' => 'Set as trail of the month') )
 
         ;
     }

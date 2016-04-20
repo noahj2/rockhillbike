@@ -15,11 +15,15 @@
             
         {% endblock %}
         
+        
+        
+        
         {% block javascripts %}
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    
-            <script src="//code.jquery.com/jquery-latest.min.js"></script>
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+            
             <script type="text/javascript" src="{{ asset('js/responsiveslides.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/main2.js') }}"></script>
@@ -30,6 +34,110 @@
         
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block header %}
+        <header>
+    <div class="top">
+      <div class="logo_area">
+        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
+        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
+      </div>
+      <div class="media">
+        <div class="detail_sum"></div> 
+        <div class="temp1"><h4 class="temp_num"></h4></div>
+        <div class="temp2"><h5 class="detail_word"></h5></div>
+        <div class="rhsc"><h4>Rock Hill, South Carolina</h4></div>
+      </div>
+    </div>
+
+    <nav>
+      <div href="#" class="hamburger">
+        <div class="ham-lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <div class="ham-menu"><h4>MENU</h4></div>
+      </div>
+      <ul class="clearfix menu">
+        <li><a {% if currentPageHome is defined %}class="current"{% endif %} href="{{ path('index') }}">Home</a></li>
+        <li><a {% if currentPageTrails is defined %}class="current"{% endif %} href="{{ path('trails') }}">Trails & Greenways</a></li>
+        <li><a {% if currentPageEvents is defined %}class="current"{% endif %}  href="{{ path('events') }}">Events</a></li>
+        <li><a  {% if currentPageAbout is defined %}class="current"{% endif %} href="{{ path('about') }}">About</a></li>
+        <li><a  {% if currentPageInvolved is defined %}class="current"{% endif %} href="{{ path('involved') }}">Get Involved</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  
+
+     <!-- Slideshow -->
+    <div class="callbacks_container">
+      <ul class="rslides slider">
+        <li>
+          <img src="{{ asset('images/trail18-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail18-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail18-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Friedheim Park</p>
+        </li>
+        <li>
+          <img src="{{ asset('images/trail6-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail6-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail6-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Tech Park</p>
+        </li>
+        <li>
+          <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Eagle Park</p>
+        </li>
+        <li>
+          <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
+          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
+          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
+          <p class="caption">Cherry Park</p>
+        </li>
+      </ul>
+    </div>
+
+  
+  
+        {% endblock %}
+        
+        
+        
+        
+        
+      <div class="window">
+          <div class="container">
+            
+
+                    
+                    {% block body %}
+                    {% endblock %}
+        
+                  </div><!--CONTAINER-->
+
+           <!--CONTACTS FULL WIDTH-->
+          <footer>
+            <div class="contact1">
+                <h3>City of Rock Hill</h3>
+                <h4>cityofrockhill.com</h4>
+                <h4>803-325-2500</h4>
+                <h4>City Hall • 155 Johnston Street • Rock Hill, SC  29730</h4>
+            </div>
+            <div class="contact2">
+                <h3>Trails & Greenways</h3>
+                <h4>RockHillSCTrails.org</h4>
+                <h4>admin@tg.org</h4>
+                <h4>The content on this site belongs to the Trails and Greenways Advisory Committee of Rock Hill.</h4>
+            </div>
+          </footer>
+
+
+      </div> <!--WINDOW--> 
+
+      <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a><!--BACK TO TOP-->
+        
     </body>
 </html>

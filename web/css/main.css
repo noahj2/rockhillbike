@@ -1,3 +1,4 @@
+
 *, *:before, *:after {
   margin: 0;
   padding: 0;
@@ -254,45 +255,6 @@ FULL SLIDER
   }
 
 
-/*-----------------------------------------------
-slide down content
--------------------------------------------------*/ 
-
-section {
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.module {
-  position: relative;
-  float: left;
-}
-.module:nth-child(even) {
-  margin-right: 0;
-}
-
-
-.come-in {
-  transform: translateY(150px);
-  animation: come-in 1s ease forwards;
-}
-
-.come-in:nth-child(odd) {
-  animation-duration: 0.6s;
-}
-
-.already-visible {
-  transform: translateY(0);
-  animation: none;
-}
-
-@keyframes come-in {
-  to {
-    transform: translateY(0);
-  }
-}
-
-
 /*-------------------------------------------------
 MODAL POP-UP DESIGN
 ---------------------------------------------------*/
@@ -398,7 +360,7 @@ WEATHER DATA
 .detail_word{color: #fff;}
 .temp_sum{}
 .detail_sum{height: 85px;float: left;position: relative;width:90px;}
-.rhsc{display: block;width: 100%;float: left;position: relative;color: #fff;margin-top: 0px;left: 10px;}
+.rhsc{display: block;width: 100%;float: left;position: relative;color: #fff;margin-top: 0px;margin-left: 15px;left: 10px;}
 
 #home_top1{position: relative;float: left;max-width: 533px;width: 60%;}
 #home_tg{ width: 100%; position: relative; float: left;}
@@ -572,12 +534,13 @@ WEATHER DATA
 #event_tg, #event_tg2, #event_tg3, #event_tg4 { width: 100%;}
 #event_tg_header, #event_tg_header3, #event_tg_header4 { background-color: #00693A; text-align: center; width: 100%; float: left; padding-bottom: 1.3%; clear: both; border-radius: 0 60px 0 0;}
 #event_tg_header2 { background-color: #665A57; text-align: center; width: 100%; float: left; padding-bottom: 1.3%; clear: both; border-radius: 0 60px 0 0;}
-#event_content1, #event_content2, #event_content3 , #event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content1_p, #event_content4_p{width: 60%; float: left; padding-right: 2%;}
-#event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+.event_content1, .event_content2, .event_content3 , .event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content1_p, .event_content4_p{width: 60%; float: left; padding-right: 2%;}
+.event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
 #event_list1, #event_list2 {width: 50%; float:left; text-align: center;} 
-#event_content3_p {width: 60%; float: left; padding-left: 2%;}
+.event_content3_p {width: 60%; float: left; padding-left: 2%;}
 #event_image2 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+.event_all{ width: 100%; float:left; position: relative; height: auto;}
 
 
 
@@ -644,9 +607,9 @@ WEATHER DATA
 #home_mid4{position: relative;float: left;max-width: 630px;width: 65%;}
 #home_tg4 { position: relative; float: left; width: 100%; }
 #home_tg4_header {width: 100%;background-color: #00693A;position: relative;float: left;padding: 6px;text-align: center;}
-#home_about {background-color: #D3D3D3; padding: 20px;height: 285px;float: left;}
+#home_about {background-color: #D3D3D3;padding: 20px 35px;height: 280px;float: left;}
 #home_about > p {width: 100%;}
-#more_mid4{ width: 65px;position: relative;background-color: white; padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 1%;}
+#more_mid4{width: 65px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 5%;}
 
 #more_mid3:hover, #more_mid2:hover, #more_mid1:hover, #more_mid4:hover{ background-color: #00693A; color: #fff; -webkit-transition: background-color 1.5s; transition: background-color 1.5s,  ease-in: 1.5s;}
 
@@ -670,98 +633,98 @@ WEATHER DATA
 #home_trail_comments_plus{float:inherit;position:relative;margin-left: 20%;margin-top:10px;}
 #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
 #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-#home_user_comments{padding: 25px 0px 20px 30px;background: #fff;overflow-y: scroll;height: 300px;}
+#home_user_comments{padding: 25px 0px 20px 30px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 
 
 #trail_main_map{}
 #trail_tg{ float: left;width: 100%;position: relative;}
 #trail_tg_header{}
-#trail_tg_header{ background-color: #00693A;padding: 6px;width: 90%;float: left;position: relative;}
+#trail_tg_header{background-color: #00693A;padding: 6px;width: 100%;float: left;position: relative;}
 #trail_tg_header > h2{text-align: center;}
 #trail_main_map > #main_map{float: left; position: relative; padding:  250px 249px; background-color: #D7D7D7; width:  100%;}
 
 #trail_announcement{float:left; position:relative; margin-top: 50px; width:100%;}
 #trail_tg2{ width:  100%; float: left; position: relative;}
-#trail_tg2_header{ float: left; width: 90%; background-color: #00693A; position: relative; padding: 6px;}
+#trail_tg2_header{float: left;width: 100%;background-color: #00693A;position: relative;padding: 6px;}
 #trail_tg2_header > h2{ text-align: center;}
-#trail_tg2_announcements{width:  100%;float: left;background-color: #81694B;padding: 25px 35px;}
+#trail_tg2_announcements{width:  100%;float: left;background-color: rgba(129, 105, 75, 0.8);padding: 25px 35px;}
 #trail_tg2_announcements > p{}
 #trail_maps{margin-top:  50px;float: left;width: 100%;}
 #trail_tg_maps{width: 100%;float: left;position: relative;}
-#trail_tg_maps_header{float:  left;position: relative;padding: 6px;background-color: #00693A;width: 90%;}
+#trail_tg_maps_header{float:  left;position: relative;padding: 6px;background-color: #00693A;width: 100%;}
 #trail_tg_maps_header > h2{text-align: center;}
 .trail_tabs{width:100%;float: left;background-color: #00693A;}
-.trail_tabs_content{width: 100%;float: left;background-color: #B09B85;padding: 25px;}
-.trail_list1{width: 45%; float:left; overflow-y:scroll; height: 300px;}
+.trail_tabs_content{width: 100%;float: left;background-color: rgba(176, 155, 133, 0.8);padding: 25px;}
+.trail_list1{width: 100%;float:left;overflow-y:scroll;height: 300px;}
 .trail_list2{margin-left: 10%;width: 45%; float:left; overflow-y:scroll; height: 300px;}
 .trail_list3{width: 100%; float:left; overflow-y:scroll; height: 300px;}
 .trail_list4{width: 100%; float:left; overflow-y:scroll; height: 300px;}
 .trail_list5{width: 100%; float:left; overflow-y:scroll; height: 300px;}
-.trail_list1 > ul li{width: 100%; clear:both;float: left;}
+.trail_list1 > ul li{width: 100%;clear:both;float: left;color: #fff;}
 .trail_list2 > ul li{width: 100%; clear:both; float: left;}
 .trail_list3 > ul li{width: 100%; clear:both; float: left;}
 .trail_list4 > ul li{width: 100%; clear:both; float: left;}
 .trail_list5 > ul li{width: 100%; clear:both; float: left;}
 .trail{float:left;}
-.mapit{float: right;padding: 10px;text-align: center;background-color: white;margin-right: 25px;}
+.mapit{float: right;padding: 10px;text-align: center;background-color: #3c763d;margin-right: 25px;}
 .details{float: right;padding: 10px;text-align: center;background-color: #B9B3AE;margin-right: 15px;}
 
 #trail_connect{position: relative; float: left; margin-top: 50px; width: 100%;}
-#trail_tg_connect_header{float: left;background-color: #00693A;width: 90%;padding: 6px;}
-#trail_tg_connect_header > h2{text-align: left;width: 80%;margin-left: 20px;}
-#trail_comments_plus{margin-top:25px;}
+#trail_tg_connect_header{float: left;background-color: #00693A;width: 100%;padding: 6px;}
+#trail_tg_connect_header > h2{text-align: center;width: 80%;margin-left: 20px;}
+#trail_comments_plus{margin-top: 10px;}
 .feedback_tabs{width:100%;float: left;background-color: #00693A;}
 .feedback_tab_content{width: 100%;float: left;background-color: #D3D3D3; padding: 25px; height: 300px; overflow-y:scroll;}
 
-#trail_monthly{float: left;margin-top: 50px;}
+#trail_monthly{float: left;margin-top: 50px;width: 100%;}
 #trail_tg_monthly{width: 100%;float: left;}
-#trail_tg_monthly_header{float: left;background-color: #00693A;padding: 6px;width: 90%;}
+#trail_tg_monthly_header{float: left;background-color: #00693A;padding: 6px;width: 100%;}
 #trail_tg_monthly_header > h2{ text-align: center;}
 #trail_monthly_image{background-image:url('../images/image6.jpg'); background-size:cover; padding: 160px;width: 40%;float: left;}
-#trail_monthly_content{float: left;width: 60%;padding: 10px;height: 320px;background-color: #D3D3D3;}
+#trail_monthly_content{float: left;width: 60%;padding: 10px 25px;height: 320px;background-color: rgba(211,211,211,1.0);}
 
 #trail_wellness{position: relative;float: left;margin-top: 50px;}
 #trail_tg_wellness{float: left;width: 100%;}
-#trail_tg_wellness_header{float: left;background-color: #00693A;width: 90%;padding: 6px;}
+#trail_tg_wellness_header{float: left;background-color: #00693A;width: 100%;padding: 6px;}
 #trail_tg_wellness_header > h2{text-align: center;}
 #trail_wellness_image{width: 40%;float:left;padding: 150px;background-image:url('../images/image14.jpg'); background-size:cover;}
 #trail_wellness_content{float: left;width: 60%;padding: 20px;background-color: #D3D3D3;height: 300px;}
 
 .about_main{background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; clear: both; float: left;}
 #about_tg{width: 100%;}
-#about_tg_header{background-color: #00693A; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
+#about_tg_header{background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 #about_content1, #about_content2, .about_tabs, .about_tab_content{ width: 100%; padding-left: 4%; padding-right: 4%;}
 #about_content1{padding-top: 4%; float:left; clear: both;}
 #about_content_intro, .interviews{float: left; width: 50%;}
 #about_content_intro {padding-right: 2%; }
-.interviews{padding:80px 0px; background-color: #888; text-align: center;}
+.interviews{text-align: center;}
 .about_page > .tab-content {padding-left: 2%; padding-right: 2%;}
 
 
 
 
 .donate_main { background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; padding-top: 2%; clear: both; float: left; width: 100%;}
-#donate_first {margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
-#donate_second {margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
-#donate_third {margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
+#donate_first {/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
+#donate_second {/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
+#donate_third {/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
 #donate_tg { width: 100%;}
 #donate_tg2 { width: 100%;}
 #donate_tg3 { width: 100%;}
-#donate_tg_header{ background-color: #4F80FC; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-#donate_tg_header2{ background-color: #4F80FC; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-#donate_tg_header3{ background-color: #4F80FC; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
+#donate_tg_header{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+#donate_tg_header2{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+#donate_tg_header3{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 #donate_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
 #donate_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
 #donate_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
 #donate_content1_p{width: 60%; float: left; padding-right: 2%;}
 #donate_image1{ float: left; width: 40%;background-color: #555; padding: 100px 100px;}
-#donate_list1 {width: 50%; float: left; text-align: center;} 
+#donate_list1 {width: 100%;float: left;text-align: left;} 
 #donate_content3_p{width: 60%; float: left;padding-left: 2%;}
 #donate_image2{ float: left; width: 40%;background-color: #555; padding: 100px 100px;}
-#donate_fourth{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
+#donate_fourth{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
 #donate_tg4{width: 100%;}
-#donate_tg_header4{background-color: #4F80FC; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
+#donate_tg_header4{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 #donate_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
 #donate_image3{float: left; width: 40%;background-color: #555; padding: 100px 100px;}
 #donate_content4_p{width: 60%; float: left;padding-left: 2%; }}
@@ -770,13 +733,13 @@ WEATHER DATA
 #event_tg, #event_tg2, #event_tg3, #event_tg4 { width: 100%;}
 #event_tg_header, #event_tg_header3, #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
-#event_content1, #event_content2, #event_content3 , #event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content1_p, #event_content4_p{width: 60%; float: left; padding-right: 2%;}
-#event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+.event_content1, .event_content2, .event_content3 , .event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content1_p, .event_content4_p{width: 60%; float: left; padding-right: 2%;}
+.event_image1, #event_image3 {float: left;width: 40%;background-image: url('../images/image14.jpg');padding: 100px 100px;background-size: cover;background-repeat: no-repeat;}
 #event_list1, #event_list2 {width: 50%; float:left; text-align: center;} 
-#event_content3_p {width: 60%; float: left; padding-left: 2%;}
+.event_content3_p {width: 60%; float: left; padding-left: 2%;}
 #event_image2 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
-
+.event_all{width: 100%;float:left;position: relative;height: 300px;overflow-y: scroll;}
 
 
 
@@ -828,7 +791,7 @@ WEATHER DATA
   REST OF STYLES HERE
   ***************************************************/
   header{position: relative;}
-  .top{background-color: rgba(15, 35, 15, 0.9);width: 100%;float: none;height: 260px;}
+  .top{background-color: rgba(15, 35, 15, 0.9);width: 100%;float: left;height: auto;}
   .logo{float: none;width: 80%;}
   .logo_area{float:left;width: 100%;clear both;}
   .media{float: left;width: 100%;}
@@ -842,8 +805,8 @@ WEATHER DATA
   footer{ width: 100%;}
   .logo{position: relative; top: 15px; left: 15px;}
   .contact1, .contact2{ float: left; width: 100%; text-align: center; color: #fff;}
-  .contact1{ background-color: #534741; }
-  .contact2{ background-color: #665A57; }
+  .contact1{background-color: #534741;width: 50%;float: left;}
+  .contact2{background-color: #665A57;width: 50%;float: left;}
 
   h2 {font-size: 30px;}
   .divide{margin-top:50px;float:left;width: 100%;position: relative;}
@@ -856,7 +819,7 @@ WEATHER DATA
   .temp2{float: left; position: relative; width: 50%;}
   .detail_word{color: #fff;}
   .temp_sum{}
-  .detail_sum{height: 85px;float: left;position: relative;width:90px;}
+  .detail_sum{height: 85px;float: left;position: relative;width:90px;margin-left: 15px;}
 
   #home_top1{position: relative;float: left;width: 100%;max-width: inherit;}
   #home_tg{ width: 100%; position: relative; float: left;}
@@ -869,29 +832,29 @@ WEATHER DATA
   #home_tg2_announcements{width: 100%;float: left;background-color: #D3D3D3;padding: 30px;overflow-y: scroll;height: 200px;}
 
 
-  #home_mid1 {position: relative;float: left;width: 100%;margin-left: auto;margin-right: auto;max-width: inherit;}
+  #home_mid1 {position: relative;float: left;width: 45%;margin-left: auto;margin-right: auto;max-width: inherit;}
   #home_tg_mid1 { position: relative; float: left; width: 100%;}
   #home_tg_mid1_header {width: 100%;background-color: #00693A;position: relative;float:  left;text-align: center;padding-bottom: 8px;}
   #home_to {background-image: url('../images/image13.jpg');background-size: cover;height:300px;float: left;width: 100%;}
-  #more_mid1{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 40%;margin-right: 5%;}
+  #more_mid1{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 70%;margin-right: 5%;}
 
-  #home_mid2 {position: relative;float: left;width: 100%;margin-left: auto;margin-right: auto;margin-top: 50px;max-width: inherit;}
+  #home_mid2 {position: relative;float: left;width: 45%;margin-left: auto;margin-right: auto;margin-top: 0px;max-width: inherit;margin-left: 10%;}
   #home_tg_mid2 { position: relative; float: left; width: 100%; }
   #home_tg_mid2_header {width: 100%;background-color: #00693A;position: relative;float: left;text-align: center;padding-bottom: 8px;}
   #home_totm { background-image: url('../images/image6.jpg'); background-size: cover; float: left; height:300px; width:100%;}
-  #more_mid2{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 40%;margin-right: 5%;}
+  #more_mid2{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 70%;margin-right: 5%;}
 
 
   #home_mid3 {position: relative;float: left;width: 100%;margin-left: auto;margin-right: auto;margin-top: inherit;max-width: inherit;}
   #home_tg_mid3 { position: relative; float: left; width: 100%; }
   #home_tg_mid3_header {width: 100%;background-color: #00693A;position: relative;float: left;text-align: center;padding-bottom: 1%;}
-  #home_events {background-color: #D3D3D3;padding: 20px 20px;float: left;width: 100%;height: 200px;}
-  #more_mid3{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 5%;}
+  #home_events {background-color: #D3D3D3;padding: 20px 20px;float: left;width: 100%;height: 200px;overflow-y: scroll;}
+  #more_mid3{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 1%;}
 
-  #home_mid4{position: relative;float: left;width: 100%;margin-left: auto;margin-right: auto;}
+  #home_mid4{position: relative;float: left;width: 100%;margin-left: auto;margin-right: auto;max-width: 100%;}
   #home_tg4 { position: relative; float: left; width: 100%; }
   #home_tg4_header {width: 100%;background-color: #00693A;position: relative;float: left;padding-bottom: 0px;text-align: center;}
-  #home_about {background-color: #D3D3D3; padding: 20px;height: 285px;float: left;}
+  #home_about {background-color: #D3D3D3;padding: 20px;height: 240px;float: left;}
   #home_about > p {width: 100%;}
   #more_mid4{width: 90px;position: relative;background-color: white;padding: 1px;text-align: center;border-radius: 5px;float: right;clear: both;margin-top: 0%;}
 
@@ -899,13 +862,13 @@ WEATHER DATA
 
   #home_mid5{position: relative;float: left;width: 100%;margin-left: auto;margin-right: auto;margin-top: 50px;max-width: inherit;}
   #home_tg5 { position: relative; float: left; width: 100%; }
-  #home_tg5_header {width: 80%;background-color: #00693A;padding-bottom: 0%;position: relative;float: left;text-align: center;}
+  #home_tg5_header {width: 100%;background-color: #00693A;padding-bottom: 0%;position: relative;float: left;text-align: center;}
   #home_tg5_header > h2 {position: relative; left: 10px;}
-  #home_wellness_pic {background-image:url('../images/image14.jpg'); background-size:cover; padding: 55px 0 50px 0;float: left;width: 100%;}
-  #home_wellness{width: 45%;}
+  #home_wellness_pic {background-image:url('../images/image14.jpg');background-size:cover;padding: 85px 0;float: left;width: 100%;}
+  #home_wellness{width: 50%;float: left;position: relative;}
 
-  #home_involve{margin-top: -129px;float:left;position: relative;width: 50%;margin-left: 5%;}
-  #home_tg6_header {width: 80%;background-color: #4F80FC;padding: 45px 0 80px 10px;position: relative;float: left;text-align: center;}
+  #home_involve{margin-top: 0;float:left;position: relative;width: 50%;margin-left: 19%;}
+  #home_tg6_header {width: 100%;background-color: #4F80FC;padding: 100px 0;position: relative;float: left;text-align: center;}
 
   #home_mid6{position: relative;float: left;width: 100%;margin-top:  50px;margin-left: auto;margin-right: auto;}
   #home_connect{position: relative;float: left;width: 100%;}
@@ -917,7 +880,7 @@ WEATHER DATA
   #home_trail_comments_plus{float:inherit;position:relative;margin-left: 10%;margin-top: 2%;}
   #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
   #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-  #home_user_comments{padding: 25px 0px 20px 30px;background: #fff;overflow-y: scroll;height: 300px;}
+  #home_user_comments{padding: 25px 0px 20px 30px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
   #trail_main_map{}
 #trail_tg{ float: left;width:  100%;position: relative;}
@@ -930,7 +893,7 @@ WEATHER DATA
 #trail_tg2{ width:  100%; float: left; position: relative;}
 #trail_tg2_header{float: left;width: 100%;background-color: #00693A;position: relative;padding: 6px;}
 #trail_tg2_header > h2{ text-align: center;}
-#trail_tg2_announcements{width:  100%;float: left;background-color: #81694B;padding: 15px 15px;overflow-y: scroll;}
+#trail_tg2_announcements{width:  100%;float: left;background-color: rgba(129,105,75,0.8);padding: 15px 15px;overflow-y: scroll;}
 #trail_tg2_announcements > p{}
 #trail_maps{margin-top:  50px;float: left;width: 100%;}
 #trail_tg_maps{width: 100%;float: left;position: relative;}
@@ -938,7 +901,7 @@ WEATHER DATA
 #trail_tg_maps_header > h2{text-align: center;}
 .trail_tabs{width:100%;float: left;background-color: #00693A;}
 .trail_tabs > li{display: inline-block;}
-.trail_tabs_content{width: 100%;float: left;background-color: #B09B85;padding: 10px;}
+.trail_tabs_content{width: 100%;float: left;background-color: rgba(176,155,133,0.7);padding: 10px;color: #fff;}
 .trail_list1{width: 100%;float:left;overflow-y:scroll;height: 300px;}
 .trail_list2{margin-left: 0;width: 100%;float:left;overflow-y:scroll;height: 300px;}
 .trail_list3{width: 100%; float:left; overflow-y:scroll; height: 300px;}
@@ -950,7 +913,7 @@ WEATHER DATA
 .trail_list4 > ul li{width: 100%; clear:both; float: left;}
 .trail_list5 > ul li{width: 100%; clear:both; float: left;}
 .trail{float:left;}
-.mapit{float: right;padding: 8px;text-align: center;background-color: white;margin-right: 20px;}
+.mapit{float: right;padding: 8px;text-align: center;background-color: #00693a;margin-right: 20px;}
 .details{float: right;padding: 8px;text-align: center;background-color: #B9B3AE;margin-right: 10px;}
 
 #trail_connect{position: relative; float: left; margin-top: 50px; width: 100%;}
@@ -960,23 +923,23 @@ WEATHER DATA
 .feedback_tabs > li {display: inline-block;} 
 .feedback_tab_content{width: 100%;float: left;background-color: #D3D3D3;padding: 10px;height: 300px;overflow-y:scroll;}
 
-#trail_monthly{float: left;margin-top: 50px;margin-left: auto;margin-right: auto;}
+#trail_monthly{float: left;margin-top: 50px;margin-left: auto;margin-right: auto;width: 100%;}
 #trail_tg_monthly{width: 100%;float: left;}
 #trail_tg_monthly_header{float: left;background-color: #00693A;padding: 6px;width: 100%;}
 #trail_tg_monthly_header > h2{ text-align: center;}
 #trail_monthly_image{background-image:url('../images/image6.jpg');background-size:cover;padding: 200px 100px;width: 100%;float: right;}
-#trail_monthly_content{float: left;width: 100%;padding: 10px;height: 225px;background-color: #D3D3D3;overflow-y: scroll;}
+#trail_monthly_content{float: left;width: 100%;padding: 10px 25px;height: 225px;background-color: #D3D3D3;overflow-y: scroll;}
 
 #trail_wellness{position: relative;float: left;margin-top: 50px;margin-right: auto;margin-left: auto;width: 100%;}
 #trail_tg_wellness{float: left;width: 100%;}
 #trail_tg_wellness_header{float: left;background-color: #00693A;width: 100%;padding: 6px;}
 #trail_tg_wellness_header > h2{text-align: center;}
 #trail_wellness_image{width: 100%;float:left;padding: 100px 100px;background-image:url('../images/image14.jpg');background-size: cover;margin-left: auto;margin-right: auto;}
-#trail_wellness_content{float: left;width: 100%;padding: 10px;background-color: #D3D3D3;height: 300px;}
+#trail_wellness_content{float: left;width: 100%;padding: 20px 25px;background-color: #D3D3D3;height: 300px;}
 
   .about_main{background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; clear: both; float: left;}
   #about_tg{width: 100%;}
-  #about_tg_header{background-color: #00693A; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
+  #about_tg_header{background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
   #about_content1, #about_content2, .about_tabs, .about_tab_content{ width: 100%; padding-left: 4%; padding-right: 4%;}
   #about_content1{padding-top: 4%; float:left; clear: both;}
   #about_content_intro, .interviews{float: left; width: 50%;}
@@ -986,42 +949,43 @@ WEATHER DATA
 
  
   .donate_main { background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; padding-top: 2%; clear: both; float: left; width: 100%;}
-  #donate_first{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
-  #donate_second{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
-  #donate_third{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
+  #donate_first{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
+  #donate_second{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
+  #donate_third{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
   #donate_tg{ width: 100%;}
   #donate_tg2{ width: 100%;}
   #donate_tg3 { width: 100%;}
-  #donate_tg_header{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.3% 0 2% 0;clear: both;}
-  #donate_tg_header2{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.4% 0 2% 0;clear: both;}
-  #donate_tg_header3{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.4% 0 2% 0;clear: both;}
+  #donate_tg_header{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.3% 0 2% 0;clear: both;}
+  #donate_tg_header2{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.4% 0 2% 0;clear: both;}
+  #donate_tg_header3{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.4% 0 2% 0;clear: both;}
   
   #donate_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_content1_p{width: 60%; float: left; padding-right: 2%;}
   #donate_image1{ float: left; width: 40%;background-color: #555; padding: 100px 100px;}
-  #donate_list1 {width: 50%; float: left; text-align: center;} 
+  #donate_list1 {width: 100%;float: left;text-align: left;} 
   #donate_list2 {width: 50%; float: left; text-align: center;} 
   #donate_content3_p{width: 60%; float: left;padding-left: 2%; }
   #donate_image2{float: left;width: 40%;background-color: #555;padding: 110px 100px;}
-  #donate_fourth{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
+  #donate_fourth{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
   #donate_tg4{width: 100%;}
-  #donate_tg_header4{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.4% 0 2% 0;clear: both;}
+  #donate_tg_header4{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.4% 0 2% 0;clear: both;}
   #donate_content4{width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_image3{float: left;width: 40%;background-color: #555;padding: 110px 100px;}
   #donate_content4_p{width: 60%; float: left;padding-left: 2%;}
 
-  .event_main{ background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; padding-top: 2%; clear: both; float: left; margin-bottom: 50px; width: 100%;}
+  .event_main{background-color: rgba(238, 238, 238, 0.8);padding-bottom: 2%;padding-top: 2%;clear: both;float: left;margin-bottom: 50px;width: 100%;}
   #event_tg, #event_tg2, #event_tg3, #event_tg4 { width: 100%;}
-  #event_tg_header, #event_tg_header3, #event_tg_header4 { background-color: #00693A; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-  #event_tg_header2 { background-color: #665A57; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-  #event_content1, #event_content2, #event_content3 , #event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content1_p, #event_content4_p{width: 60%; float: left; padding-right: 2%;}
-  #event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+  #event_tg_header, #event_tg_header3, #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+  #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+  .event_content1, .event_content2, .event_content3 , .event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content1_p, .event_content4_p{width: 60%; float: left; padding-right: 2%;}
+  .event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
   #event_list1, #event_list2 {width: 50%; float:left; text-align: center;} 
-  #event_content3_p {width: 60%; float: left; padding-left: 2%;}
+  .event_content3_p {width: 60%; float: left; padding-left: 2%;}
   #event_image2 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+  .event_all{width: 100%;float:left;position: relative;height: 300px;overflow-y: scroll;}
 
 
 }
@@ -1167,7 +1131,7 @@ WEATHER DATA
   #home_trail_comments_plus{float:inherit;position:relative;margin-left: 10%;margin-top: 2%;}
   #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
   #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-  #home_user_comments{padding: 25px 0px 20px 30px;background: #fff;overflow-y: scroll;height: 300px;}
+  #home_user_comments{padding: 25px 0px 20px 30px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 
   #trail_main_map{}
@@ -1245,47 +1209,47 @@ WEATHER DATA
   #about_content_intro{float: left; width: 50%;}
   .interviews{float: left; width: 50%;}
   #about_content_intro {padding-right: 2%;padding-left: 2%;float: left;width: 100%;}
-  .interviews{text-align: center;width: 100%;}
+  .interviews{text-align: center;width: 100%;padding: 20px 0;}
   .about_page > .tab-content {padding-left: 2%; padding-right: 2%;}
 
   .donate_main { background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; padding-top: 2%; clear: both; float: left; width: 100%;}
-  #donate_first{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
-  #donate_second{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
-  #donate_third{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
+  #donate_first{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
+  #donate_second{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
+  #donate_third{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
   #donate_tg{ width: 100%;}
   #donate_tg2{ width: 100%;}
   #donate_tg3 { width: 100%;}
-  #donate_tg_header{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.3% 0 2% 0;clear: both;}
-  #donate_tg_header2{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.4% 0 2% 0;clear: both;}
-  #donate_tg_header3{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.4% 0 2% 0;clear: both;}
+  #donate_tg_header{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.3% 0 2% 0;clear: both;}
+  #donate_tg_header2{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.4% 0 2% 0;clear: both;}
+  #donate_tg_header3{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.4% 0 2% 0;clear: both;}
 
   #donate_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_content1_p{width: 60%; float: left; padding-right: 2%;}
   #donate_image1{ float: left; width: 40%;background-color: #555; padding: 100px 100px;}
-  #donate_list1 {width: 50%; float: left; text-align: center;} 
+  #donate_list1 {width: 100%;float: left;text-align: left;} 
   #donate_list2 {width: 50%; float: left; text-align: center;} 
   #donate_content3_p{width: 60%; float: left;padding-left: 2%; }
   #donate_image2{float: left;width: 40%;background-color: #555;padding: 110px 100px;}
-  #donate_fourth{margin-top:50px; width:100%; clear:both; margin-left:auto; margin-right:auto;}
+  #donate_fourth{/* margin-top:50px; */width:100%;clear:both;margin-left:auto;margin-right:auto;}
   #donate_tg4{width: 100%;}
-  #donate_tg_header4{background-color: #4F80FC;text-align: center;width: 85%;float: left;padding: 1.4% 0 2% 0;clear: both;}
+  #donate_tg_header4{background-color: #4F80FC;text-align: center;width: 100%;float: left;padding: 1.4% 0 2% 0;clear: both;}
   #donate_content4{width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
   #donate_image3{float: left;width: 40%;background-color: #555;padding: 110px 100px;}
   #donate_content4_p{width: 60%; float: left;padding-left: 2%;}
 
   .event_main{ background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; padding-top: 2%; clear: both; float: left; margin-bottom: 50px; width: 100%;}
   #event_tg, #event_tg2, #event_tg3, #event_tg4 { width: 100%;}
-  #event_tg_header, #event_tg_header3, #event_tg_header4 { background-color: #00693A; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-  #event_tg_header2 { background-color: #665A57; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-  #event_content1, #event_content2, #event_content3 , #event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content1_p, #event_content4_p{width: 60%; float: left; padding-right: 2%;}
-  #event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+  #event_tg_header, #event_tg_header3, #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+  #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+  .event_content1, .event_content2, .event_content3 , .event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content1_p, .event_content4_p{width: 60%; float: left; padding-right: 2%;}
+  .event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
   #event_list1, #event_list2 {width: 50%; float:left; text-align: center;} 
-  #event_content3_p {width: 60%; float: left; padding-left: 2%;}
+  .event_content3_p {width: 60%; float: left; padding-left: 2%;}
   #event_image2 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
-
+  .event_all{width: 100%;float:left;position: relative;height: 300px;overflow-y: scroll;}
 
 }
 
@@ -1434,7 +1398,7 @@ WEATHER DATA
   #home_trail_comments_plus{float:inherit;position:relative;margin-left: 10%;margin-top: 2%;}
   #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
   #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-  #home_user_comments{padding: 25px 0px 20px 30px;background: #fff;overflow-y: scroll;height: 300px;}
+  #home_user_comments{padding: 25px 0px 20px 30px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 #trail_main_map{}
 #trail_tg{ float: left;width:  100%;position: relative;}
@@ -1540,15 +1504,15 @@ WEATHER DATA
 
   .event_main{ background-color: rgba(255,255,255, 0.8); padding-bottom: 2%; padding-top: 2%; clear: both; float: left; margin-bottom: 50px; width: 100%;}
   #event_tg, #event_tg2, #event_tg3, #event_tg4 { width: 100%;}
-  #event_tg_header, #event_tg_header3, #event_tg_header4 { background-color: #00693A; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-  #event_tg_header2 { background-color: #665A57; text-align: center; width: 90%; float: left; padding-bottom: 1.3%; clear: both;}
-  #event_content1, #event_content2, #event_content3 , #event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content1_p, #event_content4_p{width: 60%; float: left; padding-right: 2%;}
-  #event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
+  #event_tg_header, #event_tg_header3, #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+  #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
+  .event_content1, .event_content2, .event_content3 , .event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content1_p, .event_content4_p{width: 60%; float: left; padding-right: 2%;}
+  .event_image1, #event_image3 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
   #event_list1, #event_list2 {width: 50%; float:left; text-align: center;} 
-  #event_content3_p {width: 60%; float: left; padding-left: 2%;}
+  .event_content3_p {width: 60%; float: left; padding-left: 2%;}
   #event_image2 { float: left; width: 40%; background-color: #555; padding: 100px 100px;}
-
+  .event_all{width: 100%;float:left;position: relative;height: 300px;overflow-y: scroll;}
 
 }
 
@@ -1705,7 +1669,7 @@ WEATHER DATA
   #home_trail_comments_plus{float:inherit;position:relative;margin-left: 5%;margin-top: 2%;}
   #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
   #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-  #home_user_comments{padding: 25px 20px 20px 20px;background: #fff;overflow-y: scroll;height: 300px;}
+  #home_user_comments{padding: 25px 20px 20px 20px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 #trail_main_map{}
 #trail_tg{ float: left;width:  100%;position: relative;}
@@ -1823,19 +1787,19 @@ WEATHER DATA
   #event_tg_header3 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
   #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 2%;clear: both;}
   #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
-  #event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-  #event_content1_p {width: 100%;float: left;padding: 0 2% 2% 2%;}
-  #event_content4_p {width: 100%;float: left;padding: 2%;}
-  #event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
+  .event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+  .event_content1_p {width: 100%;float: left;padding: 0 2% 2% 2%;}
+  .event_content4_p {width: 100%;float: left;padding: 2%;}
+  .event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
   #event_image3 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
   #event_list1 {width: 100%;float:left;text-align: left;}
   #event_list2 {width: 100%;float:left;text-align: left;}  
-  #event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
+  .event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
   #event_image2 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
-
+  .event_all{width: 100%;float:left;position: relative;height: 275px;overflow-y: scroll;}
 
 }
 
@@ -1994,7 +1958,7 @@ WEATHER DATA
 #home_trail_comments{margin-left: 15%;}
 #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
 #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-#home_user_comments{padding: 25px 25px 10px 25px;background: #fff;overflow-y: scroll;height: 300px;}
+#home_user_comments{padding: 25px 25px 10px 25px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 #trail_main_map{}
 #trail_tg{ float: left;width:  100%;position: relative;}
@@ -2115,18 +2079,20 @@ WEATHER DATA
 #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 2%;clear: both;}
 #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 
-#event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content1_p{width: 100%;float: left;padding: 0 2% 2% 2%;}
-#event_content4_p{width: 100%;float: left;padding: 2%;}
-#event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
+.event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content1_p{width: 100%;float: left;padding: 0 2% 2% 2%;}
+.event_content4_p{width: 100%;float: left;padding: 2%;}
+.event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
 #event_image3 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
 #event_list1 {width: 100%;float:left;text-align: left;}
 #event_list2 {width: 100%;float:left;text-align: left;}  
-#event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
+.event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
 #event_image2 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
+.event_all{width: 100%;float:left;position: relative;height: 250px;overflow-y: scroll;}
+
 
 }
 
@@ -2278,7 +2244,7 @@ WEATHER DATA
 #home_trail_comments{margin-left: 10%;}
 #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
 #home_trail_topic > h2{position:  relative;left:  50px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-#home_user_comments{padding: 25px 25px 10px 25px;background: #fff;overflow-y: scroll;height: 300px;}
+#home_user_comments{padding: 25px 25px 10px 25px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 #trail_main_map{}
 #trail_tg{ float: left;width:  100%;position: relative;}
@@ -2299,7 +2265,7 @@ WEATHER DATA
 #trail_tg_maps_header > h2{text-align: center;}
 .trail_tabs{width:100%;float: left;background-color: #00693A;}
 .trail_tabs > li{display: inline-block; width:100%}
-.trail_tabs_content{width: 100%;float: left;background-color: #D3D3D3;padding: 10px;}
+.trail_tabs_content{width: 100%;float: left;background-color: #B09B85;padding: 10px;}
 .trail_list1{width: 100%;float:left;overflow-y:scroll;height: 300px;}
 .trail_list2{margin-left: 0;width: 100%;float:left;overflow-y:scroll;height: 300px;}
 .trail_list3{width: 100%; float:left; overflow-y:scroll; height: 300px;}
@@ -2396,19 +2362,19 @@ WEATHER DATA
 #event_tg_header3 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 2%;clear: both;}
 #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
-#event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content1_p{width: 100%;float: left;padding: 0 2% 2% 2%;}
-#event_content4_p{width: 100%;float: left;padding: 2%;}
-#event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
+.event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content1_p{width: 100%;float: left;padding: 0 2% 2% 2%;}
+.event_content4_p{width: 100%;float: left;padding: 2%;}
+.event_image11 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
 #event_image3 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
 #event_list1 {width: 100%;float:left;text-align: left;}
 #event_list2 {width: 100%;float:left;text-align: left;}  
-#event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
+.event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
 #event_image2 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
-
+.event_all{width: 100%;float:left;position: relative;height: 250px;overflow-y: scroll;}
 }
 
 
@@ -2558,7 +2524,7 @@ WEATHER DATA
 #home_trail_comments{margin-left: 5%;}
 #home_trail_topic{padding: 100px 0 110px 0;background-image:url('../images/image6.jpg'); background-size: cover;}
 #home_trail_topic > h2{position:  relative;left: 20px;color:  white;background-color: rgba(30, 60, 110,.5);padding: 5px;width: 250px;}
-#home_user_comments{padding: 25px 25px 10px 25px;background: #fff;overflow-y: scroll;height: 300px;}
+#home_user_comments{padding: 25px 25px 10px 25px;background: #D3D3D3;overflow-y: scroll;height: 300px;}
 
 #trail_main_map{}
 #trail_tg{ float: left;width:  100%;position: relative;}
@@ -2579,7 +2545,7 @@ WEATHER DATA
 #trail_tg_maps_header > h2{text-align: center;}
 .trail_tabs{width:100%;float: left;background-color: #00693A;border-bottom: none;}
 .trail_tabs > li{display: inline-block; width:100%}
-.trail_tabs_content{width: 100%;float: left;background-color: #ccc;padding: 10px;}
+.trail_tabs_content{width: 100%;float: left;background-color: #B09B85;padding: 10px;}
 .trail_list1{width: 100%;float:left;overflow-y:scroll;height: 300px; font-size: 14px;}
 .trail_list2{margin-left: 0;width: 100%;float:left;overflow-y:scroll;height: 300px;}
 .trail_list3{width: 100%; float:left; overflow-y:scroll; height: 300px;}
@@ -2677,18 +2643,20 @@ WEATHER DATA
 #event_tg_header3 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
 #event_tg_header4 {background-color: #00693A;text-align: center;width: 100%;float: left;padding-bottom: 2%;clear: both;}
 #event_tg_header2 {background-color: #665A57;text-align: center;width: 100%;float: left;padding-bottom: 1.3%;clear: both;}
-#event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
-#event_content1_p {width: 100%;float: left;padding: 0 2% 2% 2%;}
-#event_content4_p {width: 100%;float: left;padding: 2%;}
-#event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
+.event_content1 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content2 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content3 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content4 { width: 100%; padding-left: 4%; padding-right: 4%; float: left;}
+.event_content1_p {width: 100%;float: left;padding: 0 2% 2% 2%;}
+.event_content4_p {width: 100%;float: left;padding: 2%;}
+.event_image1 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
 #event_image3 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
 #event_list1 {width: 100%;float:left;text-align: left;}
 #event_list2 {width: 100%;float:left;text-align: left;}  
-#event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
+.event_content3_p {width: 100%;float: left;padding: 2% 2% 2% 2%;}
 #event_image2 {float: left;width: 100%;background-color: #555;padding: 100px 100px;}
+.event_all{width: 100%;float:left;position: relative;height: 250px;overflow-y: scroll;}
+
 
 }
 

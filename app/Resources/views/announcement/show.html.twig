@@ -1,31 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Announcement</h1>
+    <h1>Announcement</h1><br><br>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ announcement.id }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ announcement.message }}</td>
-            </tr>
-            <tr>
-                <th>Iscurrent</th>
-                <td>{% if announcement.isCurrent %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    <label>Message:</label> {{ announcement.message }}<br>
+    <label>Current?:</label> {% if announcement.isCurrent %}Yes{% else %}No{% endif %}
 
     <ul>
-        <li>
-            <a href="{{ path('announcement_index') }}">Back to the list</a>
-        </li>
+        
         <li>
             <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">Edit</a>
+        </li>
+        <li>
+            <a href="{{ path('announcement_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

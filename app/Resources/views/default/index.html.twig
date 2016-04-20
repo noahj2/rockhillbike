@@ -7,80 +7,9 @@
   <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
   <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyDFxHSMuCUFqDo41r4SCbWGAKHdpNKq4Ds&callback=initMap"></script>
 {% endblock%}
-
+        
 {% block body %}
-
-<header>
-    <div class="top">
-        <div class="logo_area">
-            <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
-            <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
-        </div>
-        <div class="media">
-            <div class="detail_sum"></div>
-            <div class="temp1">
-                <h4 class="temp_num"></h4></div>
-            <div class="temp2">
-                <h5 class="detail_word"></h5></div>
-            <div class="rhsc">
-                <h4>Rock Hill, South Carolina</h4></div>
-        </div>
-    </div>
-
-        <nav>
-            <div href="#" class="hamburger">
-                <div class="ham-lines">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-                <div class="ham-menu">
-                    <h4>MENU</h4></div>
-            </div>
-            <ul class="clearfix menu">
-                <li><a class="current" href="{{ path('index') }}">Home</a></li>
-                <li><a href="{{ path('trails') }}">Trails & Greenways</a></li>
-                <li><a href="{{ path('events') }}">Events</a></li>
-                <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('involved') }}">Get Involved</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Slideshow -->
-    <div class="callbacks_container">
-        <ul class="rslides slider">
-            <li>
-                <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
-                <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
-                <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
-                <p class="caption">Cherry Park</p>
-            </li>
-            <li>
-                <img src="{{ asset('images/trail2-1.png') }}" alt="" class="large-slide">
-                <img src="{{ asset('images/trail2-2.png') }}" alt="" class="small-slide">
-                <img src="{{ asset('images/trail2-2.png') }}" alt="" class="medium-slide">
-                <p class="caption">Emmett Scott Park</p>
-            </li>
-            <li>
-                <img src="{{ asset('images/trail3-1.png') }}" alt="" class="large-slide">
-                <img src="{{ asset('images/trail3-2.png') }}" alt="" class="small-slide">
-                <img src="{{ asset('images/trail3-2.png') }}" alt="" class="medium-slide">
-                <p class="caption">Emmett Scott Park</p>
-            </li>
-            <li>
-                <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
-                <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
-                <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
-                <p class="caption">Eagle Park</p>
-            </li>
-        </ul>
-    </div>
-
-    <div class="window">
-        <div class="container">
-
-
+            
             <section>
                 <!--FIRST SECTION-->
 
@@ -232,7 +161,7 @@
                         <a href="{{ path('events') }}">
                             <div id="home_wellness">
                                 <div id="home_tg5_header">
-                                    <h2>Wellness Tip of the Month</h2>
+                                    <h2>Wellness Tip of<br>the Month</h2>
                                 </div>
                                 <div id="home_wellness_pic"></div>
                             </div>
@@ -263,23 +192,30 @@
                                 <h2 id="home_trail_comments">Trail Comments</h2>
                                 <img src="{{ asset('images/plus.png') }}" id="home_trail_comments_plus" title="Add a Comment" class="add_comment" data-toggle="modal" data-target="#comment1">
                             </div>
-                            {% if randomComment %}
-                        <div id="home_trail_topic">
-                          
-                          {% if randomComment[0].trail is not null %}
-                            <h2>{{ randomComment[0].trail }}</h2>
-                          {% endif %}
-                        </div>
-                        <div id="home_user_comments">
-                          {% if randomComment[0].name is not null %}
-                            <h3>{{ randomComment[0].name }}</h3>
-                          {% endif %}
-                          <p>{{ randomComment[0].message }}</p>
-                          <p>{{ randomComment[0].date|date('m-d-Y g:ia') }}</p>
-                            {% else %}
-                            <p>These are not the comments you're looking for!</p>
-                          {% endif %}
-                        </div>
+
+                                                            
+                        {% if randomComment %}
+                            <div id="home_trail_topic">
+                              {% if randomComment[0].trail is not null %}
+                                <h2>{{ randomComment[0].trail }}</h2>
+                              {% endif %}
+                            </div>
+                            <div id="home_user_comments">
+                              {% if randomComment[0].name is not null %}
+                                <h3>{{ randomComment[0].name }}</h3>
+                              {% endif %}
+                              <p>{{ randomComment[0].message }}</p>
+                              <p>{{ randomComment[0].date|date('m-d-Y g:ia') }}</p>
+                            </div>
+                        {% else %}
+                            <div id="home_trail_topic">
+                                
+                            </div>
+                            <div id="home_user_comments">
+                                <p>There are no comments, consider leaving one.</p>
+                            </div>
+                        {% endif %}
+
                         <!--END HOME_COMMMENTS-->
                     </div>
                     <!--END OF CONNECT ROCK HILL-->
@@ -290,59 +226,15 @@
 
 
 
-            <!-- Trigger the modal with a button -->
-            <!-- Modal -->
-            <div class="modal fade" id="comment1" role="dialog">
-                <div class="modal-dialog modal-lg">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Submit a Comment</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="modal_material">
+
+
+
+
+
+
                                 
                                 
                                 {% include ':default:commentNew.html.twig' %}
                                 
-                                
-                                
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!--END MODAL-->
-
-
-        </div>
-        <!--CONTAINER-->
-
-        <!--CONTACTS FULL WIDTH-->
-        <footer>
-            <div class="contact1">
-                <h3>City of Rock Hill</h3>
-                <h4>cityofrockhill.com</h4>
-                <h4>803-325-2500</h4>
-                <h4>City Hall • 155 Johnston Street • Rock Hill, SC 29730</h4>
-            </div>
-            <div class="contact2">
-                <h3>Trails & Greenways</h3>
-                <h4>RockHillSCTrails.org</h4>
-                <h4>admin@tg.org</h4>
-                <h4>The content on this site belongs to the Trails and Greenways Advisory Committee of Rock Hill.</h4>
-            </div>
-        </footer>
-    </div>
-    
-    <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a>
-    <!--BACK TO TOP-->
-
 {% endblock %}
-

@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Trail
@@ -32,6 +34,14 @@ class Trail
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hoursOfOperation", type="text")
+     */
+    private $hoursOfOperation;
 
     /**
      * @var float
@@ -57,6 +67,7 @@ class Trail
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=25)
+     * @Assert\Choice(choices = {"Trails", "Sidewalks", "Special Ways", "Blue Ways"}, message = "Choose the primary type of this entity.")
      */
     private $type;
 
@@ -112,18 +123,18 @@ class Trail
 
     
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail", cascade="ALL")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail", cascade="ALL", cascade="ALL")
      * 
      */
     private $comments;
     
     /**
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="location", cascade="ALL")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="location", cascade="ALL", cascade="ALL")
      */ 
     private $events;
     
     /**
-     * @ORM\OneToMany(targetEntity="PointsOfInterest", mappedBy="trail")
+     * @ORM\OneToMany(targetEntity="PointsOfInterest", mappedBy="trail", cascade="ALL")
      */
      private $pointsOfInterest;
      
@@ -539,6 +550,19 @@ class Trail
     public function setIsTrailOfMonth($isTrailOfMonth)
     {
         $this->isTrailOfMonth = $isTrailOfMonth;
+    
+    }
+    
+    public function getHoursOfOperation()
+    {
+        return $this->hoursOfOperation;
+    }
+    
+    public function setHoursOfOperation($hoursOfOperation)
+    {
+        $this->hoursOfOperation = $hoursOfOperation;
+        
+        return $this;
     }
     
 }

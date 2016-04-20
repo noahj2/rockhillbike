@@ -1,27 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block body %}
-    <h1>WellnessTip</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ wellnessTip.id }}</td>
-            </tr>
-            <tr>
-                <th>Tip</th>
-                <td>{{ wellnessTip.tip }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>Wellness Tip</h1><br>
+    
+    <label>Tip:</label> {{ wellnessTip.tip }}
 
     <ul>
         <li>
-            <a href="{{ path('admin_wellnesstip_index') }}">Back to the list</a>
+            <a href="{{ path('admin_wellnesstip_edit', { 'id': wellnessTip.id }) }}">Edit</a>
         </li>
         <li>
-            <a href="{{ path('admin_wellnesstip_edit', { 'id': wellnessTip.id }) }}">Edit</a>
+            <a href="{{ path('admin_wellnesstip_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

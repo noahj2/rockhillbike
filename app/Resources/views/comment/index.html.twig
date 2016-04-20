@@ -1,56 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('announcement_index') }}">Announcement</a> | 
-    <a href="{{ path('admin_comment_index') }}">Comments</a> | 
-    <a href="{{ path('admin_event_index') }}">Events</a> | 
-    <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
-    <a href="{{ path('location_index') }}">Locations</a> | 
-    <a href="{{ path('news_index') }}">News</a> | 
-    <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
-    <a href="{{ path('admin_trail_index') }}">Trails</a> | 
-    <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
-    
-    <h1>Comments List</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Message</th>
-                <th>Image</th>
-                <th>Date</th>
-                <th>Trail</th>
-                <th>Email</th>
-                <th>Approved?</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comment in comments %}
-            <tr>
-                <td>{{ comment.name }}</td>
-                <td>{{ comment.message }}</td>
-                <td>{{ comment.image }}</td>
-                <td>{% if comment.date %}{{ comment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ comment.trail }}</td>
-                <td>{{ comment.email }}</td>
-                <td>{% if comment.isApproved %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <div>
-                        <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
-                    </div>   
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div><br>
-        <ul>
-            <li>
-                <a href="{{ path('admin_comment_new') }}">Create New Entry</a>
-            </li>
-        </ul>
+    <h1>Pending Comments</h1><br>
         
-    </div>
+    {% for comment in pendingComments %}
+        <label>Name:</label> {{ comment.name }}<br>
+        <label>Message:</label> {{ comment.message }}<br>
+        <label>Image:</label> {{ comment.image }}<br>
+        <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y H:i') }}{% endif %}<br>
+        <label>Trail:</label> {{ comment.trail }}<br>
+        <label>Email:</label> {{ comment.email }}<br>
+        <label>Approved?:</label> {% if comment.isApproved %}Yes{% else %}No{% endif %}
+        <div>
+            <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
+        </div><br>
+    {% endfor %}
+    
+    <h1>Comments List</h1><br>
+    
+    {% for comment in comments %}
+        {% if comment.isApproved == 1 %}
+            <label>Name:</label> {{ comment.name }}<br>
+            <label>Message:</label> {{ comment.message }}<br>
+            <label>Image:</label> {{ comment.image }}<br>
+            <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y H:i') }}{% endif %}<br>
+            <label>Trail:</label> {{ comment.trail }}<br>
+            <label>Email:</label> {{ comment.email }}<br>
+            <label>Approved?:</label> {% if comment.isApproved %}Yes{% else %}No{% endif %}
+        {% endif %}
+        <div>
+            <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
+        </div><br>
+    {% endfor %}
+
 {% endblock %}

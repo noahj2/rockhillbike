@@ -1,17 +1,15 @@
 {% extends 'base.html.twig' %}
 
  {% block stylesheets %}
+         {{ parent() }}
         <link rel="stylesheet" href="{{ asset('css/generic.css') }}" />
-{% endblock %}
-        
-{% block javascripts %}
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 {% endblock %}
 
 {% block body %}
     <h1>RoutePoint creation</h1>
 
             <div id="map">
+      
         <script type="text/javascript">
             var map;
             var green = "#006837";
@@ -238,9 +236,9 @@
                 	polyLines[polyLines.length - 1].setMap(null);
                 	polyLines.pop();
                 	console.log("You're submitting your information.");
-                	console.log(polyLines);
+                	//console.log(polyLines);
                 	//Object to hold polyline data.
-                	var routePoints = {};
+                	var routePoints = [];
                     //loops polyline array to get polyline coords to send to database
                     
                     for(i = 0; i < polyLines.length; i++){
@@ -262,17 +260,17 @@
                     	
                     }
                     console.log(routePoints);
-                                        	/*
+                                        	
                     	//Send AJAX request to server...
                     	$.ajax({
-                    	    type : "POST", 
-                    	    url : , //Send to RoutePoint (newAction)
-                    	    data : routePoints, //Object of objects
+                    	    type : 'POST', 
+                    	    url : '{{ path('admin_routepoint_create', { 'trail': trail.id})  }}', 
+                    	    data : 'data=' + JSON.stringify(routePoints), //Object of objects
                     	    success: function(data){
-                    	        display a conf message
+                    	        console.log(data);
                     	    }
                     	})
-                    	*/
+                    	
                     
                     //gets marker coords to send to database
                     for(i = 0; i < markers.length; i++){
@@ -283,6 +281,7 @@
                 });
             });
         </script>
+        
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFxHSMuCUFqDo41r4SCbWGAKHdpNKq4Ds&callback=initMap">
         </script>
     </div>
@@ -292,17 +291,8 @@
         <button id="branch">Split Path</button>
         <!--<button id="previousSegment">Clear Last</button>-->
         <button id="clearAll">Clear All</button>
-        <!--<button id="submit">Submit</button>-->
+        <button id="submit">Submit</button>
     </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" id="submit" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_routepoint_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    
 {% endblock %}

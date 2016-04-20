@@ -1,51 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block body %}
     <h1>Comment</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ comment.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ comment.name }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ comment.message }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ comment.image }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{% if comment.date %}{{ comment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Trail</th>
-                <td>{{ comment.trail }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ comment.email }}</td>
-            </tr>
-            <tr>
-                <th>Isapproved</th>
-                <td>{% if comment.isApproved %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
+        <label>Name:</label> {{ comment.name }}<br>
+        <label>Message:</label> {{ comment.message }}<br>
+        <label>Image:</label> {{ comment.image }}<br>
+        <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y H:i') }}{% endif %}<br>
+        <label>Trail:</label> {{ comment.trail }}<br>
+        <label>Email:</label> {{ comment.email }}<br>
+        <label>Approved?:</label> {% if comment.isApproved %}Yes{% else %}No{% endif %}
     <ul>
         <li>
-            <a href="{{ path('admin_comment_index') }}">Back to the list</a>
+            <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
         </li>
         <li>
-            <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
+            <a href="{{ path('admin_comment_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

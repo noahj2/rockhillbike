@@ -1,17 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
-{% block body %}
-    
-    <a href="{{ path('announcement_index') }}">Announcement</a> | 
-    <a href="{{ path('admin_comment_index') }}">Comments</a> | 
-    <a href="{{ path('admin_event_index') }}">Events</a> | 
-    <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
-    <a href="{{ path('location_index') }}">Locations</a> | 
-    <a href="{{ path('news_index') }}">News</a> | 
-    <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
-    <a href="{{ path('admin_trail_index') }}">Trails</a> | 
-    <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
-    
+{% block body %} 
     <h1>Trails List</h1>
 
     <table>

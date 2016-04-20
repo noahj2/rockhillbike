@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block body %}
     <h1>Trail Edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Submit Edit" />
+        <input type="submit" value="Submit" />
     {{ form_end(edit_form) }}
 
     <ul>

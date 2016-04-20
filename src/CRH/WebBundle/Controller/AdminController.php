@@ -18,6 +18,9 @@ class AdminController extends Controller
      */
     public function adminAction()
     {
-        return $this->render(":admin:index.html.twig");
+        $em = $this->getDoctrine()->getManager();
+
+        $comments = $em->getRepository('CRHWebBundle:Comment')->findBy(array('isApproved'=>false));
+        return $this->render(":admin:index.html.twig", array('pendingComments' => $comments));
     }
 }

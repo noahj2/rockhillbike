@@ -28,9 +28,12 @@ class CommentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $comments = $em->getRepository('CRHWebBundle:Comment')->findAll();
+        $pendingComments = $em->getRepository('CRHWebBundle:Comment')->findBy(array('isApproved'=>false));
+        
 
         return $this->render('comment/index.html.twig', array(
             'comments' => $comments,
+            'pendingComments' => $pendingComments
         ));
     }
 

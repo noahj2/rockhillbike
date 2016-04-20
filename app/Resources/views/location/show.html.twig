@@ -1,31 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Location</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ location.id }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ location.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ location.longitude }}</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <h1>Location</h1><br>
+    
+    <label>Latitude:</label> {{ location.latitude }}<br>
+    <label>Longitude:</label> {{ location.longitude }}<br>
+    
     <ul>
         <li>
-            <a href="{{ path('location_index') }}">Back to the list</a>
+            <a href="{{ path('location_edit', { 'id': location.id }) }}">Edit</a>
         </li>
         <li>
-            <a href="{{ path('location_edit', { 'id': location.id }) }}">Edit</a>
+            <a href="{{ path('location_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

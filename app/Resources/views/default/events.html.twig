@@ -4,74 +4,7 @@
 {% block title %}Rock Hill: Trails & Greensways{% endblock %}
 {% block body %}
 
-<header>
-    <div class="top">
-      <div class="logo_area">
-        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
-        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
-      </div>
-      <div class="media">
-        <div class="detail_sum"></div> 
-        <div class="temp1"><h4 class="temp_num"></h4></div>
-        <div class="temp2"><h5 class="detail_word"></h5></div>
-        <div class="rhsc"><h4>Rock Hill, South Carolina</h4></div>
-      </div>
-    </div>
 
-    <nav>
-      <div href="#" class="hamburger">
-        <div class="ham-lines">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="ham-menu"><h4>MENU</h4></div>
-      </div>
-      <ul class="clearfix menu">
-        <li><a href="{{ path('index') }}">Home</a></li>
-        <li><a href="{{ path('trails') }}">Trails & Greenways</a></li>
-        <li><a class="current" href="{{ path('events') }}">Events</a></li>
-        <li><a href="{{ path('about') }}">About</a></li>
-        <li><a href="{{ path('involved') }}">Get Involved</a></li>
-      </ul>
-    </nav>
-  </header>
-
-     <!-- Slideshow -->
-    <div class="callbacks_container">
-      <ul class="rslides slider">
-        <li>
-          <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Eagle Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Cherry Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail2-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail2-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail2-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Emmett Scott Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail3-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail3-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail3-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Emmett Scott Park</p>
-        </li>
-        
-      </ul>
-    </div>
-
-
-      <div class="window event_page">
-        <div class="container">
-            
               <section><!--FIRST CONTENT-->
                 <div>
                   <div id="event_tg" >
@@ -81,12 +14,12 @@
                   </div>
                     
                     <div class="event_main">
-                      <section>  
-                        <div id="event_content1">
+                      <section class="event_all">  
+                        <div class="event_content1">
                           {% if upcomingEvents %}
                                
                             {% for event in upcomingEvents %}
-                            <div id="event_content1_p">
+                            <div class="event_content1_p">
                               <h3>{{ event.name }}</h3>
                               <p>{{ event.description }}</p>
                               {% if event.location is not null %}
@@ -96,10 +29,12 @@
                                 <p>{{ event.eventDate|date('m-d-Y g:ia') }}</p>
                               {% endif %}
                             </div>
-                            <div id="event_image1"></div>
+                            <div class="event_image1"></div>
                             {% endfor %}
                             {% else %}
+                            <div class="event_content1_p">
                                 <p>There are no upcoming events.</p>
+                            </div>    
                             {% endif %}
                         </div>
                       </section> 
@@ -118,7 +53,7 @@
                     
                     <div class="event_main" >
                       <section>  
-                        <div id="event_content2">
+                        <div class="event_content2">
                           
                           <div><!--DONATE LIST 1-->
                           {% if announcements  %}
@@ -148,19 +83,26 @@
                     
                     <div class="event_main">
                       <section>  
-                        <div id="event_content3">
+                        <div class="event_content3">
                           <div id="event_image2"></div>
-                          {% if trailOfMonth is not null %}
-                      <div id="event_content3_p">
-                          <h3>{{ trailOfMonth.name }}</h3>
-                           {% else %}<p>No trail of month.  Check back soon!</p>
-                    </div>
-                    {% endif %}
+                            <div class="event_content3_p">
+                           {% if trailOfMonth is not null %}
+                              <h3>{{ trailOfMonth.name }}</h3>
+                           {% else %}
+                             <p>No trail of month. Check back soon!</p>
+                           {% endif %}
+                          </div>
                         </div>
                       </section> 
                     </div> 
                 </div>    
               </section>
+
+
+
+ 
+
+
 
 
               <section><!--FOURTH CONTENT-->
@@ -172,8 +114,8 @@
                     
                     <div class="event_main">
                       <section>  
-                        <div id="event_content4">
-                          <p id="event_content4_p">
+                        <div class="event_content4">
+                          <p class="event_content4_p">
                             {% if wellnessTipOfMonth is not null %}
                               {{ wellnessTipOfMonth.tip }}
                             {% else %}
@@ -186,24 +128,5 @@
                     </div> 
               </section>  
 
-           </div><!--END OF Container-->
-          
-          <!--CONTACTS FULL WIDTH-->
-          <footer>
-            <div class="contact1">
-                <h3>City of Rock Hill</h3>
-                <h4>cityofrockhill.com</h4>
-                <h4>803-325-2500</h4>
-                <h4>City Hall • 155 Johnston Street • Rock Hill, SC  29730</h4>
-            </div>
-            <div class="contact2">
-                <h3>Trails & Greenways</h3>
-                <h4>RockHillSCTrails.org</h4>
-                <h4>admin@tg.org</h4>
-                <h4>The content on this site belongs to the Trails and Greenways Advisory Committee of Rock Hill.</h4>
-            </div>
-          </footer>
-      </div>  
 
-  <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a><!--BACK TO TOP-->
 {% endblock %}
