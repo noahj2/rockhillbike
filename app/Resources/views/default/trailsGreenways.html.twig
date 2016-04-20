@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Rock Hill Trails!{% endblock %}
+{% block title %}Rock Hill: Trails & Greensways{% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
@@ -187,7 +187,7 @@
                 </div><!--End Connect Rock Hill-->
               </section><!--END OF FOURTH SECTION-->
 
-
+              
               <section><!--FIFTH SECTION-->
                 <!--Monthly Trail-->
                <div id="trail_monthly">
@@ -210,12 +210,14 @@
                     <p>Description: {{ trailOfMonth.description }}</p>
                     {% else %}
                         <h2>There is no current trail of the month.  Check back soon!</h2>
-                    {% endif %}
+                    
                   </div>
                   <div id="trail_monthly_image"></div>
 
                  </div><!--End Monthly Trail-->
            </section><!--END OF FIFTH SECTION -->
+           {% endif %}
+           
 
 
 
@@ -270,36 +272,101 @@
                         </div>
                         <div class="modal-body">
                           <div class="modal_material">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    
-                                    {% if trail.photo1 %}
-                                      <div class="item active">
-                                       <img src="{{ vich_uploader_asset(trail, 'imageFile1') }}" alt="{{ trail.name }}" />
-                                        <div class="carousel-caption">
-                                          {{ trail.name }}
-                                        </div>
-                                      </div>                                    
-                                    {% endif %}
-                                    
+                            
+                            
+                            
+                            {% if trail.photo1 or trail.photo2 or trail.photo3 or trail.photo4 %}
+                            
+                            {# Carousel Requires First Image to Be Set to Active But That Could Be Image 1..4 #}
+                            {% set isFirst = true %}
+                            
+                            
+                              <div id="trailCarousel{{trail.id}}" class="carousel slide" data-ride="carousel">
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner">
+                                      
+                                      {% if trail.photo1 %}
+                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile1')) }}" alt="{{ trail.name }}" />
+                                          <div class="carousel-caption">
+                                            {{ trail.name }}
+                                          </div>
+                                        </div>                                    
+                                      {% endif %}
+                                      
+                                      {% if trail.photo2 %}
+                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile2')) }}" alt="{{ trail.name }}" />
+                                          <div class="carousel-caption">
+                                            {{ trail.name }}
+                                          </div>
+                                        </div>                                    
+                                      {% endif %}
 
-                                  </div>
+                                      {% if trail.photo3 %}
+                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile3')) }}" alt="{{ trail.name }}" />
+                                          <div class="carousel-caption">
+                                            {{ trail.name }}
+                                          </div>
+                                        </div>                                    
+                                      {% endif %}
 
-                                  <!-- Controls -->
-                                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                  </a>
-                                  
+                                      {% if trail.photo4 %}
+                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile4')) }}" alt="{{ trail.name }}" />
+                                          <div class="carousel-caption">
+                                            {{ trail.name }}
+                                          </div>
+                                        </div>                                    
+                                      {% endif %}                                      
+  
+                                    </div>
+  
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#trailCarousel{{trail.id}}" role="button" data-slide="prev">
+                                      <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#trailCarousel{{trail.id}}" role="button" data-slide="next">
+                                      <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                    
                               </div>
+                            {% endif %}  
+                            
+                              
+                              
                               
                               <br>
-                              <p>Accessible: ????????????????????????????????????????????????????? </p>
+                              <p>Accessibility: 
+                                
+                                {% if trail.surfaceType == 'Water' %}
+                                  <img src="{{ asset('images/water.png') }}" alt="{{ trail.surfaceType }}"  />
+                                {% else %}
+                                  <img src="{{ asset('images/walk.png') }}" alt="Walking"  />
+                                {% endif %}
+                                
+                                {% if trail.allowsBikes == true %}
+                                  <img src="{{ asset('images/bike.png') }}" alt="Allows Bikes"  />
+                                {% endif %}
+                                
+                                {% if trail.handicapAccess == true %}
+                                  <img src="{{ asset('images/handicap.png') }}" alt="Handicap Access"  />
+                                {% endif %}
+                                
+                              </p>
                               <p>Distance: {{ trail.length }} miles</p>
-                              <p>Material: ??????????????????????????????????????????????????????</p>
+                              <p>Surface Type: 
+                                {% if trail.surfaceType == 'Asphalt' %}
+                                  <img src="{{ asset('images/gravel.png') }}" alt="{{ trail.surfaceType }}" />
+                                {% elseif trail.surfaceType == 'Concrete' %}
+                                  <img src="{{ asset('images/pavement.png') }}" alt="{{ trail.surfaceType }}"  />
+                                {% elseif trail.surfaceType == 'Natural' %}
+                                  <img src="{{ asset('images/nature.png') }}" alt="{{ trail.surfaceType }}"  />
+                                {% elseif trail.surfaceType == 'Water' %}
+                                  <img src="{{ asset('images/water.png') }}" alt="{{ trail.surfaceType }}"  />
+                                {% endif %}
+                              </p>
                               
                               <p>Hours of Operation: {{ trail.hoursOfOperation | raw }}</p>
                               <p>Features: ??????????????????????????????????????????????</p>

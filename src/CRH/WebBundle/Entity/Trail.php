@@ -33,22 +33,42 @@ class Trail
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
-    private $name;
+    private $name = "";
     
     
     /**
      * @var string
      *
      * @ORM\Column(name="hoursOfOperation", type="text")
+     * @Assert\NotNull(message="Please provide hours of operation for the trail.")
      */
-    private $hoursOfOperation;
+    private $hoursOfOperation = "";
 
     /**
      * @var float
      *
      * @ORM\Column(name="length", type="float")
      */
-    private $length;
+    private $length = 0;
+    
+    
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="allowsBikes", type="boolean")
+     */
+    private $allowsBikes = false;
+    
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="handicapAccess", type="boolean")
+     */
+    private $handicapAccess = false;
+    
+    
     
     
     /**
@@ -72,23 +92,10 @@ class Trail
     private $type;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="caloriesBurnedMale", type="float", nullable=true)
-     */
-    private $caloriesBurnedMale;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="caloriesBurnedFemale", type="float", nullable=true)
-     */
-    private $caloriesBurnedFemale;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="surfaceType", type="string", length=50)
+     * @Assert\Choice(choices = {"Asphalt", "Concrete", "Natural", "Water"}, message = "Choose the primary surface type.")
      */
     private $surfaceType;
 
@@ -96,22 +103,9 @@ class Trail
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotNull(message="Please provide a short description of the trail.")
      */
-    private $description;
-    
-    /**
-    *
-    *@Vich\UploadableField(mapping="trail_image", fileNameProperty="photo1")
-    *
-    */
-    private $imageFile1;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo1", type="string", length=255, nullable=true)
-     */
-    private $photo1;
+    private $description = "";
     
     /**
     *@var \DateTime
@@ -210,51 +204,6 @@ class Trail
         return $this->length;
     }
 
-    /**
-     * Set caloriesBurnedMale
-     *
-     * @param float $caloriesBurnedMale
-     * @return Trail
-     */
-    public function setCaloriesBurnedMale($caloriesBurnedMale)
-    {
-        $this->caloriesBurnedMale = $caloriesBurnedMale;
-
-        return $this;
-    }
-
-    /**
-     * Get caloriesBurnedMale
-     *
-     * @return float 
-     */
-    public function getCaloriesBurnedMale()
-    {
-        return $this->caloriesBurnedMale;
-    }
-
-    /**
-     * Set caloriesBurnedFemale
-     *
-     * @param float $caloriesBurnedFemale
-     * @return Trail
-     */
-    public function setCaloriesBurnedFemale($caloriesBurnedFemale)
-    {
-        $this->caloriesBurnedFemale = $caloriesBurnedFemale;	
-
-        return $this;
-    }
-
-    /**
-     * Get caloriesBurnedFemale
-     *
-     * @return float 
-     */
-    public function getCaloriesBurnedFemale()
-    {
-        return $this->caloriesBurnedFemale;
-    }
 
     /**
      * Set surfaceType
@@ -325,6 +274,140 @@ class Trail
         return $this->type;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+    *
+    *@Vich\UploadableField(mapping="trail_banner1", fileNameProperty="bannerPhoto1")
+     * @Assert\Image(
+     *     minWidth = 2400,
+     *     maxWidth = 2400,
+     *     minHeight = 600,
+     *     maxHeight = 600
+     * )
+    *
+    */
+    private $bannerImageFile1;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bannerPhoto1", type="string", length=255, nullable=true)
+     */
+    private $bannerPhoto1;
+
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Trail
+     */ 
+    public function setBannerImageFile1(File $image = null)
+    {
+        $this->bannerImageFile1 = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getBannerImageFile1()
+     {
+         return $this->bannerImageFile1;
+     }
+     
+     
+    /**
+     * Set bannerPhoto1
+     *
+     * @param string $bannerPhoto1
+     * @return Trail
+     */
+    public function setBannerPhoto1($bannerPhoto1)
+    {
+        $this->bannerPhoto1 = $bannerPhoto1;
+
+        return $this;
+    }
+
+    /**
+     * Get bannerPhoto1
+     *
+     * @return string 
+     */
+    public function getBannerPhoto1()
+    {
+        return $this->bannerPhoto1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+    *
+    *@Vich\UploadableField(mapping="trail_photo1", fileNameProperty="photo1")
+    *
+    */
+    private $imageFile1;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo1", type="string", length=255, nullable=true)
+     */
+    private $photo1;
+
+
+
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      * 
@@ -349,14 +432,7 @@ class Trail
          return $this->imageFile1;
      }
      
-     /**
-      * @return updatedOn 
-      */
-      public function getUpdatedOn()
-      {
-          return $this->updatedOn;
-      }
-      
+     
     /**
      * Set photo1
      *
@@ -380,8 +456,251 @@ class Trail
         return $this->photo1;
     }
 
-    
+     
+     
+     
+     
+     
+     
+     
 
+
+
+    /**
+    *
+    *@Vich\UploadableField(mapping="trail_photo2", fileNameProperty="photo2")
+    *
+    */
+    private $imageFile2;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo2", type="string", length=255, nullable=true)
+     */
+    private $photo2;
+
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Trail
+     */ 
+    public function setImageFile2(File $image = null)
+    {
+        $this->imageFile2 = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile2()
+     {
+         return $this->imageFile2;
+     }
+     
+     
+    /**
+     * Set photo2
+     *
+     * @param string $photo2
+     * @return Trail
+     */
+    public function setPhoto2($photo2)
+    {
+        $this->photo2 = $photo2;
+
+        return $this;
+    }
+
+    /**
+     * Get photo2
+     *
+     * @return string 
+     */
+    public function getPhoto2()
+    {
+        return $this->photo2;
+    }
+
+     
+     
+     
+     
+     
+     
+     
+
+
+
+    /**
+    *
+    *@Vich\UploadableField(mapping="trail_photo3", fileNameProperty="photo3")
+    *
+    */
+    private $imageFile3;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo3", type="string", length=255, nullable=true)
+     */
+    private $photo3;
+
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Trail
+     */ 
+    public function setImageFile3(File $image = null)
+    {
+        $this->imageFile3 = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile3()
+     {
+         return $this->imageFile3;
+     }
+     
+     
+    /**
+     * Set photo3
+     *
+     * @param string $photo3
+     * @return Trail
+     */
+    public function setPhoto3($photo3)
+    {
+        $this->photo3 = $photo3;
+
+        return $this;
+    }
+
+    /**
+     * Get photo3
+     *
+     * @return string 
+     */
+    public function getPhoto3()
+    {
+        return $this->photo3;
+    }
+
+     
+     
+     
+     
+     
+     
+     
+
+
+
+    /**
+    *
+    *@Vich\UploadableField(mapping="trail_photo4", fileNameProperty="photo4")
+    *
+    */
+    private $imageFile4;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo4", type="string", length=255, nullable=true)
+     */
+    private $photo4;
+
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Trail
+     */ 
+    public function setImageFile4(File $image = null)
+    {
+        $this->imageFile4 = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile4()
+     {
+         return $this->imageFile4;
+     }
+     
+     
+    /**
+     * Set photo4
+     *
+     * @param string $photo1
+     * @return Trail
+     */
+    public function setPhoto4($photo4)
+    {
+        $this->photo4 = $photo4;
+
+        return $this;
+    }
+
+    /**
+     * Get photo4
+     *
+     * @return string 
+     */
+    public function getPhoto4()
+    {
+        return $this->photo4;
+    }
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     /**
+      * @return updatedOn 
+      */
+      public function getUpdatedOn()
+      {
+          return $this->updatedOn;
+      }
+      
     /**
      * Set location
      *
@@ -565,4 +884,31 @@ class Trail
         return $this;
     }
     
+    
+    public function getAllowsBikes()
+    {
+        return $this->allowsBikes;
+    }
+    
+    public function setAllowsBikes($allowsBikes)
+    {
+        $this->allowsBikes = $allowsBikes;
+        
+        return $this;
+    }
+    
+    
+    public function getHandicapAccess()
+    {
+        return $this->handicapAccess;
+    }
+    
+    public function setHandicapAccess($handicapAccess)
+    {
+        $this->handicapAccess = $handicapAccess;
+        
+        return $this;
+    }
+    
+
 }

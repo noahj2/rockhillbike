@@ -70,35 +70,7 @@
   
   
 
-     <!-- Slideshow -->
-    <div class="callbacks_container">
-      <ul class="rslides slider">
-        <li>
-          <img src="{{ asset('images/trail18-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail18-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail18-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Friedheim Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail6-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail6-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail6-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Tech Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail4-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail4-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Eagle Park</p>
-        </li>
-        <li>
-          <img src="{{ asset('images/trail1-1.png') }}" alt="" class="large-slide">
-          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="small-slide">
-          <img src="{{ asset('images/trail1-2.png') }}" alt="" class="medium-slide">
-          <p class="caption">Cherry Park</p>
-        </li>
-      </ul>
-    </div>
+    {{ render(controller('CRHWebBundle:Default:slideshowHeader')) }}
 
   
   

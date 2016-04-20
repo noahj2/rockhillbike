@@ -1,56 +1,25 @@
 {% extends 'adminBase.html.twig' %}
 
+{% block title %}Trail Show{% endblock %}
+
 {% block body %}
-    <h1>Trail</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ trail.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ trail.name }}</td>
-            </tr>
-            <tr>
-                <th>Length</th>
-                <td>{{ trail.length }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ trail.type }}</td>
-            </tr>
-            <tr>
-                <th>Caloriesburnedmale</th>
-                <td>{{ trail.caloriesBurnedMale }}</td>
-            </tr>
-            <tr>
-                <th>Caloriesburnedfemale</th>
-                <td>{{ trail.caloriesBurnedFemale }}</td>
-            </tr>
-            <tr>
-                <th>Surfacetype</th>
-                <td>{{ trail.surfaceType }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ trail.description }}</td>
-            </tr>
-            <tr>
-                <th>Photo1</th>
-                <td>{{ trail.photo1 }}</td>
-            </tr>
-
-        </tbody>
-    </table>
+    <h1>Trail</h1><br>
+    
+    <label>ID: </label> {{ trail.id }}<br>
+    <label>Name:</label> {{ trail.name }}<br>
+    <label>Length:</label> {{ trail.length }}<br>
+    <label>Type:</label> {{ trail.type }}<br>
+    <label>Surface Type:</label> {{ trail.surfaceType }}<br>
+    <label>Description:</label> {{ trail.description }}<br>
+    <label>Photo:</label> {{ trail.photo1 }}<br>
 
     <ul>
         <li>
-            <a href="{{ path('admin_trail_index') }}">Back to the list</a>
+            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
         </li>
         <li>
-            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
+            <a href="{{ path('admin_trail_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

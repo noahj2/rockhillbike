@@ -1,0 +1,43 @@
+ <!-- Slideshow -->
+<div class="callbacks_container">
+  <ul class="rslides slider">
+    {% for trail in slideshowTrails %}
+        <li>
+            {# Large Photo Will Always Be There #}
+            <img src="{{ asset(vich_uploader_asset(trail, 'bannerImageFile1')) }}" alt="" class="large-slide">
+  
+            {# Slideshow Requires a Smaller Image For Mobile But That Could Be Image 1..4 #}
+            {% set isFirst = true %}
+                                
+            {% if isFirst == true and trail.photo1 %}
+                {% set isFirst = false %}
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile1')) }}" alt="" class="small-slide">
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile1')) }}" alt="" class="medium-slide">
+            {% endif %}
+
+            {% if isFirst == true and trail.photo2 %}
+                {% set isFirst = false %}
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile2')) }}" alt="" class="small-slide">
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile2')) }}" alt="" class="medium-slide">
+            {% endif %}
+
+
+            {% if isFirst == true and trail.photo3 %}
+                {% set isFirst = false %}
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile3')) }}" alt="" class="small-slide">
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile3')) }}" alt="" class="medium-slide">
+            {% endif %}
+
+
+            {% if isFirst == true and trail.photo4 %}
+                {% set isFirst = false %}
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile4')) }}" alt="" class="small-slide">
+                <img src="{{ asset(vich_uploader_asset(trail, 'imageFile4')) }}" alt="" class="medium-slide">
+            {% endif %}
+
+            <p class="caption">{{ trail.name }}</p>
+
+        </li>
+    {% endfor %}
+  </ul>
+</div>

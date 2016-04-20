@@ -1,13 +1,15 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %}
-    <h1>Announcement</h1><br><br>
+{% block title %}Announcement Show{% endblock %}
 
+{% block body %}
+    <h1>Announcement</h1><br>
+
+    <label>ID: </label> {{ announcement.id }}<br>
     <label>Message:</label> {{ announcement.message }}<br>
     <label>Current?:</label> {% if announcement.isCurrent %}Yes{% else %}No{% endif %}
-
+    
     <ul>
-        
         <li>
             <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">Edit</a>
         </li>

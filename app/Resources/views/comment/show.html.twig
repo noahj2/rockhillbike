@@ -1,8 +1,11 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %}
-    <h1>Comment</h1>
+{% block title %}Comment Show{% endblock %}
 
+{% block body %}
+    <h1>Comment</h1><br>
+        
+        <label>ID: </label> {{ comment.id }}<br>
         <label>Name:</label> {{ comment.name }}<br>
         <label>Message:</label> {{ comment.message }}<br>
         <label>Image:</label> {{ comment.image }}<br>

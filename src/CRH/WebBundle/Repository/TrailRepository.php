@@ -4,6 +4,9 @@ namespace CRH\WebBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
+
+
 /**
  * TrailRepository
  *
@@ -12,4 +15,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class TrailRepository extends EntityRepository
 {
+    public function getRandomTrails($limit = 3)
+    {
+        
+        
+        $em = $this->_em;
+        
+        //The slide show requires a banner image and at least one smaller image for use on mobile, only select candidates
+        $sql = "SELECT * FROM trail t WHERE bannerPhoto1 IS NOT NULL AND (photo1 IS NOT NULL OR photo2 IS NOT NULL OR photo3 IS NOT NULL OR photo4 IS NOT NULL) ORDER BY RAND() LIMIT " . $limit;
+
+        $rsm = new ResultSetMappingBuilder($em);
+        $rsm->addRootEntityFromClassMetadata('CRHWebBundle:Trail', 't');
+        
+        $results = $this->_em->createNativeQuery($sql, $rsm)->getResult();
+        return $results;
+
+    }
 }

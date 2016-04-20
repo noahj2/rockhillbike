@@ -1,44 +1,27 @@
 {% extends 'adminBase.html.twig' %}
 
+{% block title %}Trail Index{% endblock %}
+
 {% block body %} 
-    <h1>Trails List</h1>
+    <h1>Trails List</h1><br>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Length</th>
-                <th>Type</th>
-                <th>CaloriesBurned(M)</th>
-                <th>CaloriesBurned(F)</th>
-                <th>SurfaceType</th>
-                <th>Description</th>
-                <th>Photo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for trail in trails %}
-            <tr>
-                <td>{{ trail.name }}</td>
-                <td>{{ trail.length }}</td>
-                <td>{{ trail.type }}</td>
-                <td>{{ trail.caloriesBurnedMale }}</td>
-                <td>{{ trail.caloriesBurnedFemale }}</td>
-                <td>{{ trail.surfaceType }}</td>
-                <td>{{ trail.description }}</td>
-                <td>{{ trail.photo1 }}</td>
-                <td>
-                    <div>
-                        <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-     <div><br>
+    {% for trail in trails %}
+        <label>ID: </label> {{ trail.id }}<br>
+        <label>Name:</label> {{ trail.name }}<br>
+        <label>Length:</label> {{ trail.length }}<br>
+        <label>Type:</label> {{ trail.type }}<br>
+        <label>Surface Type:</label> {{ trail.surfaceType }}<br>
+        <label>Description:</label> {{ trail.description }}<br>
+        <label>Photo:</label> {{ trail.photo1 }}<br>
+        <div>
+            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
+        </div><br>
+    {% endfor %}
+    
+    
+    
+     <div>
          <ul>
             <li>
                 <a href="{{ path('admin_trail_new') }}">Create New Entry</a>

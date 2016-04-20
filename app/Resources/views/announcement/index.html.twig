@@ -1,20 +1,21 @@
 {% extends 'adminBase.html.twig' %}
 
+{% block title %}Announcement Index{% endblock %}
+
 {% block body %}
     
     
-    <h1>Announcements List</h1>
-    <br><br>
+    <h1>Announcements List</h1><br>
 
     
     
     {% for announcement in announcements %}
-    <label>Message: </label> {{ announcement.message }}<br>
-    <label>Current?: </label> {% if announcement.isCurrent %}Yes{% else %}No{% endif %}
-    <div>
-        <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">Edit</a>
-    </div>
-    <br>
+        <label>ID: </label> {{ announcement.id }}<br>
+        <label>Message: </label> {{ announcement.message }}<br>
+        <label>Current?: </label> {% if announcement.isCurrent %}Yes{% else %}No{% endif %}
+        <div>
+            <a href="{{ path('announcement_edit', { 'id': announcement.id }) }}">Edit</a>
+        </div><br>
     {% endfor %}
     <ul>
         <li>

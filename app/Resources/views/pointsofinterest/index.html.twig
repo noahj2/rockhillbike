@@ -1,37 +1,20 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %} 
-<h1>Points Of Interest List</h1>
+{% block title %}PoI Index{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Photo</th>
-                <th>Trail</th>
-                <th>Type</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for pointsOfInterest in pointsOfInterests %}
-            <tr>
-                <td>{{ pointsOfInterest.latitude }}</td>
-                <td>{{ pointsOfInterest.longitude }}</td>
-                <td>{{ pointsOfInterest.photo }}</td>
-                <td>{{ pointsOfInterest.trail }}</td>
-                <td>{{ pointsOfInterest.type }}</td>
-                <td>
-                    <div>
-                        <a href="{{ path('admin_pointsofinterest_edit', { 'id': pointsOfInterest.id }) }}">Edit</a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-     <div><br>
+{% block body %} 
+<h1>Points of Interest List</h1><br>
+
+    {% for pointsOfInterest in pointsOfInterests %}
+        <label>ID: </label> {{ pointsOfInterest.id }}<br>
+        <label>Latitude:</label> {{ pointsOfInterest.latitude }}<br>
+        <label>Longitude:</label> {{ pointsOfInterest.longitude }}<br>
+        <label>Photo:</label> {{ pointsOfInterest.photo }}<br>
+        <label>Trail:</label> {{ pointsOfInterest.trail }}<br>
+        <label>Type:</label> {{ pointsOfInterest.type }}<br>
+    {% endfor %}   
+    
+     <div>
         <ul>
             <li>
                 <a href="{{ path('admin_pointsofinterest_new') }}">Create New Entry</a>

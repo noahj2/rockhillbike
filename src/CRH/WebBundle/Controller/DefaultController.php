@@ -4,6 +4,7 @@ namespace CRH\WebBundle\Controller;
 
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -205,5 +206,23 @@ class DefaultController extends Controller
         $args['form'] = $form->createView();
         
         return $args;
+    }
+    
+    
+    public function slideshowHeaderAction()
+    {
+         $em = $this->getDoctrine()->getManager();
+         
+         $slideshowTrails = $em->getRepository('CRHWebBundle:Trail')->getRandomTrails();
+         
+		if (!$slideshowTrails) 
+		{
+			return new Response("");
+		}
+		else
+		{
+		    return $this->render('slideshowHeader.html.twig', array('slideshowTrails' => $slideshowTrails) );
+		}
+         
     }
 }

@@ -1,43 +1,23 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %}
-    <h1>PointsOfInterest</h1>
+{% block title %}PoI Show{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ pointsOfInterest.id }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ pointsOfInterest.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ pointsOfInterest.longitude }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ pointsOfInterest.photo }}</td>
-            </tr>
-            <tr>
-                <th>Trail</th>
-                <td>{{ pointsOfInterest.trail }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ pointsOfInterest.type }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block body %}
+    <h1>Point of Interest</h1><br>
+        
+        <label>ID: </label> {{ pointsOfInterest.id }}<br>
+        <label>Latitude:</label> {{ pointsOfInterest.latitude }}<br>
+        <label>Longitude:</label> {{ pointsOfInterest.longitude }}<br>
+        <label>Photo:</label> {{ pointsOfInterest.photo }}<br>
+        <label>Trail:</label> {{ pointsOfInterest.trail }}<br>
+        <label>Type:</label> {{ pointsOfInterest.type }}<br>
 
     <ul>
         <li>
-            <a href="{{ path('admin_pointsofinterest_index') }}">Back to the list</a>
+            <a href="{{ path('admin_pointsofinterest_edit', { 'id': pointsOfInterest.id }) }}">Edit</a>
         </li>
         <li>
-            <a href="{{ path('admin_pointsofinterest_edit', { 'id': pointsOfInterest.id }) }}">Edit</a>
+            <a href="{{ path('admin_pointsofinterest_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

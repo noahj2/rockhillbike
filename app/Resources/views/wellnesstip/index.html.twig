@@ -1,17 +1,20 @@
 {% extends 'adminBase.html.twig' %}
 
+{% block title %}Wellness Tip Index{% endblock %}
+
 {% block body %}
     
     <h1>Wellness Tips List</h1><br>
     
     {% for wellnessTip in wellnessTips %}
+        <label>ID: </label> {{ wellnessTip.id }}<br>
         <label>Tip:</label> {{ wellnessTip.tip }}
         <div>
             <a href="{{ path('admin_wellnesstip_edit', { 'id': wellnessTip.id }) }}">Edit</a>
         </div><br>
     {% endfor %}
     
-    <div><br>
+    <div>
         <ul>
             <li>
                 <a href="{{ path('admin_wellnesstip_new') }}">Create New Entry</a>

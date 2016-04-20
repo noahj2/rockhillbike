@@ -1,38 +1,25 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %} 
-    <h1>News List</h1>
+{% block title %}News Index{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Date/Time</th>
-                <th>Photo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for news in news %}
-            <tr>
-                <td>{{ news.name }}</td>
-                <td>{{ news.description }}</td>
-                <td>{% if news.dateTime %}{{ news.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <div>
-                        <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-        <div><br>
+{% block body %} 
+    <h1>News List</h1><br>
+    
+    {% for news in news %}
+        <label>ID: </label> {{ news.id }}<br>
+        <label>Name:</label> {{ news.name }}<br>
+        <label>Description:</label> {{ news.description }}<br>
+        <label>Date/Time:</label> {% if news.dateTime %}{{ news.dateTime|date('m-d-y H:i') }}{% endif %}<br>
+        <label>Photo:</label><br>
+        <div>
+            <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>
+        </div><br>
+    {% endfor %}
+        <div>
             <ul>
-            <li>
-                <a href="{{ path('news_new') }}">Create New Entry</a>
-            </li>
-        </ul>
+                <li>
+                    <a href="{{ path('news_new') }}">Create New Entry</a>
+                </li>
+            </ul>
         </div>
 {% endblock %}

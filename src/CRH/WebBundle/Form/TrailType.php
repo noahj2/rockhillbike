@@ -23,16 +23,39 @@ class TrailType extends AbstractType
                     'Special Ways' => 'Special Ways',
                     'Blue Ways' => 'Blue Ways'
                 )))
-            ->add('caloriesBurnedMale')
-            ->add('caloriesBurnedFemale')
-            ->add('surfaceType')
-            ->add('hoursOfOperation', null, array('attr' => array('class' => 'tinymce')))
-            ->add('description')
+            ->add('surfaceType','choice',array('choices'=>array(
+                    'Asphalt' => 'Asphalt',
+                    'Concrete' => 'Concrete',
+                    'Natural' => 'Natural',
+                    'Water' => 'Water'
+                )) )
+            ->add('allowsBikes')
+            ->add('handicapAccess')
+            ->add('hoursOfOperation', null, array('attr' => array('class' => 'tinymce'), 'required' => false))
+            ->add('description', null, array('attr' => array('class' => 'tinymce'), 'required' => false))
+            
+            
+            ->add('bannerImageFile1', 'vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))
             ->add('imageFile1', 'vich_image', array(
                 'required'  => false,
                 'download_link' => false
             ))
-            ->add('isTrailOfMonth',null,array('label' => 'Set as trail of the month') )
+            ->add('imageFile2', 'vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))
+            ->add('imageFile3', 'vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))
+            ->add('imageFile4', 'vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))            
+            ->add('isTrailOfMonth',null,array('label' => 'Set as trail of the month'))
 
         ;
     }

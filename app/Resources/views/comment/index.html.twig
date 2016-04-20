@@ -1,10 +1,13 @@
 {% extends 'adminBase.html.twig' %}
 
+{% block title %}Comment Index{% endblock %}
+
 {% block body %}
 
     <h1>Pending Comments</h1><br>
         
     {% for comment in pendingComments %}
+        <label>ID: </label> {{ comment.id }}<br>
         <label>Name:</label> {{ comment.name }}<br>
         <label>Message:</label> {{ comment.message }}<br>
         <label>Image:</label> {{ comment.image }}<br>
@@ -21,6 +24,7 @@
     
     {% for comment in comments %}
         {% if comment.isApproved == 1 %}
+            <label>ID: </label> {{ comment.id }}<br>
             <label>Name:</label> {{ comment.name }}<br>
             <label>Message:</label> {{ comment.message }}<br>
             <label>Image:</label> {{ comment.image }}<br>
@@ -28,10 +32,10 @@
             <label>Trail:</label> {{ comment.trail }}<br>
             <label>Email:</label> {{ comment.email }}<br>
             <label>Approved?:</label> {% if comment.isApproved %}Yes{% else %}No{% endif %}
-        {% endif %}
         <div>
             <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
         </div><br>
+        {% endif %}
     {% endfor %}
 
 {% endblock %}

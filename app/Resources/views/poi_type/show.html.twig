@@ -1,27 +1,19 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %}
-    <h1>POI_TYPE</h1>
+{% block title %}PoI Type Show{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ pOI_TYPE.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ pOI_TYPE.type }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block body %}
+    <h1>Point of Interest Type</h1><br>
+    
+    <label>ID: </label> {{ pOI_TYPE.id }}<br>
+    <label>Entrance:</label> {{ pOI_TYPE.type }}<br>
 
     <ul>
         <li>
-            <a href="{{ path('admin_poi_type_index') }}">Back to the list</a>
+            <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">Edit</a>
         </li>
         <li>
-            <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">Edit</a>
+            <a href="{{ path('admin_poi_type_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

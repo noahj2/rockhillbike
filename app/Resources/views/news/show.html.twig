@@ -1,35 +1,24 @@
 {% extends 'adminBase.html.twig' %}
 
-{% block body %}
-    <h1>News</h1>
+{% block title %}News Show{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ news.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ news.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ news.description }}</td>
-            </tr>
-            <tr>
-                <th>Datetime</th>
-                <td>{% if news.dateTime %}{{ news.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block body %}
+
+    <h1>News</h1><br>
+    
+    <label>ID: </label> {{ news.id }}<br>
+    <label>Name:</label> {{ news.name }}<br>
+    <label>Description:</label> {{ news.description }}<br>
+    <label>Date/Time:</label> {% if news.dateTime %}{{ news.dateTime|date('m-d-y H:i') }}{% endif %}<br>
+    <label>Photo:</label><br>
 
     <ul>
-        <li>
-            <a href="{{ path('news_index') }}">Back to the list</a>
-        </li>
+        
         <li>
             <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>
+        </li>
+        <li>
+            <a href="{{ path('news_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

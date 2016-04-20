@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CRH\WebBundle\Entity\PointsOfInterest;
+use CRH\WebBundle\Entity\POI_TYPE;
 use CRH\WebBundle\Form\PointsOfInterestType;
 
 /**

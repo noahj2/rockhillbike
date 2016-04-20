@@ -1,8 +1,11 @@
 {% extends 'adminBase.html.twig' %}
 
+{% block title %}Event Show{% endblock %}
+
 {% block body %}
     <h1>Event</h1><br>
     
+    <label>ID: </label> {{ event.id }}<br>
     <label>Name: </label> {{ event.name }}<br>
     <label>Description: </label> {{ event.description }}<br>
     <label>Date: </label>{% if event.eventDate %} {{ event.eventDate|date('m-d-y H:i') }}{% endif %}<br>
