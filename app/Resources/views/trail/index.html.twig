@@ -3,11 +3,10 @@
 {% block title %}Trail Index{% endblock %}
 
 {% block body %} 
-    <h1>Trails List</h1><br>
 
+    <h4>Trails List</h4><br>
 
     {% for trail in trails %}
-        <label>ID: </label> {{ trail.id }}<br>
         <label>Name:</label> {{ trail.name }}<br>
         <label>Length:</label> {{ trail.length }}<br>
         <label>Type:</label> {{ trail.type }}<br>
@@ -15,11 +14,10 @@
         <label>Description:</label> {{ trail.description }}<br>
         <label>Photo:</label> {{ trail.photo1 }}<br>
         <div>
-            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit</a>
+            <a href="{{ path('admin_routepoint_new', { 'trail': trail.id }) }}">Edit Trail Route</a><br>
+            <a href="{{ path('admin_trail_edit', { 'id': trail.id }) }}">Edit Trail Details</a>
         </div><br>
     {% endfor %}
-    
-    
     
      <div>
          <ul>

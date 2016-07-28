@@ -4,13 +4,9 @@
 
 {% block body %}
     
-    
-    <h1>Announcements List</h1><br>
-
-    
+    <h4>Announcements List</h4><br>
     
     {% for announcement in announcements %}
-        <label>ID: </label> {{ announcement.id }}<br>
         <label>Message: </label> {{ announcement.message }}<br>
         <label>Current?: </label> {% if announcement.isCurrent %}Yes{% else %}No{% endif %}
         <div>
@@ -22,4 +18,5 @@
             <a href="{{ path('announcement_new') }}">Create New Entry</a>
         </li>
     </ul>
+    
 {% endblock %}

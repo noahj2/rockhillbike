@@ -19,6 +19,10 @@ class EventType extends AbstractType
             ->add('description')
             ->add('eventDate', 'datetime')
             ->add('location')
+            ->add('imageFile1', 'vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))
             
         ;
     }

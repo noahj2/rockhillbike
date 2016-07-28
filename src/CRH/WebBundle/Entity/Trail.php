@@ -50,8 +50,6 @@ class Trail
      * @ORM\Column(name="length", type="float")
      */
     private $length = 0;
-    
-    
 
     /**
      * @var boolean
@@ -60,16 +58,12 @@ class Trail
      */
     private $allowsBikes = false;
     
-    
     /**
      * @var boolean
      *
      * @ORM\Column(name="handicapAccess", type="boolean")
      */
     private $handicapAccess = false;
-    
-    
-    
     
     /**
      * @var float
@@ -108,13 +102,19 @@ class Trail
     private $description = "";
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="features", type="text")
+     * @Assert\NotNull(message="Please provide points of interest this trail features.")
+     */
+    private $features = "";
+    
+    /**
     *@var \DateTime
     *
     *@ORM\Column(type="datetime")
     */
     private $updatedOn;
-    
-
     
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="trail", cascade="ALL", cascade="ALL")
@@ -249,6 +249,29 @@ class Trail
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    /**
+     * Set features
+     *
+     * @param string $features	F
+     * @return Trail
+     */
+    public function setFeatures($features)
+    {
+        $this->features = $features;
+
+        return $this;
+    }
+
+    /**
+     * Get features
+     *
+     * @return string 
+     */
+    public function getFeatures()
+    {
+        return $this->features;
     }
 
     /**

@@ -4,12 +4,12 @@
 
 {% block body %}
 
-    <h1>News</h1><br>
+    <h4>News</h4><br>
     
     <label>ID: </label> {{ news.id }}<br>
     <label>Name:</label> {{ news.name }}<br>
     <label>Description:</label> {{ news.description }}<br>
-    <label>Date/Time:</label> {% if news.dateTime %}{{ news.dateTime|date('m-d-y H:i') }}{% endif %}<br>
+    <label>Date/Time:</label> {% if news.dateTime %}{{ news.dateTime|date('m-d-y h:ia') }}{% endif %}<br>
     <label>Photo:</label><br>
 
     <ul>

@@ -2,12 +2,12 @@
 
 {% block title %}Location Index{% endblock %}
 
-{% block body %}  
-    <h1>Locations List</h1><br>
+{% block body %} 
+
+    <h4>Locations List</h4><br>
 
     
     {% for location in locations %}
-        <label>ID: </label> {{ location.id }}<br>
         <label>Latitude:</label> {{ location.latitude }}<br>
         <label>Longitude:</label> {{ location.longitude }}<br>
         <div>

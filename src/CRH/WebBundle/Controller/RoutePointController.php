@@ -9,7 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CRH\WebBundle\Entity\RoutePoint;
 use CRH\WebBundle\Form\RoutePointType;
-use CRH\WebBundle\Entity\Trail; 
+use CRH\WebBundle\Entity\Trail;
+use CRH\WebBundle\Entity\POI_TYPE;
 
 /**
  * RoutePoint controller.
@@ -18,8 +19,6 @@ use CRH\WebBundle\Entity\Trail;
  */
 class RoutePointController extends Controller
 {
-
-
     /**
      * Creates a new RoutePoint entity.
      *
@@ -31,7 +30,7 @@ class RoutePointController extends Controller
         $data = $request->request->all();
         $data = json_decode($data['data']);
         
-        dump($data);
+       // dump($data);
         $response ="";
         
         $em = $this->getDoctrine()->getManager();
@@ -40,7 +39,7 @@ class RoutePointController extends Controller
         
         $existing = $em->getRepository('CRHWebBundle:RoutePoint')->findBy(array('trail' => $trail->getId()));
         
-        dump($existing);
+        //dump($existing);
         
         foreach($existing as $rp)
         {
@@ -73,11 +72,12 @@ class RoutePointController extends Controller
 
     public function newAction(Request $request, Trail $trail)
     {
-        
-        
+        $em = $this->getDoctrine()->getManager();
+        $poi = $em->getRepository('CRHWebBundle:POI_TYPE')->findAll();
         
         return $this->render('routepoint/new.html.twig', array(
-            'trail' => $trail
+            'trail' => $trail,
+            'poiType' => $poi
         ));
     }
 

@@ -6,30 +6,157 @@
   {{ parent() }}
   <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
   <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyDFxHSMuCUFqDo41r4SCbWGAKHdpNKq4Ds&callback=initMap"></script>
+  
+  <script>
+    {% for trail in trails %} 
+      var routePointsStart{{ trail.id }} = [
+          {% for routePoint in trail.routePoints %}
+            [{{ routePoint.startLat }} , {{ routePoint.startLng }}],
+          {% endfor %}
+        ];
+        
+      var routePointsEnd{{ trail.id }} = [
+        {% for routePoint in trail.routePoints %}
+          [{{ routePoint.endLat }} , {{ routePoint.endLng }}],
+        {% endfor %}
+      ];
+      
+      var routePoints{{ trail.id }} = [
+        {% for routePoint in trail.routePoints %}
+          [{{ routePoint.endLat }} , {{ routePoint.endLng }} , {{ routePoint.endLat }} , {{ routePoint.endLng }}],
+        {% endfor %}
+      ];
+    {% endfor %}
+    
+    $(document).ready(function(){
+      $(".mapit").click(function(){
+        $("html, body").animate({
+          scrollTop: $("#map").offset().top});
+      });
+    });
+  </script>
+  
 {% endblock%}
 
 {% block body %}
 
-            <section><!--SECTION 1-->
-               
-              <!--Main Map-->
-                <div id="trail_main_map">
-                
-                  <div id="trail_tg">
-                    <div id="trail_tg_header">
-                      <h2>Trails & Greenways Map</h2>
-                    </div>
+      <section><!--SECTION 1-->
+         
+        <!--Main Map-->
+          <div id="trail_main_map" class="animated fadeInRight Slow" style="animation-name: fadeInRight;">
+          
+            <div id="trail_tg">
+              <div id="trail_tg_header">
+                <h2>Trails & Greenways Map</h2>
+              </div>
+            </div>
+           
+            <div id="map"></div>
+          </div> <!--Trail Main Map Ends-->
+      </section><!--END SECTION 1-->
+  
+  
+  
+  
+      <section><!--SECOND SECTION-->
+          <!--Trail Overviews-->
+          <div id="trail_maps" class="animated fadeInDown Slow" style="animation-name: fadeInDown;">
+          
+                <div id="trail_tg_maps" >
+                  <div id="trail_tg_maps_header">
+                    <h2>Trail Overviews</h2>
                   </div>
-                 
-                  <div id="map"></div>
-                </div> <!--Trail Main Map Ends-->
-            </section><!--END SECTION 1-->
-
+                </div>
+           
+           
+                <ul class="nav nav-tabs trail_tabs">
+                  <li class="active"><a data-toggle="tab" href="#trailpath">Trails</a></li>
+                  <li><a data-toggle="tab" href="#sidewalks">Sidewalks</a></li>
+                  <li><a data-toggle="tab" href="#specialways">Special Ways</a></li>
+                  <li><a data-toggle="tab" href="#blueways">Blue Ways</a></li>
+                  <li><a data-toggle="tab" href="#trail_etiquette">Trail Etiquette</a></li>
+                </ul>
+  
+  
+                <div class="tab-content trail_tabs_content" style="-webkit-overflow-scrolling: auto;">
+                    <div id="trailpath" class="tab-pane fade in active">
+                      
+                      <div class="trail_list1" style="-webkit-overflow-scrolling: auto;">
+                         <ul>
+                           {% for trail in trails %}
+                             {% if trail.type == 'Trails' %}
+                             <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit trailColor" data-id="{{trail.id}}">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                             {% endif %}
+                           {% endfor %}
+                          
+                         </ul> 
+                      </div>
+                        
+                    </div>
+                    <div id="sidewalks" class="tab-pane fade">
+                       <div class="trail_list3">
+                         <ul>
+  
+  
+  
+                           {% for trail in trails %}
+                             {% if trail.type == 'Sidewalks' %}
+                             <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit sidewalkColor" data-id="{{trail.id}}">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                             {% endif %}
+                           {% endfor %}
+                          
+  
+  
+                         </ul> 
+                      </div>
+                    </div>
+                    <div id="specialways" class="tab-pane fade">
+                       <div class="trail_list4">
+                         <ul>
+                           {% for trail in trails %}
+                             {% if trail.type == 'Special Ways' %}
+                             <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit specialWaysColor" data-id="{{trail.id}}">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                             {% endif %}
+                           {% endfor %}
+                         </ul> 
+                      </div>
+                    </div>
+                    <div id="blueways" class="tab-pane fade">
+                      <div class="trail_list5">
+                         <ul>
+  
+  
+                           {% for trail in trails %}
+                             {% if trail.type == 'Blue Ways' %}
+                             <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit blueWaysColor" data-id="{{trail.id}}">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
+                             {% endif %}
+                           {% endfor %}
+                          
+  
+                         </ul> 
+                      </div>
+                    </div>
+                      <div id="trail_etiquette" class="tab-pane fade">
+                      <div class="trail_list5">
+                         <ul>
+                          <li><h3 class="rules">Stay to the right when walking on wide paths.</h3></li>
+                          <li><h3 class="rules">When passing, pass on the left of the person in front.</h3></li>
+                          <li><h3 class="rules">If you stop for a rest, move off of the trail to let others pass.</h3></li>
+                          <li><h3 class="rules">If you have a dog, be sure to keep it on a leash and pick up its droppings.</h3></li>
+                          <li><h3 class="rules">Do not feed the animals. Doing so disrupts natural foraging habits.</h3></li>
+                         </ul> 
+                      </div>
+                    </div>
+                </div>
+  
+            </div><!--End Trail Overviews-->
+        </section><!--END OF SECOND SECTION-->
+        
         {% if announcements  %}
-            <section><!--SECTION 2-->
+            <section><!--SECTION 3-->
                 <!--Trail Announcements-->
-
-                <div id="trail_announcement">
+        
+                <div id="trail_announcement" class="animated fadeInLeft Slow" style="animation-name: fadeInLeft;">
                   
                     <div id="trail_tg2">
                       <div id="trail_tg2_header">
@@ -38,367 +165,290 @@
                     </div>
                    
                     <div id="trail_tg2_announcements">
-
+        
                         {% for announcement in announcements %}
                             <p class="announcement1">{{ announcement.message }}</p>
                             <hr>
                         {% endfor %}
-
+        
                     </div>
                 </div><!--Trail Announcement-->
-            </section><!--SECOND SECTION-->
-      {% endif%}
-
-
-            <section><!--THIRD SECTION-->
-                <!--Trail Overviews-->
-                <div id="trail_maps">
-                
-                      <div id="trail_tg_maps" >
-                        <div id="trail_tg_maps_header">
-                          <h2>Trail Overviews</h2>
-                        </div>
-                      </div>
-                 
-                 
-                      <ul class="nav nav-tabs trail_tabs">
-                        <li class="active"><a data-toggle="tab" href="#trailpath">Trails</a></li>
-                        <li><a data-toggle="tab" href="#sidewalks">Sidewalks</a></li>
-                        <li><a data-toggle="tab" href="#specialways">Special Ways</a></li>
-                        <li><a data-toggle="tab" href="#blueways">Blue Ways</a></li>
-                        <li><a data-toggle="tab" href="#trail_etiquette">Trail Etiquette</a></li>
-                      </ul>
-
-
-                      <div class="tab-content trail_tabs_content">
-                          <div id="trailpath" class="tab-pane fade in active">
-                            
-                            <div class="trail_list1">
-                               <ul>
-
-                                 {% for trail in trails %}
-                                   {% if trail.type == 'Trails' %}
-                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
-                                   {% endif %}
-                                 {% endfor %}
-                                
-                               </ul> 
-                            </div>
-                              
-                          </div>
-                          <div id="sidewalks" class="tab-pane fade">
-                             <div class="trail_list3">
-                               <ul>
-
-
-
-                                 {% for trail in trails %}
-                                   {% if trail.type == 'Sidewalks' %}
-                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
-                                   {% endif %}
-                                 {% endfor %}
-                                
-
-
-                               </ul> 
-                            </div>
-                          </div>
-                          <div id="specialways" class="tab-pane fade">
-                             <div class="trail_list4">
-                               <ul>
-                                
-                                
-                                
-                                 {% for trail in trails %}
-                                   {% if trail.type == 'Special Ways' %}
-                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
-                                   {% endif %}
-                                 {% endfor %}
-                                
-                                
-                               </ul> 
-                            </div>
-                          </div>
-                          <div id="blueways" class="tab-pane fade">
-                            <div class="trail_list5">
-                               <ul>
-
-
-                                 {% for trail in trails %}
-                                   {% if trail.type == 'Blue Ways' %}
-                                   <li><h3 class="trail">{{ trail.name }}</h3><button type="button" class="btn btn-info btn-md mapit">Map It</button><button type="button" class="btn btn-info btn-md details" data-toggle="modal" data-target="#trailModal{{ trail.id }}">Details</button></li>
-                                   {% endif %}
-                                 {% endfor %}
-                                
-
-                               </ul> 
-                            </div>
-                          </div>
-                            <div id="trail_etiquette" class="tab-pane fade">
-                            <div class="trail_list5">
-                               <ul>
-                                <li><h3 class="rules">Rule1</h3></li>
-                                <li><h3 class="rules">Rule2</h3></li>
-                                <li><h3 class="rules">Rule3</h3></li>
-                                <li><h3 class="rules">Rule4</h3></li>
-                                <li><h3 class="rules">Rule5</h3></li>
-                               </ul> 
-                            </div>
-                          </div>
-                      </div>
-
-                  </div><!--End Trail Overviews-->
-              </section><!--END OF THIRD SECTION-->
-            
-                
-              <section><!--FOURTH SECTION-->
-                <!--CONNECT ROCK HILL-->
-                <div id="trail_connect">
-                
-                      <div id="trail_tg_connect">
-                        <div id="trail_tg_connect_header">
-                          <h2>Connect Rock Hill: Last 10 Comments </h2><div id="trail_plus"><img src="{{ asset('images/plus.png') }}" id="trail_comments_plus" title="Add a Comment" class="add_comment" data-toggle="modal" data-target="#comment1"></div>
-
-                        </div>
-                      </div>
-                 
-                  <div id="trail_feedback">
-
-                        <div id="usercomments">
-                          <div id="comments_one">
-                            {% if last10comments %}
-                            
-                            {% for comment in last10comments %}
-                              {%if comment.name is not null %}
-                                <p><b>{{ comment.name }}</b><br>
-                              {% endif%}
-                              {%if comment.trail is not null %}
-                                <b>{{ comment.trail }}</b><br>
-                              {% endif%}
-                              {{ comment.message }}</p>
-                              <hr>
-                            {% endfor %}
-                            {% else %} 
-                              <p>These are currently no comments, consider leaving one!</p>
-                            {% endif%}
-                          </div>
-                        </div>
-                  </div><!--End Trail Feeback-->
-                </div><!--End Connect Rock Hill-->
-              </section><!--END OF FOURTH SECTION-->
-
-              
-              <section><!--FIFTH SECTION-->
-                <!--Monthly Trail-->
-               <div id="trail_monthly">
-                
-                  <div id="trail_tg_monthly">
-                    <div id="trail_tg_monthly_header">
-                      <h2>Trail of the Month</h2>
-                    </div>
+            <!--</section><!--THIRD SECTION-->
+        {% endif%}
+      
+          
+        <!--<section><!--FOURTH SECTION-->
+          <!--CONNECT ROCK HILL-->
+          <div id="trail_connect" class="animated fadeInUp Slow" style="animation-name: fadeInUp;">
+          
+                <div id="trail_tg_connect">
+                  <div id="trail_tg_connect_header">
+                    <h2>Connect Rock Hill: Last 10 Comments </h2><div id="trail_plus"><img src="{{ asset('images/plus.png') }}" id="trail_comments_plus" title="Add a Comment" class="add_comment animated bounceIn" style="animation-name: bounceIn;" data-toggle="modal" data-target="#comment1"></div>
                   </div>
-
-                  
-                  <div id="trail_monthly_content">
-                    {% if trailOfMonth is not null %}
-                    <h3>{{ trailOfMonth.name }}</h3>
-                    <p>Length: {{ trailOfMonth.length }} miles</p>
-                    <p>Type: {{ trailOfMonth.type }}</p>
-                    <p>Male and female calories burned: {{ trailOfMonth.caloriesBurnedMale }} and 
-                    {{ trailOfMonth.caloriesBurnedFemale }}</p>
-                    <p>Surface Type: {{ trailOfMonth.surfaceType }}</p>
-                    <p>Description: {{ trailOfMonth.description }}</p>
-                    {% else %}
-                        <h2>There is no current trail of the month.  Check back soon!</h2>
-                    
-                  </div>
-                  <div id="trail_monthly_image"></div>
-
-                 </div><!--End Monthly Trail-->
-           </section><!--END OF FIFTH SECTION -->
-           {% endif %}
+                </div>
            
-
-
-
-
-
-
-
-
-
-
-         {% if wellnessTipOfMonth is not null %}
-
-              <section><!--SIXTH SECTION-->
-              <!--Wellness Tip Monthly-->
-               <div id="trail_wellness">
-                
-                  <div id="trail_tg_wellness">
-                    <div id="trail_tg_wellness_header">
-                      <h2>Wellness Tip of the Month</h2>
+            <div id="trail_feedback">
+  
+                  <div id="usercomments">
+                    <div id="comments_one">
+                      {% if last10comments %}
+                      
+                      {% for comment in last10comments %}
+                        {% if comment.photo %}
+                          <img src="{{ asset(vich_uploader_asset(comment, 'imageFile')) }}" /><br>
+                        {% endif %}
+                      
+                        {%if comment.name is not null %}
+                          <p><b>{{ comment.name }}</b></p>
+                        {% endif%}
+                        {%if comment.trail is not null %}
+                          <p><b>{{ comment.trail }}</b><br></p>
+                        {% endif%}
+                        <p>{{ comment.message }}</p>
+                        <hr>
+                      {% endfor %}
+                      {% else %} 
+                        <p>These are currently no comments, consider leaving one!</p>
+                      {% endif%}
                     </div>
                   </div>
-
-                  <div id="trail_wellness_image">??????????????????????????????????????????????????????????????????????????????????????????????????????</div>
-                  <div id="trail_wellness_content">
-                    <p>{{ wellnessTipOfMonth.tip }}</p>
-                  </div>
-
-                 </div><!--END Wellness Tip Monthly--> 
-               </section><!--END OF Six SECTION -->
-
-        {% endif %}
-
-
-
-
-
-                 
-                 
-                  
-            <!-- Trigger the modal with a button -->         
-              <!-- Modals -->
+            </div><!--End Trail Feeback-->
+          </div><!--End Connect Rock Hill-->
+        </section><!--END OF FOURTH SECTION-->
+  
+        
+        <section><!--FIFTH SECTION-->
+          <!--Monthly Trail-->
+         <div id="trail_monthly" class="animated fadeInLeft Slow" style="animation-name: fadeInLeft;">
+          
+            <div id="trail_tg_monthly">
+              <div id="trail_tg_monthly_header">
+                <h2>Trail of the Month</h2>
+              </div>
+            </div>
+  
+            
+            <div id="trail_monthly_content" class="animated fadeInRight Slow" style="animation-name: fadeInRight;">
+              {% if trailOfMonth is not null %}
+                <div class="tmc">
+                  <h3>{{ trailOfMonth.name }}</h3>
+                  <p>Length: {{ trailOfMonth.length }} miles</p>
+                  <p>Type: {{ trailOfMonth.type }}</p>
+                  <p>Surface Type: {{ trailOfMonth.surfaceType }}</p>
+                  {% if trailOfMonth.description is not null %}
+                    Description: {{ trailOfMonth.description | raw}}
+                  {% else %}
+                      <h4>There is no current trail of the month.  Check back soon!</h4>
+                  {% endif %}
+                </div>
+                <div id="tmc_image">
+                  {% if trailOfMonth.imageFile1 is not null %}
+                    <img src="{{ asset(vich_uploader_asset(trail, 'bannerImageFile1', 'CRH\\WebBundle\\Entity\\Trail')) }}">
+                  {% else %}
+                    <img src="{{ asset(vich_uploader_asset(trailOfMonth, 'imageFile1', 'CRH\\WebBundle\\Entity\\Trail')) }}">
+                  {% endif %}
+                </div>  
+              {% endif %}
+            </div>
+         </div><!--End Monthly Trail-->
+     <!--</section><!--END OF FIFTH SECTION -->
+     
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   {% if wellnessTipOfMonth is not null %}
+  
+        <!--<section><!--SIXTH SECTION-->
+        <!--Wellness Tip Monthly-->
+         <div id="trail_wellness">
+          
+            <div id="trail_tg_wellness">
+              <div id="trail_tg_wellness_header">
+                <h2>Wellness Tip of the Month</h2>
+              </div>
+            </div>
+  
+            <div id="trail_wellness_image"></div>
+            <div id="trail_wellness_content">
+              <p>{{ wellnessTipOfMonth.tip }}</p>
+            </div>
+  
+           </div><!--END Wellness Tip Monthly--> 
+         </section><!--END OF Six SECTION -->
+  
+  {% endif %}
+  
+  
+  
+  
+  
+           
+           
+            
+      <!-- Trigger the modal with a button -->         
+        <!-- Modals -->
+        
+        {% for trail in trails %}
+            <div class="modal fade" id="trailModal{{ trail.id }}" role="dialog">
+              <div class="modal-dialog modal-lg">
               
-              {% for trail in trails %}
-                  <div class="modal fade" id="trailModal{{ trail.id }}" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">{{ trail.name }}</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="modal_material">
-                            
-                            
-                            
-                            {% if trail.photo1 or trail.photo2 or trail.photo3 or trail.photo4 %}
-                            
-                            {# Carousel Requires First Image to Be Set to Active But That Could Be Image 1..4 #}
-                            {% set isFirst = true %}
-                            
-                            
-                              <div id="trailCarousel{{trail.id}}" class="carousel slide" data-ride="carousel">
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner">
-                                      
-                                      {% if trail.photo1 %}
-                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
-                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile1')) }}" alt="{{ trail.name }}" />
-                                          <div class="carousel-caption">
-                                            {{ trail.name }}
-                                          </div>
-                                        </div>                                    
-                                      {% endif %}
-                                      
-                                      {% if trail.photo2 %}
-                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
-                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile2')) }}" alt="{{ trail.name }}" />
-                                          <div class="carousel-caption">
-                                            {{ trail.name }}
-                                          </div>
-                                        </div>                                    
-                                      {% endif %}
-
-                                      {% if trail.photo3 %}
-                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
-                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile3')) }}" alt="{{ trail.name }}" />
-                                          <div class="carousel-caption">
-                                            {{ trail.name }}
-                                          </div>
-                                        </div>                                    
-                                      {% endif %}
-
-                                      {% if trail.photo4 %}
-                                        <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
-                                         <img src="{{ asset(vich_uploader_asset(trail, 'imageFile4')) }}" alt="{{ trail.name }}" />
-                                          <div class="carousel-caption">
-                                            {{ trail.name }}
-                                          </div>
-                                        </div>                                    
-                                      {% endif %}                                      
-  
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{ trail.name }}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="modal_material">
+                      
+                      
+                      
+                      {% if trail.photo1 or trail.photo2 or trail.photo3 or trail.photo4 %}
+                      
+                      {# Carousel Requires First Image to Be Set to Active But That Could Be Image 1..4 #}
+                      {% set isFirst = true %}
+                      
+                      
+                        <div id="trailCarousel{{trail.id}}" class="carousel slide" data-ride="carousel">
+                              <!-- Wrapper for slides -->
+                              <div class="carousel-inner">
+                                
+                                {% if trail.photo1 %}
+                                  <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                   <img src="{{ asset(vich_uploader_asset(trail, 'imageFile1')) }}" alt="{{ trail.name }}" />
+                                    <div class="carousel-caption">
+                                      {{ trail.name }}
                                     </div>
+                                  </div>                                    
+                                {% endif %}
+                                
+                                {% if trail.photo2 %}
+                                  <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                   <img src="{{ asset(vich_uploader_asset(trail, 'imageFile2')) }}" alt="{{ trail.name }}" />
+                                    <div class="carousel-caption">
+                                      {{ trail.name }}
+                                    </div>
+                                  </div>                                    
+                                {% endif %}
   
-                                    <!-- Controls -->
-                                    <a class="left carousel-control" href="#trailCarousel{{trail.id}}" role="button" data-slide="prev">
-                                      <span class="glyphicon glyphicon-chevron-left"></span>
-                                    </a>
-                                    <a class="right carousel-control" href="#trailCarousel{{trail.id}}" role="button" data-slide="next">
-                                      <span class="glyphicon glyphicon-chevron-right"></span>
-                                    </a>
-                                    
+                                {% if trail.photo3 %}
+                                  <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                   <img src="{{ asset(vich_uploader_asset(trail, 'imageFile3')) }}" alt="{{ trail.name }}" />
+                                    <div class="carousel-caption">
+                                      {{ trail.name }}
+                                    </div>
+                                  </div>                                    
+                                {% endif %}
+  
+                                {% if trail.photo4 %}
+                                  <div class="item{% if isFirst %} active{% set isFirst = false %}{% endif %}">
+                                   <img src="{{ asset(vich_uploader_asset(trail, 'imageFile4')) }}" alt="{{ trail.name }}" />
+                                    <div class="carousel-caption">
+                                      {{ trail.name }}
+                                    </div>
+                                  </div>                                    
+                                {% endif %}                                      
+  
                               </div>
-                            {% endif %}  
-                            
+  
+                              <!-- Controls -->
+                              <a class="left carousel-control" href="#trailCarousel{{trail.id}}" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                              </a>
+                              <a class="right carousel-control" href="#trailCarousel{{trail.id}}" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                              </a>
                               
-                              
-                              
-                              <br>
-                              <p>Accessibility: 
-                                
-                                {% if trail.surfaceType == 'Water' %}
-                                  <img src="{{ asset('images/water.png') }}" alt="{{ trail.surfaceType }}"  />
-                                {% else %}
-                                  <img src="{{ asset('images/walk.png') }}" alt="Walking"  />
-                                {% endif %}
-                                
-                                {% if trail.allowsBikes == true %}
-                                  <img src="{{ asset('images/bike.png') }}" alt="Allows Bikes"  />
-                                {% endif %}
-                                
-                                {% if trail.handicapAccess == true %}
-                                  <img src="{{ asset('images/handicap.png') }}" alt="Handicap Access"  />
-                                {% endif %}
-                                
-                              </p>
-                              <p>Distance: {{ trail.length }} miles</p>
-                              <p>Surface Type: 
-                                {% if trail.surfaceType == 'Asphalt' %}
-                                  <img src="{{ asset('images/gravel.png') }}" alt="{{ trail.surfaceType }}" />
-                                {% elseif trail.surfaceType == 'Concrete' %}
-                                  <img src="{{ asset('images/pavement.png') }}" alt="{{ trail.surfaceType }}"  />
-                                {% elseif trail.surfaceType == 'Natural' %}
-                                  <img src="{{ asset('images/nature.png') }}" alt="{{ trail.surfaceType }}"  />
-                                {% elseif trail.surfaceType == 'Water' %}
-                                  <img src="{{ asset('images/water.png') }}" alt="{{ trail.surfaceType }}"  />
-                                {% endif %}
-                              </p>
-                              
-                              <p>Hours of Operation: {{ trail.hoursOfOperation | raw }}</p>
-                              <p>Features: ??????????????????????????????????????????????</p>
-                          </div>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
+                      {% endif %}  
+                      
+                        
+                        
+                        
+                        <br>
+                        <p>Accessibility: 
+                          
+                          {% if trail.surfaceType == 'Water' %}
+                            <img src="{{ asset('images/water.png') }}" alt="{{ trail.surfaceType }}"  />
+                          {% else %}
+                            <img src="{{ asset('images/walk.png') }}" alt="Walking"  />
+                          {% endif %}
+                          
+                          {% if trail.allowsBikes == true %}
+                            <img src="{{ asset('images/bike.png') }}" alt="Allows Bikes"  />
+                          {% endif %}
+                          
+                          {% if trail.handicapAccess == true %}
+                            <img src="{{ asset('images/handicap.png') }}" alt="Handicap Access"  />
+                          {% endif %}
+                          
+                        </p>
+                        <p>Distance: {{ trail.length }} miles</p>
+                        <p>Surface Type: 
+                          {% if trail.surfaceType == 'Asphalt' %}
+                            <img src="{{ asset('images/gravel.png') }}" alt="{{ trail.surfaceType }}" />
+                          {% elseif trail.surfaceType == 'Concrete' %}
+                            <img src="{{ asset('images/pavement.png') }}" alt="{{ trail.surfaceType }}"  />
+                          {% elseif trail.surfaceType == 'Natural' %}
+                            <img src="{{ asset('images/nature.png') }}" alt="{{ trail.surfaceType }}"  />
+                          {% elseif trail.surfaceType == 'Water' %}
+                            <img src="{{ asset('images/water.png') }}" alt="{{ trail.surfaceType }}"  />
+                          {% endif %}
+                        </p>
+                        
+                        <p>Hours of Operation: {{ trail.hoursOfOperation | raw }}</p>
+                        <p>Description: {{ trail.description | raw }}</p>
+                        <p>Features: {{ trail.features | raw }}</p>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+    {% endfor %}
+    
+    <div class="modal fade" id="trailModal" role="dialog">
+              <div class="modal-dialog modal-lg">
+              
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="modal_material">
+                      
+                      <h1>Thank you for submitting a comment to the Trails & Greenways of Rock Hill, South Carolina! </h1>
+                      
+                        
                       
                     </div>
                   </div>
-          {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-                      <!-- COMMENT FUNCTIONALITY -->          
-                                
-                                {% include ':default:commentNew.html.twig' %}
-                      
-                      <!-- END COMMENT FUNCTIONALITY -->          
-                                
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+  
+                <!-- COMMENT FUNCTIONALITY -->          
+                          
+                          {% include ':default:commentNew.html.twig' %}
+                
+                <!-- END COMMENT FUNCTIONALITY -->          
+                          
             <!--END MODAL-->
-
-
-
 {% endblock %}

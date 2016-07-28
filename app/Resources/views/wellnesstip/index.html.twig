@@ -4,10 +4,9 @@
 
 {% block body %}
     
-    <h1>Wellness Tips List</h1><br>
+    <h4>Wellness Tips List</h4><br>
     
     {% for wellnessTip in wellnessTips %}
-        <label>ID: </label> {{ wellnessTip.id }}<br>
         <label>Tip:</label> {{ wellnessTip.tip }}
         <div>
             <a href="{{ path('admin_wellnesstip_edit', { 'id': wellnessTip.id }) }}">Edit</a>

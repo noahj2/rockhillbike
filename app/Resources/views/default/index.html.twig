@@ -6,6 +6,7 @@
   {{ parent() }}
   <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
   <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyDFxHSMuCUFqDo41r4SCbWGAKHdpNKq4Ds&callback=initMap"></script>
+  
 {% endblock%}
         
 {% block body %}
@@ -14,21 +15,27 @@
                 <!--FIRST SECTION-->
 
                 <!--Map-->
-                <div id="home_top1">
-
-                    <div id="home_tg">
+                <div id="home_top1"  class="animated fadeInLeft Slow" style="animation-name: fadeInLeft;">
+                    
+                <div id="welcome">
+                    <h1>Welcome!</h1>
+                    <br>
+                    <h2>The Trails & Greenways of Rock Hill, South Carolina encourages you to venture out to as many trails, blueways, and paths as you desire. Fun, physical fitness, and building an engaging community is what it's all about!</h2>
+                </div>
+                
+                   <!-- <div id="home_tg">
                         <div id="home_tg_header">
                             <h2>Trails & Greenways Map</h2>
                         </div>
                     </div>
 
-                    <div id="map"></div>
+                    <div id="map"></div>-->
                 </div>
 
 
                 <!--Announcements-->
 
-                <div id="home_top2">
+                <div id="home_top2" class="animated fadeInRight Slow" style="animation-name: fadeInRight;">
 
                     <div id="home_tg2">
                         <div id="home_tg2_header">
@@ -58,7 +65,7 @@
                 <div class="divide">
                     <!--Trail Over Views-->
                     <a href="{{ path('trails') }}">
-                        <div id="home_mid1">
+                        <div id="home_mid1" class="animated fadeInLeft Slow" style="animation-name: fadeInLeft;">
 
                             <div id="home_tg_mid1">
                                 <div id="home_tg_mid1_header">
@@ -68,7 +75,8 @@
 
                             <div id="home_to">
                                 <div id="more_mid1">
-                                    <h6>See More</h6></div>
+                                    <h6>See More</h6>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -77,7 +85,7 @@
                     <!--Trail of the Month-->
 
                     <a href="{{ path('trails') }}">
-                        <div id="home_mid2">
+                        <div id="home_mid2"  class="animated fadeInUp Slow" style="animation-name: fadeInUp;">
 
                             <div id="home_tg_mid2">
                                 <div id="home_tg_mid2_header">
@@ -87,14 +95,15 @@
 
                             <div id="home_totm">
                                 <div id="more_mid2">
-                                    <h6>See More</h6></div>
+                                    <h6>See More</h6>
+                                </div>
                             </div>
                         </div>
                     </a>
 
 
                     <!--Upcoming Events & Information-->
-                    <div id="home_mid3">
+                    <div id="home_mid3"  class="animated fadeInRight Slow" style="animation-name: fadeInRight;">
 
                         <a href="{{ path('events') }}">
                             <div id="home_tg_mid3">
@@ -114,18 +123,19 @@
                                     <br>{{ event.location.name }}
                                 {% endif %}
                                 {% if event.eventDate %}
-                                  <br>{{ event.eventDate|date('m-d-Y g:ia') }}
+                                  <br><br>{{ event.eventDate|date('M d, Y') }}<br>
+                                  {{ event.eventDate|date('g:ia') }}
                                 {% endif %}
                             </p>
                         {% endfor %}
                         {% else %}
                             There are no upcoming events.
                         {% endif %}
-                            <a href="{{ path('events') }}">
+                        </div>
+                        <a href="{{ path('events') }}">
                                 <div id="more_mid3">
                                     <h6>See More</h6></div>
                             </a>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -135,7 +145,7 @@
             <!--Upcoming about, fitness, involve-->
             <section>
                 <div class="divide">
-                    <div id="home_mid4">
+                    <div id="home_mid4"  class="animated fadeInLeft Slow" style="animation-name: fadeInLeft;">
 
                         <a href="{{ path('about') }}">
                             <div id="home_tg4">
@@ -149,17 +159,18 @@
                             <p class="home_about1">The Trails and Greenways Advisory Committee is a volunteer group devoted to building a more comprehensive network of trails. Since our founding in 2003, the city’s trail network has grown from 11 miles to over 46. In 2006, we incorporated Rock Hill’s Open Space Plan, which consisted of county and regional walkability and connectivity initiatives.</p>
                             
                             <p class="home_about2">Picture Rock Hill residents of all ages and abilities staying fit, enjoying the outdoors, walking, biking, and jogging their way to work or school, learning about the natural environment and all of these activities taking place right here in Rock Hill.</p>
-                            <a href="{{ path('about') }}">
-                                <div id="more_mid4">
-                                    <h6>See More</h6></div>
-                            </a>
                         </div>
+                         <a href="{{ path('about') }}">
+                                <div id="more_mid4">
+                                    <h6>See More</h6>
+                                </div>
+                         </a>
                     </div>
 
                     <div id="home_mid5">
 
                         <a href="{{ path('events') }}">
-                            <div id="home_wellness">
+                            <div id="home_wellness"  class="animated bounceInRight" style="animation-name: bounceInRight;">
                                 <div id="home_tg5_header">
                                     <h2>Wellness Tip of<br>the Month</h2>
                                 </div>
@@ -170,7 +181,7 @@
 
 
                         <a href="{{ path('involved') }}">
-                            <div id="home_involve">
+                            <div id="home_involve"  class="animated bounceInUp" style="animation-name: bounceInUp;">
                                 <div id="home_tg6_header">
                                     <h2>Get Involved</h2>
                                 </div>
@@ -182,7 +193,7 @@
             </section>
 
             <section>
-                <div id="home_mid6">
+                <div id="home_mid6"  class="animated pulse Slow" style="animation-name: pulse;">
 
                     <div id="home_connect">
 
@@ -196,6 +207,10 @@
                                                             
                         {% if randomComment %}
                             <div id="home_trail_topic">
+                              {% if randomComment[0].photo %}
+                                <img src="{{ asset(vich_uploader_asset(randomComment[0], 'imageFile')) }}" />
+                              {% endif %}
+                                
                               {% if randomComment[0].trail is not null %}
                                 <h2>{{ randomComment[0].trail }}</h2>
                               {% endif %}
@@ -205,7 +220,10 @@
                                 <h3>{{ randomComment[0].name }}</h3>
                               {% endif %}
                               <p>{{ randomComment[0].message }}</p>
-                              <p>{{ randomComment[0].date|date('m-d-Y g:ia') }}</p>
+                              <p>
+                                     {{ randomComment[0].date|date('M d, Y') }}<br>
+                                     {{ randomComment[0].date|date('g:ia') }}
+                                </p>
                             </div>
                         {% else %}
                             <div id="home_trail_topic">
@@ -223,18 +241,7 @@
                 </div>
                 <!--END OF HOME_MID6-->
             </section>
-
-
-
-
-
-
-
-
-
-
                                 
-                                
-                                {% include ':default:commentNew.html.twig' %}
+    {% include ':default:commentNew.html.twig' %}
                                 
 {% endblock %}

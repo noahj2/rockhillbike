@@ -4,12 +4,16 @@ namespace CRH\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Comment
  *
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="CRH\WebBundle\Repository\CommentRepository")
+ * @Vich\Uploadable
  */
 class Comment
 {
@@ -38,12 +42,6 @@ class Comment
      */
     private $message;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     */
-    private $image;
 
     /**
      * @var \DateTime
@@ -135,29 +133,6 @@ class Comment
     }
 
     /**
-     * Set image
-     *
-     * @param string $image
-     * @return Comment
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set date
      *
      * @param \DateTime $date
@@ -209,7 +184,7 @@ class Comment
      * @param boolean $isApproved
      * @return Comment
      */ 
-    public function setisApproved($isApproved)
+    public function setIsApproved($isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;
@@ -220,7 +195,7 @@ class Comment
      * 
      * @return boolean
      */ 
-    public function getisApproved()
+    public function getIsApproved()
     {
         return $this->isApproved;
     }
@@ -247,4 +222,71 @@ class Comment
     {
         return $this->email;
     }
+    
+    
+    
+    /**
+    *
+    *@Vich\UploadableField(mapping="comment_photo", fileNameProperty="photo")
+    *
+    */
+    private $imageFile;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Comment
+     */ 
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        
+        if($image)
+        {
+            $this->date = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile()
+     {
+         return $this->imageFile;
+     }
+     
+     
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return Trail
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
 }

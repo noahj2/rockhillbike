@@ -3,7 +3,8 @@
 {% block title %}Front Comment Index{% endblock %}
 
 {% block body %}
-    <h1>Comment list</h1><br>
+
+    <h4>Comment List</h4><br>
         
     {% for comment in comments %}
         <label>Message:</label> {{ comment.message }}<br>

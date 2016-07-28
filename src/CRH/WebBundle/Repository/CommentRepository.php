@@ -21,7 +21,7 @@ class CommentRepository extends EntityRepository
         $em = $this->_em;
         
         
-        $sql = "SELECT * FROM comment c ORDER BY RAND() LIMIT " . $limit;
+        $sql = "SELECT * FROM comment c WHERE isapproved = true ORDER BY RAND() LIMIT " . $limit;
 
         $rsm = new ResultSetMappingBuilder($em);
         $rsm->addRootEntityFromClassMetadata('CRHWebBundle:Comment', 'c');

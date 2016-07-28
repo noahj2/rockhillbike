@@ -33,7 +33,7 @@ class TrailType extends AbstractType
             ->add('handicapAccess')
             ->add('hoursOfOperation', null, array('attr' => array('class' => 'tinymce'), 'required' => false))
             ->add('description', null, array('attr' => array('class' => 'tinymce'), 'required' => false))
-            
+            ->add('features', null, array('attr' => array('class' => 'tinymce'), 'required' => false))
             
             ->add('bannerImageFile1', 'vich_image', array(
                 'required'  => false,

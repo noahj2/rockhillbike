@@ -3,7 +3,7 @@
             <!-- Trigger the modal with a button -->
             <!-- Modal -->
             <div class="modal fade" id="comment1" role="dialog">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-md">
 
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -12,7 +12,7 @@
                             <h4 class="modal-title">Submit a Comment</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="modal_material">
+                            <div class="modal_material"><br>
                                 
                                 
     {{ form_start(commentForm.form) }}
@@ -26,35 +26,35 @@
         
         <br><br>
         
-        Name: {{ form_widget(commentForm.form.name, {'attr': {'placeholder':'Enter Your Name'} }) }}
+        {{ form_widget(commentForm.form.name, {'attr': {'placeholder':'Enter Your Name'} }) }}
         
         <div class='error'>
         {{ form_errors(commentForm.form.name) }}
         </div>
         <br><br>
         
-        Email: {{ form_widget(commentForm.form.email, {'attr': {'placeholder':'Enter Your Email'} }) }}
+        {{ form_widget(commentForm.form.email, {'attr': {'placeholder':'Enter Your Email'} }) }}
         
         <div class='error'>
             {{ form_errors(commentForm.form.email) }}
         </div>
         <br><br>
 
-        Message: {{ form_widget(commentForm.form.message) }}
+        {{ form_widget(commentForm.form.message, {'attr': {'placeholder':'Enter Your Message'} }) }}
         
         <div class='error'>
         {{ form_errors(commentForm.form.message) }}
         </div>
         <br><br>
         
-        Optional Image: {{ form_widget(commentForm.form.image) }}
+        Optional Image: {{ form_widget(commentForm.form.imageFile) }}
         
         <div class='error'>
-        {{ form_errors(commentForm.form.image) }}
+        {{ form_errors(commentForm.form.imageFile) }}
         </div>
         <br><br>
         
-        <input type="submit" value="Submit Comment" />
+        <input type="submit" value="Submit Comment" data-target="#trailModal" />
         
     {{ form_end(commentForm.form) }}
     

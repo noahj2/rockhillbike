@@ -8,22 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         {% block stylesheets %}
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-            <link rel="stylesheet" href="{{ asset('css/animations.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-            
-            
+            <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+            <link  type="text/css" rel="stylesheet" href="{{ asset('css/animations.css') }}" />
+            <link type="text/css" rel="stylesheet" href="{{ asset('css/main.css') }}" />
         {% endblock %}
         
-        
-        
-        
         {% block javascripts %}
-
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    
-
-            
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <script type="text/javascript" src="{{ asset('js/responsiveslides.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/main2.js') }}"></script>
@@ -36,21 +28,27 @@
     <body>
         {% block header %}
         <header>
-    <div class="top">
-      <div class="logo_area">
-        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo.png') }}" class="logo"></a>
-        <a href="{{ path('index') }}"><img src="{{ asset('images/tg_logo2.png') }}" class="logo2"></a>
-      </div>
-      <div class="media">
-        <div class="detail_sum"></div> 
-        <div class="temp1"><h4 class="temp_num"></h4></div>
-        <div class="temp2"><h5 class="detail_word"></h5></div>
-        <div class="rhsc"><h4>Rock Hill, South Carolina</h4></div>
-      </div>
-    </div>
+          <div class="top">
+            <div class="logo_area">
+              <a href="{{ path('index') }}"><div class="emptyhome"></div></a>
+                <img src="{{ asset('images/tg_logo.png') }}" class="logo animated bounceInUp" style="animation-name: bounceInUp;">
+              
+              <a href="{{ path('index') }}">
+                <img src="{{ asset('images/tg_logo2.png') }}" class="logo2 animated bounceInDown" style="animation-name: bounceInDown;">
+              </a>
+            </div>
+            <a href="http://forecast.io/">
+              <div class="media bounceInRight animated slow" style="visibility: visible; animation-name: bounceInRight;">
+                <div class="detail_sum"></div> 
+                <div class="temp1"><h4 class="temp_num"></h4></div>
+                <div class="temp2"><h5 class="detail_word"></h5></div>
+                <div class="rhsc"><h4>Rock Hill, South Carolina</h4></div>
+              </div>
+            </a>
+          </div>
 
     <nav>
-      <div href="#" class="hamburger">
+      <div href="#" class="hamburger bounceIn animated" style="visibility: visible; animation-name: bounceIn;">
         <div class="ham-lines">
           <div class="line"></div>
           <div class="line"></div>
@@ -62,8 +60,8 @@
         <li><a {% if currentPageHome is defined %}class="current"{% endif %} href="{{ path('index') }}">Home</a></li>
         <li><a {% if currentPageTrails is defined %}class="current"{% endif %} href="{{ path('trails') }}">Trails & Greenways</a></li>
         <li><a {% if currentPageEvents is defined %}class="current"{% endif %}  href="{{ path('events') }}">Events</a></li>
-        <li><a  {% if currentPageAbout is defined %}class="current"{% endif %} href="{{ path('about') }}">About</a></li>
-        <li><a  {% if currentPageInvolved is defined %}class="current"{% endif %} href="{{ path('involved') }}">Get Involved</a></li>
+        <li><a {% if currentPageAbout is defined %}class="current"{% endif %} href="{{ path('about') }}">About</a></li>
+        <li><a {% if currentPageInvolved is defined %}class="current"{% endif %} href="{{ path('involved') }}">Get Involved</a></li>
       </ul>
     </nav>
   </header>
@@ -92,13 +90,13 @@
 
            <!--CONTACTS FULL WIDTH-->
           <footer>
-            <div class="contact1">
+            <div class="contact1 bounceIn animated" style="animation-name: bounceIn;">
                 <h3>City of Rock Hill</h3>
                 <h4>cityofrockhill.com</h4>
                 <h4>803-325-2500</h4>
                 <h4>City Hall • 155 Johnston Street • Rock Hill, SC  29730</h4>
             </div>
-            <div class="contact2">
+            <div class="contact2 bounceIn animated" style="animation-name: bounceIn;">
                 <h3>Trails & Greenways</h3>
                 <h4>RockHillSCTrails.org</h4>
                 <h4>admin@tg.org</h4>

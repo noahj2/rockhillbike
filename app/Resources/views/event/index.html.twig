@@ -3,14 +3,14 @@
 {% block title %}Event Index{% endblock %}
 
 {% block body %}
-    <h1>Events List</h1><br>
+
+    <h4>Events List</h4><br>
 
     
     {% for event in events %}
-        <label>ID: </label> {{ event.id }}<br>
         <label>Name:</label> {{ event.name }}<br> 
         <label>Description:</label> {{ event.name }}<br>
-        <label>Date:</label>{% if event.eventDate %}{{ event.eventDate|date('m-d-y H:i') }}{% endif %}<br>
+        <label>Date:</label>{% if event.eventDate %}{{ event.eventDate|date('m-d-y h:ia') }}{% endif %}<br>
         <div>
             <a href="{{ path('admin_event_edit', { 'id': event.id }) }}">Edit</a>
         </div><br>

@@ -3,15 +3,18 @@
 {% block title %}PoI Index{% endblock %}
 
 {% block body %} 
-<h1>Points of Interest List</h1><br>
+
+<h4>Points of Interest List</h4><br>
 
     {% for pointsOfInterest in pointsOfInterests %}
-        <label>ID: </label> {{ pointsOfInterest.id }}<br>
         <label>Latitude:</label> {{ pointsOfInterest.latitude }}<br>
         <label>Longitude:</label> {{ pointsOfInterest.longitude }}<br>
         <label>Photo:</label> {{ pointsOfInterest.photo }}<br>
         <label>Trail:</label> {{ pointsOfInterest.trail }}<br>
         <label>Type:</label> {{ pointsOfInterest.type }}<br>
+        <div>
+            <a href="{{ path('admin_pointsofinterest_edit', { 'id': pointsOfInterest.id }) }}">Edit</a>
+        </div><br>
     {% endfor %}   
     
      <div>

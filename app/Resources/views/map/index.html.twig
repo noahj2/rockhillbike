@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>MAP</title>
-        
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/generic.css') }}" />
-        {% endblock %}
-        
-        {% block javascripts %}
-            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        {% endblock %}
-        
-        
-    </head>
-    <body>
+{% extends 'adminBase.html.twig' %}
 
-        <a href="{{ path('announcement_index') }}">Announcement</a> | 
-        <a href="{{ path('admin_comment_index') }}">Comments</a> | 
-        <a href="{{ path('admin_event_index') }}">Events</a> | 
-        <a href="{{ path('admin_wellnesstip_index') }}">Wellness Tips</a> | 
-        <a href="{{ path('location_index') }}">Locations</a> | 
-        <a href="{{ path('news_index') }}">News</a> | 
-        <a href="{{ path('admin_poi_type_index') }}">POI Types</a> | 
-        <a href="{{ path('admin_trail_index') }}">Trails</a> |
-        <a href="{{ path('admin_routepoint_index') }}">Route Points</a> |
-        <a href="{{ path('admin_pointsofinterest_index') }}">Points Of Interest</a>
+{% block title %}Create New Path{% endblock %}
+        
+{% block body %}  
+
+    <h4>Locations List</h4><br>
         
         <div id="map">
         <script type="text/javascript">
@@ -96,7 +76,6 @@
                 } else {
 
                     return;
-                    
                 }
             }
 			
@@ -206,8 +185,10 @@
                     poiMode = true;
                     mode = null;
                 });
-
-                /*$("#previousSegment").on("click", function() {
+                
+                
+                    
+                $("#previousSegment").on("click", function() {
                     //remove last polyline
                     lastPoint = polyLines.length - 1;
                     nextToLast = lastPoint - 1;
@@ -277,7 +258,7 @@
                     	
                     }
                     console.log(routePoints);
-                                        	/*
+                                        	
                     	//Send AJAX request to server...
                     	$.ajax({
                     	    type : "POST", 
@@ -287,7 +268,7 @@
                     	        display a conf message
                     	    }
                     	})
-                    	*/
+                    	
                     
                     //gets marker coords to send to database
                     for(i = 0; i < markers.length; i++){
@@ -309,6 +290,7 @@
         <button id="clearAll">Clear All</button>
         <button id="submit">Submit</button> 
     </div>
+    
+{% endblock %}
         
-    </body>
-</html>
+    

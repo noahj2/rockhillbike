@@ -17,7 +17,10 @@ class CommentType extends AbstractType
         $builder
             ->add('name')
             ->add('message')
-            ->add('image')
+            ->add('imageFile','vich_image', array(
+                'required'  => false,
+                'download_link' => false
+            ))
 //            ->add('date', 'datetime')
             ->add('trail')
             ->add('email');

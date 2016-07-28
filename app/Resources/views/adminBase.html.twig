@@ -3,32 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Admin Portal{% endblock %}</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         {% block stylesheets %}
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-            <link rel="stylesheet" href="{{ asset('css/animations.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-            
-            
         {% endblock %}
         
         {% block javascripts %}
-
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    
             <script type="text/javascript" src="{{ asset('js/responsiveslides.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/main2.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/css3-animate-it.js') }}"></script>
-              <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-              <script>
-            	$(document).ready(function(){
-            		tinymce.init({ selector:'.tinymce', plugins: "link" });
-            	});
-              </script>
+            <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+            <script>
+                $(document).ready(function(){
+            		tinymce.init({ selector:'.tinymce',
+            		force_p_newlines : false,
+            		plugins: "link" });
+                });
+             </script>
         {% endblock %}
         
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -43,9 +41,7 @@
             <a href="{{ path('news_index') }}">News</a> | 
             <a href="{{ path('admin_poi_type_index') }}">PoI Types</a> | 
             <a href="{{ path('admin_trail_index') }}">Trails</a> | 
-            <a href="{{ path('admin_pointsofinterest_index') }}">Points of Interest</a>
-            
-        
+            <a href="{{ path('admin_pointsofinterest_index') }}">Points of Interest</a><br><br>
         {% block body %}{% endblock %}
     </body>
 </html>

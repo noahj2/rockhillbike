@@ -3,12 +3,17 @@
 namespace CRH\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event
  *
  * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="CRH\WebBundle\Repository\EventRepository")
+ * @Vich\Uploadable
  */
 class Event
 {
@@ -152,5 +157,73 @@ class Event
     public function getLocation()
     {
         return $this->location;
+    }
+    
+    
+    
+    
+    
+    
+    
+    /**
+    *
+    *@Vich\UploadableField(mapping="event_photo1", fileNameProperty="photo1")
+    *
+    */
+    private $imageFile1;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo1", type="string", length=255, nullable=true)
+     */
+    private $photo1;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * 
+     * @return Event
+     */ 
+    public function setImageFile1(File $image = null)
+    {
+        $this->imageFile1 = $image;
+        
+        if($image)
+        {
+            $this->updatedOn = new \DateTime('now');
+        }
+        return $this;
+    }
+    
+    /**
+     * @return File
+     */
+     public function getImageFile1()
+     {
+         return $this->imageFile1;
+     }
+     
+     
+    /**
+     * Set photo1
+     *
+     * @param string $photo1
+     * @return Event
+     */
+    public function setPhoto1($photo1)
+    {
+        $this->photo1 = $photo1;
+
+        return $this;
+    }
+
+    /**
+     * Get photo1
+     *
+     * @return string 
+     */
+    public function getPhoto1()
+    {
+        return $this->photo1;
     }
 }

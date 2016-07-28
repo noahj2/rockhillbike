@@ -2,12 +2,12 @@
 
 {% block title %}PoI Type Index{% endblock %}
 
-{% block body %}  
-    <h1>Point of Interest Types List</h1><br>
+{% block body %}
+
+    <h4>Point of Interest Type List</h4><br>
 
     
     {% for pOI_TYPE in pOI_TYPEs %}
-        <label>ID: </label> {{ pOI_TYPE.id }}<br>
         <label>Entrance:</label> {{ pOI_TYPE.type }}<br>
         <div>
             <a href="{{ path('admin_poi_type_edit', { 'id': pOI_TYPE.id }) }}">Edit</a>

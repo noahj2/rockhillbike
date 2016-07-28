@@ -3,16 +3,11 @@
 {% block title %}PoI Creation{% endblock %}
 
 {% block body %}
-    <h1>Point of Interest Creation</h1>
+
+    <h4>Point of Interest Creation</h4><br>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_pointsofinterest_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

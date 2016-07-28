@@ -8,7 +8,8 @@
 {% endblock %}
 
 {% block body %}
-    <h1>RoutePoint creation</h1>
+
+    <h4>Route Creation</h4><br>
 
             <div id="map">
       
@@ -20,7 +21,8 @@
             var lineColor = "#000";
             var markers = [];
             var polyLines = [];
-            var mode = null; //false = a new line segment | true = continuing line segment  
+            var mode = null; //false = a new line segment | true = continuing line segment
+            var poiForm = false;
             var poiMode = null; //false = already have poi and need to submit | true = new poi
 			
             function initMap() {
@@ -138,8 +140,8 @@
                         map: map
                     });
                     //put in array
-                markers.push(marker);  
-            		
+                    markers.push(marker);
+                    poiMode = null;
                 } 
                 
                	if(mode == null){
@@ -167,8 +169,36 @@
                 mode = null;
                 poiMode = null;
             }
-
+            
+            function poiEditMode(poiActive)
+            {
+                if(poiActive)
+                {
+                    $("#poiModeForm").show();
+                    console.log("POI Mode active");
+                    
+                    $("#plot").on("click", function(){
+                       poiMode = true;
+                       //$("#plot").hide();
+                    });
+                }
+                else {
+                    return;
+                }
+            }    
+            
             $(document).ready(function(){
+                
+                var poiLimit = 10;
+                var addButton = $(".add");
+                var poiWrapper = $("#poiModeForm");
+                var newTwig = '<label for "poi">Point of Interest Type</label><select id="poiType" name="field_name[]">\
+                {% for poi in poiType %}<option>{{ poi.type }}</option>{% endfor %}</select><button id="plot">Plot</button>';
+                var fieldCount = 1;  
+                
+                
+                $("#poiModeForm").hide();
+                
 
                 $("#branch").on("click", function(){
                     //change mode to false
@@ -188,9 +218,24 @@
 
                 $("#pOI").on("click", function(){
                 	console.log("You're making a new point of interest.");
-                    poiMode = true;
+                    poiForm = true;
                     mode = null;
+                    poiEditMode(poiForm);
                 });
+                
+                $("#poiModeForm .add").on("click", function(){
+                    if(fieldCount < poiLimit)
+                    {
+                        fieldCount++;
+                        $(poiWrapper).append(newTwig);
+                    }
+                    
+                });
+                /*
+                if(poiMode === true)
+                {
+                        
+                }
 
                 /*$("#previousSegment").on("click", function() {
                     //remove last polyline
@@ -239,8 +284,11 @@
                 	polyLines.pop();
                 	console.log("You're submitting your information.");
                 	//console.log(polyLines);
-                	//Object to hold polyline data.
+                	//Array to hold polyline data.
                 	var routePoints = [];
+                	//Array to hold poi data.
+                	var poiData = [];
+                	//Array to hold POI data.
                     //loops polyline array to get polyline coords to send to database
                     
                     for(i = 0; i < polyLines.length; i++){
@@ -261,8 +309,20 @@
                     	//console.log("lat: " + endLat + " , lng: " + endLng);
                     	
                     }
+                    //Loops through the markers to get poi coords to send to database
+                    for(i = 0; i < markers.length; i++){
+                        var poiLat = markers[i].position.lat();
+                        var poiLng = markers[i].position.lng();
+                        var poiType = $( "#poiType option:selected" ).text();
+                        
+                        poiData[i] = {
+                            poiLat: poiLat,
+                            poiLng: poiLng,
+                            poiType: poiType,
+                        }  
+                    };
                     console.log(routePoints);
-                                        	
+                    console.log(poiData);                    	
                     	//Send AJAX request to server...
                     	$.ajax({
                     	    type : 'POST', 
@@ -296,5 +356,16 @@
         <button id="submit">Submit</button>
     </div>
 
+    <div id="poiModeForm">
+         <label for "poi">Point of Interest Type</label>
+         <select id="poiType" name="field_name[]">
+             {% for poi in poiType %}
+                 <option>{{ poi.type }}</option>
+             {% endfor %}
+         </select>
+         <button id="plot">Plot</button>
+         
+         <button class="add">Add</button>
+    </div>
     
 {% endblock %}

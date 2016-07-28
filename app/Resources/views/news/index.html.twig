@@ -3,13 +3,13 @@
 {% block title %}News Index{% endblock %}
 
 {% block body %} 
-    <h1>News List</h1><br>
+
+    <h4>News List</h4><br>
     
     {% for news in news %}
-        <label>ID: </label> {{ news.id }}<br>
         <label>Name:</label> {{ news.name }}<br>
         <label>Description:</label> {{ news.description }}<br>
-        <label>Date/Time:</label> {% if news.dateTime %}{{ news.dateTime|date('m-d-y H:i') }}{% endif %}<br>
+        <label>Date/Time:</label> {% if news.dateTime %}{{ news.dateTime|date('m-d-y h:ia') }}{% endif %}<br>
         <label>Photo:</label><br>
         <div>
             <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>

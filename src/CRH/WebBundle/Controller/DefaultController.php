@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
-    
-    
-    
     /**
      * @Route("/", name="index")
      */
@@ -31,13 +28,10 @@ class DefaultController extends Controller
         $upcomingEvents = $em->getRepository('CRHWebBundle:Event')->getUpcomingEvents(1);
         $wellnessTipOfMonth = $em->getRepository('CRHWebBundle:WellnessTip')->findOneBy(array("isTipOfMonth" => true));
         $randomComment = $em->getRepository('CRHWebBundle:Comment')->getRandomComment();
-
         
         $commentForm = $this->commentForm($request);
         if($commentForm['status'] == 'success')
-            return $this->redirectToRoute('comment_pending');            
-
-
+            return $this->redirectToRoute('comment_pending');         
     
         return $this->render(':default:index.html.twig', 
             array("announcements" => $announcements, 
@@ -49,7 +43,6 @@ class DefaultController extends Controller
                 'currentPageHome' => true
                 ));
     }
-    
     
      /**
      * @Route("/events", name="events")
@@ -84,14 +77,11 @@ class DefaultController extends Controller
         $announcements = $em->getRepository('CRHWebBundle:Announcement')->findBy(array("isCurrent" => true), array("id" => "DESC"));
         $trailOfMonth = $em->getRepository('CRHWebBundle:Trail')->findOneBy(array("isTrailOfMonth" => true));
         $wellnessTipOfMonth = $em->getRepository('CRHWebBundle:WellnessTip')->findOneBy(array("isTipOfMonth" => true));
-        $last10Comments = $em->getRepository('CRHWebBundle:Comment')->findBy(array(), array("id" => "DESC"), 10);
-        
-        
+        $last10Comments = $em->getRepository('CRHWebBundle:Comment')->findBy(array('isApproved' => true), array("id" => "DESC"), 10);
         
         $commentForm = $this->commentForm($request);
         if($commentForm['status'] == 'success')
             return $this->redirectToRoute('comment_pending');            
-
     
         return $this->render(':default:trailsGreenways.html.twig', 
             array("announcements" => $announcements, 
@@ -125,10 +115,7 @@ class DefaultController extends Controller
         return $this->render(':default:involved.html.twig', array('currentPageInvolved' => true));
     }
     
-    
-    
-    
-         /**
+     /**
       * List all approved comments 
       * 
       * @Route("/comment", name="comment_index")
@@ -145,11 +132,6 @@ class DefaultController extends Controller
             'comments' => $approvedComments,  
         ));
      }
-     
-
-      
-      
-      
           
      /**
      * @Route("/comment/pending", name="comment_pending")
@@ -225,4 +207,15 @@ class DefaultController extends Controller
 		}
          
     }
+    
+    /**
+      * List all approved comments 
+      * 
+      * @Route("/trailRoute", name="admin/routepoint/{trail}/new")
+      */ 
+     
+     //public function routePointAction()
+     //{
+         
+     //}
 }

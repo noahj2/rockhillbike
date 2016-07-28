@@ -1,22 +1,17 @@
-- Page sections should really be editable
-- Map integration
-    Jacob is doing AJAX from entry to db
-- Trails should only be pulled from database (Besmer)
-    - Need to populate the popup and also the details/map
-- Admin pages need a theme Chris W
-- Admin pages need to be fleshed out
-- Send an email about pending comments 
-- Populate trails page with links to individual trails (Is this really a feature?  Isnt this what the detail modal is for.)
-- Pull tip of month from database done on 1 page, 
-- Slideshow in header should be populated from database not hardcoded (requires additional photos based on size, only one is available on entity)
-- Images in slideshow take full seconds to load on high bandwidth connection
-- Is wellness tip supposed to have an image?
-- Default text (and spot for regular text) for trail of the month on homepage missing
-- Is trail etiquite hardcoded?  If so put in the content, if not create functionality.
-- Is the about page hardcoded?  If so there are errors in the text, if not create functionality.
-- Donations list on get involved.. is it hardcoded? If not we need functionality...
-- What about the sections on that page, is it hardcoded?
-- The logo for the page overlaps the nav.  That causes you to accidently goto the home page fairly often. (Design decision by Chris he wanted it to overlap I agree though)
-- Editing trail of month causes it to no longer be trail of the month
-- Need image upload for comments
-- Put the content in database
+- Send an email about pending comments
+- Wellness tip of month is working but does that image change or is that static?
+- Default text (and spot for regular text) for trail of the month on homepage missing (Talk to Derksen about this, I think it's weird to have on homepage with no text)
+- Editing trail of month causes it to no longer be trail of the month (Besmer will fix)
+- Should put mime type constraints on image upload in comments
+- Video doesn't play in on the About Us page
+- Chris still working on design
+- Jacob working on PoI
+- They're expecting all the content to be editable, judging from the email
+    - Page sections should really be editable
+    - Is trail etiquite hardcoded?  If so put in the content, if not create functionality.
+    - Is the about page hardcoded?  If so there are errors in the text, if not create functionality.
+    - Donations list on get involved.. is it hardcoded? If not we need functionality...
+    - What about the sections on that page, is it hardcoded?
+- Pending comments page isn't working
+- Can't scroll through comments or trail overviews on mobile version, the only scrollable thing that works for mobile are Trail Comments (on the home page)
+- Images for Events entity

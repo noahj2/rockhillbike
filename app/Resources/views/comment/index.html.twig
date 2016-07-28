@@ -4,31 +4,29 @@
 
 {% block body %}
 
-    <h1>Pending Comments</h1><br>
+    <h4>Pending Comments</h4><br>
         
     {% for comment in pendingComments %}
-        <label>ID: </label> {{ comment.id }}<br>
         <label>Name:</label> {{ comment.name }}<br>
         <label>Message:</label> {{ comment.message }}<br>
-        <label>Image:</label> {{ comment.image }}<br>
-        <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y H:i') }}{% endif %}<br>
+        {% if comment.photo %}<label>Image:</label><img src="{{ asset(vich_uploader_asset(comment, 'imageFile')) }}" /><br>{% endif %}
+        <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y h:ia') }}{% endif %}<br>
         <label>Trail:</label> {{ comment.trail }}<br>
         <label>Email:</label> {{ comment.email }}<br>
         <label>Approved?:</label> {% if comment.isApproved %}Yes{% else %}No{% endif %}
         <div>
             <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}">Edit</a>
         </div><br>
-    {% endfor %}
+    {% endfor %}<br>
     
-    <h1>Comments List</h1><br>
+    <h4>Comments List</h4><br>
     
     {% for comment in comments %}
         {% if comment.isApproved == 1 %}
-            <label>ID: </label> {{ comment.id }}<br>
             <label>Name:</label> {{ comment.name }}<br>
             <label>Message:</label> {{ comment.message }}<br>
-            <label>Image:</label> {{ comment.image }}<br>
-            <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y H:i') }}{% endif %}<br>
+            {% if comment.photo %}<label>Image:</label> <img src="{{ asset(vich_uploader_asset(comment, 'imageFile')) }}" /><br>{% endif %}
+            <label>Date:</label> {% if comment.date %}{{ comment.date|date('m-d-y H:ia') }}{% endif %}<br>
             <label>Trail:</label> {{ comment.trail }}<br>
             <label>Email:</label> {{ comment.email }}<br>
             <label>Approved?:</label> {% if comment.isApproved %}Yes{% else %}No{% endif %}

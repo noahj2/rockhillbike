@@ -6,7 +6,7 @@
 
 
               <section><!--FIRST CONTENT-->
-                <div>
+                <div  class="animated fadeInRight Slow" style="animation-name: fadeInRight;">
                   <div id="event_tg" >
                     <div id="event_tg_header">
                       <h2>Upcoming Events & Information</h2>
@@ -21,15 +21,21 @@
                             {% for event in upcomingEvents %}
                             <div class="event_content1_p">
                               <h3>{{ event.name }}</h3>
+                              
                               <p>{{ event.description }}</p>
                               {% if event.location is not null %}
-                                  <p>{{ event.location.name }}</p>
-                              {% endif %}
-                              {% if event.eventDate %}
-                                <p>{{ event.eventDate|date('m-d-Y g:ia') }}</p>
+                                  <p>Location: {{ event.location.name }}<br>
+                                  Date: {{ event.eventDate|date('M d, Y') }}<br>
+                                  Time: {{ event.eventDate|date('g:ia') }}</p>
+                              {% else %}
+                              
+                              <p>Date: {{ event.eventDate|date('M d, Y') }}<br>
+                              Time: {{ event.eventDate|date('g:ia') }}</p>
                               {% endif %}
                             </div>
-                            <div class="event_image1"></div>
+                            <div class="event_image1">
+                              
+                            </div>
                             {% endfor %}
                             {% else %}
                             <div class="event_content1_p">
@@ -44,7 +50,7 @@
 
 
             <section><!--SECOND CONTENT-->
-                <div>
+                <div  class="animated fadeInLeft Slow" style="animation-name: fadeInLeft;">
                   <div id="event_tg2">
                     <div id="event_tg_header2">
                       <h2>Annoucements</h2>
@@ -60,6 +66,7 @@
                             {% for announcement in announcements %}
                                 <p class="announcement1">
                                     {{ announcement.message }}
+                                    <hr>
                                 {% endfor %}
                             {% else %}
                             No Announcements. Check back later.
@@ -74,7 +81,7 @@
               </section> 
 
               <section><!--THIRD CONTENT-->
-                <div>
+                <div  class="animated fadeInUp Slow" style="animation-name: fadeInUp;">
                   <div id="event_tg3">
                     <div id="event_tg_header3">
                       <h2>Trail of the Month</h2>
@@ -84,13 +91,23 @@
                     <div class="event_main">
                       <section>  
                         <div class="event_content3">
-                          <div id="event_image2"></div>
+                          {% if trailOfMonth is not null %}
+                            {% if trailOfMonth.photo1 is not null %}
+                            <img id="event_image2" src="{{ asset(vich_uploader_asset(trailOfMonth, 'imageFile1', 'CRH\\WebBundle\\Entity\\Trail')) }}">
+                              {% else %}
+                                <div id="event_image2" ><img src="{{ asset('images/trail3-1.png') }}"></div>
+                            {% endif %}
                             <div class="event_content3_p">
-                           {% if trailOfMonth is not null %}
                               <h3>{{ trailOfMonth.name }}</h3>
-                           {% else %}
-                             <p>No trail of month. Check back soon!</p>
-                           {% endif %}
+                              <p>Length: {{ trailOfMonth.length }} miles</p>
+                              <p>Type: {{ trailOfMonth.type }}</p>
+                              <p>Surface Type: {{ trailOfMonth.surfaceType }}</p>
+                              {% if trailOfMonth.description is not null %}
+                                Description: {{ trailOfMonth.description | raw}}
+                               {% else %}
+                               <p>No trail of month. Check back soon!</p>
+                              {% endif %}
+                             {% endif %}
                           </div>
                         </div>
                       </section> 
@@ -106,6 +123,7 @@
 
 
               <section><!--FOURTH CONTENT-->
+                  <div  class="animated fadeInRight Slow" style="animation-name: fadeInRight;">  
                     <div id="event_tg4">
                       <div id="event_tg_header4">
                         <h2>Wellness Tip of the Month</h2>
@@ -126,6 +144,7 @@
                         </div>
                       </section> 
                     </div> 
+                  </div>  
               </section>  
 
 

@@ -60,7 +60,7 @@ class TrailController extends Controller
             $em->persist($trail);
             $em->flush();
 
-            return $this->redirectToRoute('admin_trail_show', array('id' => $trail->getId()));
+            return $this->redirectToRoute('admin_routepoint_new', array('trail' => $trail->getId()));
         }
 
         return $this->render('trail/new.html.twig', array(
